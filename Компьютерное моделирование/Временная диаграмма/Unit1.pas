@@ -55,36 +55,36 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   Randomize;
 
-  StringGrid1.Cells[0,1] := 'Из S0';
-  StringGrid1.Cells[0,2] := 'Из S1';
-  StringGrid1.Cells[0,3] := 'Из S2';
-  StringGrid1.Cells[0,4] := 'Из S3';
-  StringGrid1.Cells[1,0] := 'В S0';
-  StringGrid1.Cells[2,0] := 'В S1';
-  StringGrid1.Cells[3,0] := 'В S2';
-  StringGrid1.Cells[4,0] := 'В S3';
-  StringGrid1.Cells[5,0] := 'Проверка';
-  //Из всех в S0
-  StringGrid1.Cells[1,1] := '0,25';   //Станок простаивает
-  StringGrid1.Cells[1,2] := '0,3';    //Обрабокта завершена, станок освобождается
-  StringGrid1.Cells[1,3] := '0';      //Заменив инструмент станок освободился
-  StringGrid1.Cells[1,4] := '0,8';    //Станок отремонтирован, готов к работе
-  //Из всех в S1
-  StringGrid1.Cells[2,1] := '0';      //Начало работы на станке без инструмента
-  StringGrid1.Cells[2,2] := '0,5';    //Процесс работы на стонке, занят
-  StringGrid1.Cells[2,3] := '0,8';    //Замена иструмента, станок занят
-  StringGrid1.Cells[2,4] := '0';      //Станок отремонтирован и выполняет работу
-  //Из всех в S2
-  StringGrid1.Cells[3,1] := '0,75';   //Станок был свободен, замена инструмента
-  StringGrid1.Cells[3,2] := '0';      //Замена инструмента при обработке другого
-  StringGrid1.Cells[3,3] := '0,2';    //Процесс замены иструмента
-  StringGrid1.Cells[3,4] := '0';      //Не исправен, идет замена инструмента
-  //Из всех в S3
-  StringGrid1.Cells[4,1] := '0';      //Поломка станка без причин
-  StringGrid1.Cells[4,2] := '0,2';    //Процесс работы на стонке, поломка
-  StringGrid1.Cells[4,3] := '0';      //Замена иструмента при поломке
-  StringGrid1.Cells[4,4] := '0,2';    //Процесс ремонта
-  //Проверка
+  StringGrid1.Cells[0,1] := 'РР· S0';
+  StringGrid1.Cells[0,2] := 'РР· S1';
+  StringGrid1.Cells[0,3] := 'РР· S2';
+  StringGrid1.Cells[0,4] := 'РР· S3';
+  StringGrid1.Cells[1,0] := 'Р’ S0';
+  StringGrid1.Cells[2,0] := 'Р’ S1';
+  StringGrid1.Cells[3,0] := 'Р’ S2';
+  StringGrid1.Cells[4,0] := 'Р’ S3';
+  StringGrid1.Cells[5,0] := 'РџСЂРѕРІРµСЂРєР°';
+  //РР· РІСЃРµС… РІ S0
+  StringGrid1.Cells[1,1] := '0,25';   //РЎС‚Р°РЅРѕРє РїСЂРѕСЃС‚Р°РёРІР°РµС‚
+  StringGrid1.Cells[1,2] := '0,3';    //РћР±СЂР°Р±РѕРєС‚Р° Р·Р°РІРµСЂС€РµРЅР°, СЃС‚Р°РЅРѕРє РѕСЃРІРѕР±РѕР¶РґР°РµС‚СЃСЏ
+  StringGrid1.Cells[1,3] := '0';      //Р—Р°РјРµРЅРёРІ РёРЅСЃС‚СЂСѓРјРµРЅС‚ СЃС‚Р°РЅРѕРє РѕСЃРІРѕР±РѕРґРёР»СЃСЏ
+  StringGrid1.Cells[1,4] := '0,8';    //РЎС‚Р°РЅРѕРє РѕС‚СЂРµРјРѕРЅС‚РёСЂРѕРІР°РЅ, РіРѕС‚РѕРІ Рє СЂР°Р±РѕС‚Рµ
+  //РР· РІСЃРµС… РІ S1
+  StringGrid1.Cells[2,1] := '0';      //РќР°С‡Р°Р»Рѕ СЂР°Р±РѕС‚С‹ РЅР° СЃС‚Р°РЅРєРµ Р±РµР· РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°
+  StringGrid1.Cells[2,2] := '0,5';    //РџСЂРѕС†РµСЃСЃ СЂР°Р±РѕС‚С‹ РЅР° СЃС‚РѕРЅРєРµ, Р·Р°РЅСЏС‚
+  StringGrid1.Cells[2,3] := '0,8';    //Р—Р°РјРµРЅР° РёСЃС‚СЂСѓРјРµРЅС‚Р°, СЃС‚Р°РЅРѕРє Р·Р°РЅСЏС‚
+  StringGrid1.Cells[2,4] := '0';      //РЎС‚Р°РЅРѕРє РѕС‚СЂРµРјРѕРЅС‚РёСЂРѕРІР°РЅ Рё РІС‹РїРѕР»РЅСЏРµС‚ СЂР°Р±РѕС‚Сѓ
+  //РР· РІСЃРµС… РІ S2
+  StringGrid1.Cells[3,1] := '0,75';   //РЎС‚Р°РЅРѕРє Р±С‹Р» СЃРІРѕР±РѕРґРµРЅ, Р·Р°РјРµРЅР° РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°
+  StringGrid1.Cells[3,2] := '0';      //Р—Р°РјРµРЅР° РёРЅСЃС‚СЂСѓРјРµРЅС‚Р° РїСЂРё РѕР±СЂР°Р±РѕС‚РєРµ РґСЂСѓРіРѕРіРѕ
+  StringGrid1.Cells[3,3] := '0,2';    //РџСЂРѕС†РµСЃСЃ Р·Р°РјРµРЅС‹ РёСЃС‚СЂСѓРјРµРЅС‚Р°
+  StringGrid1.Cells[3,4] := '0';      //РќРµ РёСЃРїСЂР°РІРµРЅ, РёРґРµС‚ Р·Р°РјРµРЅР° РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°
+  //РР· РІСЃРµС… РІ S3
+  StringGrid1.Cells[4,1] := '0';      //РџРѕР»РѕРјРєР° СЃС‚Р°РЅРєР° Р±РµР· РїСЂРёС‡РёРЅ
+  StringGrid1.Cells[4,2] := '0,2';    //РџСЂРѕС†РµСЃСЃ СЂР°Р±РѕС‚С‹ РЅР° СЃС‚РѕРЅРєРµ, РїРѕР»РѕРјРєР°
+  StringGrid1.Cells[4,3] := '0';      //Р—Р°РјРµРЅР° РёСЃС‚СЂСѓРјРµРЅС‚Р° РїСЂРё РїРѕР»РѕРјРєРµ
+  StringGrid1.Cells[4,4] := '0,2';    //РџСЂРѕС†РµСЃСЃ СЂРµРјРѕРЅС‚Р°
+  //РџСЂРѕРІРµСЂРєР°
   StringGrid1.Cells[5,1] := FloatToStr(StrToFloat(StringGrid1.Cells[1,1]) + StrToFloat(StringGrid1.Cells[2,1]) + StrToFloat(StringGrid1.Cells[3,1]) + StrToFloat(StringGrid1.Cells[4,1]));
   StringGrid1.Cells[5,2] := FloatToStr(StrToFloat(StringGrid1.Cells[1,2]) + StrToFloat(StringGrid1.Cells[2,2]) + StrToFloat(StringGrid1.Cells[3,2]) + StrToFloat(StringGrid1.Cells[4,2]));
   StringGrid1.Cells[5,3] := FloatToStr(StrToFloat(StringGrid1.Cells[1,3]) + StrToFloat(StringGrid1.Cells[2,3]) + StrToFloat(StringGrid1.Cells[3,3]) + StrToFloat(StringGrid1.Cells[4,3]));
@@ -118,8 +118,8 @@ begin
   s3 := StrToFloat(Edit4.Text);
   prevStatus := curStatus;
   curStatus := NextStatus(curStatus, s0, s1, s2, s3);
-  Memo1.Lines.Add('Предыдущее состояние: ' + IntToStr(prevStatus));
-  Memo1.Lines.Add('Текущее состояние: ' + IntToStr(curStatus));
+  Memo1.Lines.Add('РџСЂРµРґС‹РґСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ: ' + IntToStr(prevStatus));
+  Memo1.Lines.Add('РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ: ' + IntToStr(curStatus));
   Memo1.Lines.Add('------------------------------');
 
   for i := 1 to StrToInt(Edit5.Text) do
@@ -154,8 +154,8 @@ begin
           s3 := StrToFloat(StringGrid1.Cells[4,4])
         end;
       curStatus := NextStatus(curStatus, s0, s1, s2, s3);
-      Memo1.Lines.Add('Предыдущее состояние: ' + IntToStr(prevStatus));
-      Memo1.Lines.Add('Текущее состояние: ' + IntToStr(curStatus));
+      Memo1.Lines.Add('РџСЂРµРґС‹РґСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ: ' + IntToStr(prevStatus));
+      Memo1.Lines.Add('РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ: ' + IntToStr(curStatus));
       Memo1.Lines.Add('------------------------------');
     end;
     

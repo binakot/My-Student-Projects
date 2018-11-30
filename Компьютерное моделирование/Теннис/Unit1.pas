@@ -50,11 +50,11 @@ type
     { Public declarations }
   end;
 
-const c = 0.4; //Коэффициент лобового сопротивления для шара
-      p = 1.292; //Плотность воздуха
-      dyn = 17.2; //Динамическая вязкость воздуха
-      g = 9.81; //Ускорения свободного падения
-      deltaY = 500; //Смещение по Оу
+const c = 0.4; //РљРѕСЌС„С„РёС†РёРµРЅС‚ Р»РѕР±РѕРІРѕРіРѕ СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёСЏ РґР»СЏ С€Р°СЂР°
+      p = 1.292; //РџР»РѕС‚РЅРѕСЃС‚СЊ РІРѕР·РґСѓС…Р°
+      dyn = 17.2; //Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ РІСЏР·РєРѕСЃС‚СЊ РІРѕР·РґСѓС…Р°
+      g = 9.81; //РЈСЃРєРѕСЂРµРЅРёСЏ СЃРІРѕР±РѕРґРЅРѕРіРѕ РїР°РґРµРЅРёСЏ
+      deltaY = 500; //РЎРјРµС‰РµРЅРёРµ РїРѕ РћСѓ
 
 var
   Form1: TForm1;
@@ -100,7 +100,7 @@ end;
 procedure TForm1.BitBtn1Click(Sender: TObject);
 begin
   cl := rgb(Random(256),Random(256),Random(256));
-//Параметры модели
+//РџР°СЂР°РјРµС‚СЂС‹ РјРѕРґРµР»Рё
   Angle1 := StrToFloat(Edit1.Text);
   Angle2 := StrToFloat(Edit2.Text);
   V1 := StrToFloat(Edit3.Text);
@@ -112,14 +112,14 @@ begin
   k1 := 6 * Pi * dyn * (d / 2);
   S := Pi * sqr(d / 2);
   k2 := 0.5 * c * S * p;
-//Входные параметры
+//Р’С…РѕРґРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
   CurV := Random(Round(V2 - V1)) + V1;
   CurAngle := Random(Round(Angle2 - Angle1)) + Angle1;
   x := 0;
   y := 0;
   Vx := CurV * cos(CurAngle * 3.141592 / 180);
   Vy := CurV * sin(CurAngle * 3.141592 / 180);
-//Расчетные формулы
+//Р Р°СЃС‡РµС‚РЅС‹Рµ С„РѕСЂРјСѓР»С‹
   repeat
     Ax := 0 - (k2 * sqr(Vx))*deltaT;
     Ay := -g - (k2 * sqr(Vy))*deltaT;
@@ -152,7 +152,7 @@ var i : integer;
     check : boolean;
 begin
   AllH := 0;
-//Параметры модели
+//РџР°СЂР°РјРµС‚СЂС‹ РјРѕРґРµР»Рё
   Angle1 := StrToFloat(Edit1.Text);
   Angle2 := StrToFloat(Edit2.Text);
   V1 := StrToFloat(Edit3.Text);
@@ -164,10 +164,10 @@ begin
   k1 := 6 * Pi * dyn * (d / 2);
   S := Pi * sqr(d / 2);
   k2 := 0.5 * c * S * p;
-//Расчетные формулы
+//Р Р°СЃС‡РµС‚РЅС‹Рµ С„РѕСЂРјСѓР»С‹
   for i := 1 to NumOfExp do
     begin
-      //Входные параметры
+      //Р’С…РѕРґРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
       CurV := Random(Round(V2 - V1)) + V1;
       CurAngle := Random(Round(Angle2 - Angle1)) + Angle1;
       x := 0;

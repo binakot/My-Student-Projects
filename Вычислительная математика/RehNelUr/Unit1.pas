@@ -104,14 +104,14 @@ begin
                   CurX:=x; CurY:=y;
                   x:=CurFun1(CurX,CurY);
                   y:=CurFun2(CurX,CurY);
-                  RichEdit1.Lines.Add('**** Итерация '+inttostr(i)+' : x = '+floattostr(x)+', y = '+floattostr(y));
+                  RichEdit1.Lines.Add('**** РС‚РµСЂР°С†РёСЏ '+inttostr(i)+' : x = '+floattostr(x)+', y = '+floattostr(y));
             until (abs(CurX-x)+abs(CurY-y))/(m/(1-M))<e;
-            RichEdit1.Lines.Add('----Проверка-----');
+            RichEdit1.Lines.Add('----РџСЂРѕРІРµСЂРєР°-----');
             RichEdit1.Lines.Add('F(x,y) = '+floattostr(IntFun1(x,y,))+', g(x,y) = '+floattostr(IntFun2(x,y,)));
 
       end else
       begin
-            RichEdit1.Lines.Add('!!!! переход к новой системе');
+            RichEdit1.Lines.Add('!!!! РїРµСЂРµС…РѕРґ Рє РЅРѕРІРѕР№ СЃРёСЃС‚РµРјРµ');
             ConvertSystem;
             GetQ('ConFun');
             X:=x0; Y:=y0; i:=0;
@@ -124,9 +124,9 @@ begin
                   CurX:=x; CurY:=y;
                   x:=ConFun1(CurX,CurY);
                   y:=ConFun2(CurX,CurY);
-                  RichEdit1.Lines.Add('**** Итерация '+inttostr(i)+' : x = '+floattostr(x)+', y = '+floattostr(y));
+                  RichEdit1.Lines.Add('**** РС‚РµСЂР°С†РёСЏ '+inttostr(i)+' : x = '+floattostr(x)+', y = '+floattostr(y));
             until (abs(CurX-x)+abs(CurY-y))/(m/(1-m))<e;
-            RichEdit1.Lines.Add('----Проверка-----');
+            RichEdit1.Lines.Add('----РџСЂРѕРІРµСЂРєР°-----');
             RichEdit1.Lines.Add('F(x,y) = '+floattostr(IntFun1(x,y,))+', g(x,y) = '+floattostr(IntFun2(x,y,)));
       end;
 end;

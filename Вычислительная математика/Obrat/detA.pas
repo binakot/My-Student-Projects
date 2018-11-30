@@ -1,4 +1,4 @@
-//Вычисление определителей по общему правилу вычисления определителей
+//Р’С‹С‡РёСЃР»РµРЅРёРµ РѕРїСЂРµРґРµР»РёС‚РµР»РµР№ РїРѕ РѕР±С‰РµРјСѓ РїСЂР°РІРёР»Сѓ РІС‹С‡РёСЃР»РµРЅРёСЏ РѕРїСЂРµРґРµР»РёС‚РµР»РµР№
 
 unit detA;
 
@@ -6,7 +6,7 @@ interface
 
 uses data;
 
-function DetN(const a:Matrix; n:integer):real;      //для матрицы n-го порядка
+function DetN(const a:Matrix; n:integer):real;      //РґР»СЏ РјР°С‚СЂРёС†С‹ n-РіРѕ РїРѕСЂСЏРґРєР°
 procedure changeSTR(var a:matrix; i,j:integer);
 
 implementation

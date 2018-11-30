@@ -122,7 +122,7 @@ begin
   StringGrid1.Cells[19,2] := '6';
   StringGrid1.Cells[20,2] := '3';
 end;
-//Сортировка пузырьком
+//РЎРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј
 procedure BubbleSort;
 var i, j : integer;
     c : real;
@@ -136,7 +136,7 @@ begin
         TmpMas[j] := c;
       end;
 end;
-//Проверка
+//РџСЂРѕРІРµСЂРєР°
 function Check(j : integer) : bool;
 var i : integer;
 begin
@@ -254,7 +254,7 @@ procedure TForm1.BitBtn1Click(Sender: TObject);
 var i : integer;
     Max : real;    
 begin
-//Очистка
+//РћС‡РёСЃС‚РєР°
 Memo1.Clear;
 Memo2.Clear;
 Series1.Clear;
@@ -264,7 +264,7 @@ Series4.Clear;
 Series5.Clear;
 Series6.Clear;
 Series7.Clear;
-//Считываем данные
+//РЎС‡РёС‚С‹РІР°РµРј РґР°РЅРЅС‹Рµ
   for i := 1 to N do
     begin
       mas1[i] := StrToFloat(StringGrid1.Cells[i,1]);
@@ -273,8 +273,8 @@ Series7.Clear;
   dq1 := StrToFloat(Edit1.Text);
   q1 := StrToFloat(Edit2.Text);
   q2 := StrToFloat(Edit3.Text);
-//Метод уступок
-  //Фильтруем по важности
+//РњРµС‚РѕРґ СѓСЃС‚СѓРїРѕРє
+  //Р¤РёР»СЊС‚СЂСѓРµРј РїРѕ РІР°Р¶РЅРѕСЃС‚Рё
   for i := 1 to N do
     begin
       StringGrid2.Cells[i,0] := IntToStr(i);;
@@ -296,29 +296,29 @@ Series7.Clear;
     StringGrid2.Cells[i,2] := FloatToStr(TmpMas[i]);
 
   Edit4.Text := Edit1.Text;
-  //Выполняем алгоритм метода уступок
-  Memo1.Lines.Add('Находим x1:');
-  Memo1.Lines.Add('q1(x1) = max[q1(x), X э x] = ' + FloatToStr(GetMax(1)));
-  Memo1.Lines.Add('Определяем множество альтернатив X1:');
+  //Р’С‹РїРѕР»РЅСЏРµРј Р°Р»РіРѕСЂРёС‚Рј РјРµС‚РѕРґР° СѓСЃС‚СѓРїРѕРє
+  Memo1.Lines.Add('РќР°С…РѕРґРёРј x1:');
+  Memo1.Lines.Add('q1(x1) = max[q1(x), X СЌ x] = ' + FloatToStr(GetMax(1)));
+  Memo1.Lines.Add('РћРїСЂРµРґРµР»СЏРµРј РјРЅРѕР¶РµСЃС‚РІРѕ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІ X1:');
   FindSetOfX(1);
   Memo1.Lines.Add('_________________________');
-  Memo1.Lines.Add('Находим x2:');
-  Memo1.Lines.Add('q2(x2) = max[q2(x), X1 э x] = ' + FloatToStr(GetMax(2)));
-  //Отображаем результат графически
+  Memo1.Lines.Add('РќР°С…РѕРґРёРј x2:');
+  Memo1.Lines.Add('q2(x2) = max[q2(x), X1 СЌ x] = ' + FloatToStr(GetMax(2)));
+  //РћС‚РѕР±СЂР°Р¶Р°РµРј СЂРµР·СѓР»СЊС‚Р°С‚ РіСЂР°С„РёС‡РµСЃРєРё
   for i := 1 to N do
     Series1.AddBubble(StrToFloat(StringGrid1.Cells[i,1]),StrToFloat(StringGrid1.Cells[i,2]), 0.2);
   Series2.AddBubble(10,10, 0.2);
-//Решение по уровням притязаний
+//Р РµС€РµРЅРёРµ РїРѕ СѓСЂРѕРІРЅСЏРј РїСЂРёС‚СЏР·Р°РЅРёР№
   Edit5.Text := FloatToStr(q1);
   Edit6.Text := FloatToStr(q2);
   for i := 1 to N do
     Series3.AddBubble(StrToFloat(StringGrid1.Cells[i,1]),StrToFloat(StringGrid1.Cells[i,2]), 0.2);
-  Memo2.Lines.Add('Черные точки - все мн-во альтернатив');
+  Memo2.Lines.Add('Р§РµСЂРЅС‹Рµ С‚РѕС‡РєРё - РІСЃРµ РјРЅ-РІРѕ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІ');
   Series4.AddBubble(q1,q2, 0.2);
-  Memo2.Lines.Add('Красная точка - желательный выбор');
+  Memo2.Lines.Add('РљСЂР°СЃРЅР°СЏ С‚РѕС‡РєР° - Р¶РµР»Р°С‚РµР»СЊРЅС‹Р№ РІС‹Р±РѕСЂ');
   Series5.AddBubble(StrToFloat(StringGrid1.Cells[FindMinPq1,1]),StrToFloat(StringGrid1.Cells[FindMinPq2,2]),0.2);
-  Memo2.Lines.Add('Зеленая точка - оптимальное решение');
-//Множество Парето
+  Memo2.Lines.Add('Р—РµР»РµРЅР°СЏ С‚РѕС‡РєР° - РѕРїС‚РёРјР°Р»СЊРЅРѕРµ СЂРµС€РµРЅРёРµ');
+//РњРЅРѕР¶РµСЃС‚РІРѕ РџР°СЂРµС‚Рѕ
   for i := 1 to N do
     Series6.AddBubble(StrToFloat(StringGrid1.Cells[i,1]),StrToFloat(StringGrid1.Cells[i,2]), 0.2);
   Pareto;

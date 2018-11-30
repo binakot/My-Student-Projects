@@ -264,7 +264,7 @@ begin
   except
    on econverterror do
     begin
-     showmessage('Ошибка! Некоректный ввод.');
+     showmessage('РћС€РёР±РєР°! РќРµРєРѕСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ.');
      exit;
     end;
  end;

@@ -80,10 +80,10 @@ begin
   code_a:=pcode(a,r);
   code_b:=pcode(b,r);
   if (code_a=0)and(code_b=0) then result:=false;
-// пока одна из точек отрезка вне прямоугольника
+// РїРѕРєР° РѕРґРЅР° РёР· С‚РѕС‡РµРє РѕС‚СЂРµР·РєР° РІРЅРµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
   while (code_a>0)or(code_b>0) do
     begin
-      // выбираем точку c с ненулевым кодом
+      // РІС‹Р±РёСЂР°РµРј С‚РѕС‡РєСѓ c СЃ РЅРµРЅСѓР»РµРІС‹Рј РєРѕРґРѕРј
       if code_a>0 then
         begin
           code:=code_a;
@@ -96,8 +96,8 @@ begin
           cur:=b;
           k:='b';
         end;
-      //если cur левее r, то передвигаем cur на прямую x = r.x_min
-      //если cur правее r, то передвигаем cur на прямую x = r.x_max
+      //РµСЃР»Рё cur Р»РµРІРµРµ r, С‚Рѕ РїРµСЂРµРґРІРёРіР°РµРј cur РЅР° РїСЂСЏРјСѓСЋ x = r.x_min
+      //РµСЃР»Рё cur РїСЂР°РІРµРµ r, С‚Рѕ РїРµСЂРµРґРІРёРіР°РµРј cur РЅР° РїСЂСЏРјСѓСЋ x = r.x_max
      if (code=LEFT)or(code=topleft)or(code=botleft) then
         begin
           cur.y:=round(cur.y+(a.y - b.y)*(r.x_min - cur.x)/(a.x - b.x));
@@ -109,8 +109,8 @@ begin
             cur.y:=round(cur.y+(a.y - b.y)*(r.x_max - cur.x)/(a.x - b.x));
             cur.x:=r.x_max;
           end; 
-      //если cur ниже r, то передвигаем cur на прямую y = r.y_min
-      //если cur выше r, то передвигаем cur на прямую y = r.y_max
+      //РµСЃР»Рё cur РЅРёР¶Рµ r, С‚Рѕ РїРµСЂРµРґРІРёРіР°РµРј cur РЅР° РїСЂСЏРјСѓСЋ y = r.y_min
+      //РµСЃР»Рё cur РІС‹С€Рµ r, С‚Рѕ РїРµСЂРµРґРІРёРіР°РµРј cur РЅР° РїСЂСЏРјСѓСЋ y = r.y_max
        if (code=BOT)or(code=botleft)or(code=botright) then
          begin
            cur.x:=round(cur.x+(a.x - b.x)*(r.y_min - cur.y)/(a.y - b.y));
@@ -122,14 +122,14 @@ begin
              cur.x:=round(cur.x+(a.x - b.x)*(r.y_max - cur.y)/(a.y - b.y));
              cur.y:=r.y_max;
            end;
-       //обновляем код
+       //РѕР±РЅРѕРІР»СЏРµРј РєРѕРґ
        if k='a' then a:=cur
        else
          b:=cur;
        code_a:=pcode(a,r);
        code_b:=pcode(b,r);
     end;
-  //оба кода равны 0, следовательно обе точки в прямоугольнике
+  //РѕР±Р° РєРѕРґР° СЂР°РІРЅС‹ 0, СЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ РѕР±Рµ С‚РѕС‡РєРё РІ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРµ
   result:=true;
 end;
 

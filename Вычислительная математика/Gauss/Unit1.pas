@@ -88,12 +88,12 @@ uses Math;
 {$R *.dfm}
 
 //-----------------------------------------------------------------
-//Подготовка интерфейса
+//РџРѕРґРіРѕС‚РѕРІРєР° РёРЅС‚РµСЂС„РµР№СЃР°
 procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
     n:=strtoint(edit1.Text);
-    stringgrid1.ColCount:=n+1; stringgrid1.RowCount:=n; //применение размерности
+    stringgrid1.ColCount:=n+1; stringgrid1.RowCount:=n; //РїСЂРёРјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё
     edit1.SetFocus;
     with StringGrid1 do
     begin
@@ -122,56 +122,56 @@ begin
     stringgrid2.ColCount:=9; stringgrid2.RowCount:=18;
 end;
 //-------------------------------------------------------------------------
-//Ход работы программы
+//РҐРѕРґ СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹
 
-//Вычисление приближенных корней
+//Р’С‹С‡РёСЃР»РµРЅРёРµ РїСЂРёР±Р»РёР¶РµРЅРЅС‹С… РєРѕСЂРЅРµР№
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-      GetMat;    //Считывем матрицу
-      zero(g);     //Обнуляем доп матрицу
+      GetMat;    //РЎС‡РёС‚С‹РІРµРј РјР°С‚СЂРёС†Сѓ
+      zero(g);     //РћР±РЅСѓР»СЏРµРј РґРѕРї РјР°С‚СЂРёС†Сѓ
       show:=true;
       round:=true;
-      firststep(a);   //прямой ход
-      secondstep;    //обратный
+      firststep(a);   //РїСЂСЏРјРѕР№ С…РѕРґ
+      secondstep;    //РѕР±СЂР°С‚РЅС‹Р№
       xn:=x;
       Button2.Enabled:=true;
 end;
-//Нахождение невязок
+//РќР°С…РѕР¶РґРµРЅРёРµ РЅРµРІСЏР·РѕРє
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-      Nev;  //Считаем невязки
+      Nev;  //РЎС‡РёС‚Р°РµРј РЅРµРІСЏР·РєРё
       Button3.Enabled:=true;
 end;
-//Нахождение поправок
+//РќР°С…РѕР¶РґРµРЅРёРµ РїРѕРїСЂР°РІРѕРє
 procedure TForm1.Button3Click(Sender: TObject);
 begin
       round:=false;
-      Pop;  //находим поправки
+      Pop;  //РЅР°С…РѕРґРёРј РїРѕРїСЂР°РІРєРё
       Button4.Enabled:=true;
 end;
-//добавление поправок и подсчет невязок
+//РґРѕР±Р°РІР»РµРЅРёРµ РїРѕРїСЂР°РІРѕРє Рё РїРѕРґСЃС‡РµС‚ РЅРµРІСЏР·РѕРє
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-      withpop;  //Добавляем поправки
-      Nev;     //находим невязки
+      withpop;  //Р”РѕР±Р°РІР»СЏРµРј РїРѕРїСЂР°РІРєРё
+      Nev;     //РЅР°С…РѕРґРёРј РЅРµРІСЏР·РєРё
       Button5.Enabled:=true;
 end;
-//подсчет поправок
+//РїРѕРґСЃС‡РµС‚ РїРѕРїСЂР°РІРѕРє
 procedure TForm1.Button5Click(Sender: TObject);
 begin
       revers:=true;
       round:=false;
-      GetE2;   //подсчет 1 суммы
-      GetE1;   //подсчет 2 суммы
+      GetE2;   //РїРѕРґСЃС‡РµС‚ 1 СЃСѓРјРјС‹
+      GetE1;   //РїРѕРґСЃС‡РµС‚ 2 СЃСѓРјРјС‹
 end;
 //-----------------------------------------------------------
-//Процедуры и функции алгоритма программы
+//РџСЂРѕС†РµРґСѓСЂС‹ Рё С„СѓРЅРєС†РёРё Р°Р»РіРѕСЂРёС‚РјР° РїСЂРѕРіСЂР°РјРјС‹
 
-//Прямой ход
+//РџСЂСЏРјРѕР№ С…РѕРґ
 procedure TForm1.firstStep(y:mat);
 var i,j:byte;
 begin
-      if y[e,e]=0 then  //если первый элемент 0, то переставляем
+      if y[e,e]=0 then  //РµСЃР»Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ 0, С‚Рѕ РїРµСЂРµСЃС‚Р°РІР»СЏРµРј
       if changestr(y) then exit;
 
       g[1,e]:=1;
@@ -179,7 +179,7 @@ begin
       begin
         if round then
           g[1,i]:=RoundTo((y[e,i]/y[e,e]),-2)
-        else g[1,i]:=(y[e,i]/y[e,e]);  //округляю
+        else g[1,i]:=(y[e,i]/y[e,e]);  //РѕРєСЂСѓРіР»СЏСЋ
         if (i=n+1)and(p) then
           g[1,i]:=(y[e,i]/y[e,e]);
         y[n+1,i]:=(g[1,i]);
@@ -188,14 +188,14 @@ begin
 
       round:=false;
 
-      display(y,w-5+e,e-1,w,n,0); //выводим на экран
+      display(y,w-5+e,e-1,w,n,0); //РІС‹РІРѕРґРёРј РЅР° СЌРєСЂР°РЅ
       form1.Refresh;
 
       for i:=e to n+1 do
       for j:=e to n+1 do
-        s1[i,e]:=s1[i,e]+y[i,j];     // первая контрольеая сумма
+        s1[i,e]:=s1[i,e]+y[i,j];     // РїРµСЂРІР°СЏ РєРѕРЅС‚СЂРѕР»СЊРµР°СЏ СЃСѓРјРјР°
 
-      display(s1,w-5+e,n+1,w,n+1,1);  //выводим на экран
+      display(s1,w-5+e,n+1,w,n+1,1);  //РІС‹РІРѕРґРёРј РЅР° СЌРєСЂР°РЅ
 
       form1.Refresh;
 
@@ -204,7 +204,7 @@ begin
 
       display(s2,w-5+e,n+2,w,n+2,1);
 
-      //иттерация
+      //РёС‚С‚РµСЂР°С†РёСЏ
       for i:=e+1 to n do
       for j:=e+1 to n+1 do
         y[i,j]:=y[i,j]-(y[i,e]*g[1,j]);
@@ -219,7 +219,7 @@ begin
         end;
 end;
 
-//обратный ход
+//РѕР±СЂР°С‚РЅС‹Р№ С…РѕРґ
 procedure TForm1.secondStep;
 var i,j:byte;
 s:real;
@@ -243,7 +243,7 @@ begin
       else (Self.FindComponent('stringGrid'+num) as TStringGrid).Cells[n,14+i-1]:=floattostr(x[n-i+1]);
 end;
 
-//Считываем исходную матрицу и столбец свободных членов
+//РЎС‡РёС‚С‹РІР°РµРј РёСЃС…РѕРґРЅСѓСЋ РјР°С‚СЂРёС†Сѓ Рё СЃС‚РѕР»Р±РµС† СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ
 procedure TForm1.GetMat;
 var i,j:byte;
 begin
@@ -256,35 +256,35 @@ begin
         b[i]:=a[i,n+1];
 end;
 
-//нахождение невязок
+//РЅР°С…РѕР¶РґРµРЅРёРµ РЅРµРІСЏР·РѕРє
 Procedure TForm1.Nev;
 var i:byte; r:mas;
 begin
-      mul(a,xn,r,n);  //перемножаем a*xn=r c порядком n
+      mul(a,xn,r,n);  //РїРµСЂРµРјРЅРѕР¶Р°РµРј a*xn=r c РїРѕСЂСЏРґРєРѕРј n
       for i:=1 to n do
-        nv[i]:=(b[i]-r[i]); //находим разницу
+        nv[i]:=(b[i]-r[i]); //РЅР°С…РѕРґРёРј СЂР°Р·РЅРёС†Сѓ
       for i:=1 to n do
-        stringgrid2.Cells[7,13+i]:=floattostr(roundto(nv[i],-8));//выводим
+        stringgrid2.Cells[7,13+i]:=floattostr(roundto(nv[i],-8));//РІС‹РІРѕРґРёРј
 end;
 
-//Находим поправки
+//РќР°С…РѕРґРёРј РїРѕРїСЂР°РІРєРё
 procedure TForm1.Pop;
 var i,j:byte;
 begin
       for i:=1 to n do
-        a[i,n+1]:=nv[i];   //Вместо столбца свободных членов записываем невязки
+        a[i,n+1]:=nv[i];   //Р’РјРµСЃС‚Рѕ СЃС‚РѕР»Р±С†Р° СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ Р·Р°РїРёСЃС‹РІР°РµРј РЅРµРІСЏР·РєРё
       zero(g);
       f:=false;
       e:=1; w:=4;v:=4; num:='3';
       p:=true;
-      firststep(a);    //проводим обратный ход уже с поправками
+      firststep(a);    //РїСЂРѕРІРѕРґРёРј РѕР±СЂР°С‚РЅС‹Р№ С…РѕРґ СѓР¶Рµ СЃ РїРѕРїСЂР°РІРєР°РјРё
       secondstep;
       p:=false;
       for i:=1 to n do
         stringgrid2.Cells[8,13+n-i+1]:=floattostr(roundto(x[i],-8));
 end;
 
-//Контроль обратного хода  (вместо столбца св членов контрольные суммы)
+//РљРѕРЅС‚СЂРѕР»СЊ РѕР±СЂР°С‚РЅРѕРіРѕ С…РѕРґР°  (РІРјРµСЃС‚Рѕ СЃС‚РѕР»Р±С†Р° СЃРІ С‡Р»РµРЅРѕРІ РєРѕРЅС‚СЂРѕР»СЊРЅС‹Рµ СЃСѓРјРјС‹)
 procedure TForm1.GetE1;
 var i,j:byte;
 begin
@@ -292,12 +292,12 @@ begin
       for i:=1 to n do
         a[i,n+1]:=strtofloat(stringgrid2.Cells[n+1,i-1]);
       f:=true;  num:='3';
-      firststep(a); //прямой ход
+      firststep(a); //РїСЂСЏРјРѕР№ С…РѕРґ
       num:='3';
-      secondstep; //обратный
+      secondstep; //РѕР±СЂР°С‚РЅС‹Р№
 end;
 
-//Контроль обратного хода 2 (к решениям + 1)
+//РљРѕРЅС‚СЂРѕР»СЊ РѕР±СЂР°С‚РЅРѕРіРѕ С…РѕРґР° 2 (Рє СЂРµС€РµРЅРёСЏРј + 1)
 procedure TForm1.GetE2;
 var i:byte;
 begin
@@ -305,19 +305,19 @@ begin
        stringgrid2.Cells[n+2,14+i-1]:=floattostr(x[n-i+1]+1);
 END;
 
-//Прибовляем поправки
+//РџСЂРёР±РѕРІР»СЏРµРј РїРѕРїСЂР°РІРєРё
 procedure TForm1.withPop;
 var i:byte;
 begin
       for i:=1 to n do
-        xn[i]:=xn[i]+x[i]; x:=xn;//добавили поправки
+        xn[i]:=xn[i]+x[i]; x:=xn;//РґРѕР±Р°РІРёР»Рё РїРѕРїСЂР°РІРєРё
       for i:=1 to n do
         stringgrid2.Cells[n,14+i-1]:=floattostr(x[n-i+1]);
       for i:=1 to n do
-        a[i,n+1]:=b[i];  //с поправками
+        a[i,n+1]:=b[i];  //СЃ РїРѕРїСЂР°РІРєР°РјРё
 end;
 
-//перестановка строк
+//РїРµСЂРµСЃС‚Р°РЅРѕРІРєР° СЃС‚СЂРѕРє
 function TForm1.changeStr(var y:mat):boolean;
 var s:real;
 k,v,j,i:byte;
@@ -349,7 +349,7 @@ begin
           if e=1 then a:=y;
 end;
 
-//считаем контрольные суммы
+//СЃС‡РёС‚Р°РµРј РєРѕРЅС‚СЂРѕР»СЊРЅС‹Рµ СЃСѓРјРјС‹
 procedure TForm1.ContSum;
 var i,j:byte;
 begin
@@ -358,7 +358,7 @@ begin
         s1[i,j]:=s1[i,j]+a[i,j];
 end;
 
-//обнуляем матрицу
+//РѕР±РЅСѓР»СЏРµРј РјР°С‚СЂРёС†Сѓ
 procedure TForm1.zero(var x:mat);
 var i,j:byte;
 begin
@@ -367,7 +367,7 @@ begin
         x[i,j]:=0;
 end;
 
-//Выводим на экран
+//Р’С‹РІРѕРґРёРј РЅР° СЌРєСЂР°РЅ
 procedure TForm1.display(x:mat; p,q,m,l,r:byte);
 var i,j,i1,j1,h:byte;
 s:string;
@@ -392,7 +392,7 @@ begin
       end;
 end;
 
-//перемножение матриц
+//РїРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
 procedure TForm1.Mul(p:mat;q:mas;var c:mas; m:integer);
 var k:byte;  i,j:integer;
 begin
@@ -403,7 +403,7 @@ begin
       c[i]:=c[i]+p[i,k]*q[k];
 end;
 
-//считываем матрицу
+//СЃС‡РёС‚С‹РІР°РµРј РјР°С‚СЂРёС†Сѓ
 procedure TForm1.save(m:mat);
 var i,j:byte;
 begin
@@ -412,7 +412,7 @@ begin
       m[i,j]:=strtofloat(stringgrid1.Cells[i,j])
 end;
 
-//выводим матрицу
+//РІС‹РІРѕРґРёРј РјР°С‚СЂРёС†Сѓ
 procedure TForm1.restore(m:mat);
 var i,j:byte;
 begin

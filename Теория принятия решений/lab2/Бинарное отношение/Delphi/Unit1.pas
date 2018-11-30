@@ -106,13 +106,13 @@ begin
   StringGrid1.Cells[4,5] := '1';
   StringGrid1.Cells[5,5] := '0';
 
-  Memo1.Lines.Add('Ìíîæåñòâî àëüòåðíàòèâ Q ñîñòîèò èç ' + IntToStr(N) + ' ýëåìåíòîâ: ');
+  Memo1.Lines.Add('ÐœÐ½Ð¾Ð¶ÐµÑÑ‚Ð²Ð¾ Ð°Ð»ÑŒÑ‚ÐµÑ€Ð½Ð°Ñ‚Ð¸Ð² Q ÑÐ¾ÑÑ‚Ð¾Ð¸Ñ‚ Ð¸Ð· ' + IntToStr(N) + ' ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: ');
   Str := 'Q = {';
   for i := 1 to N - 1 do
     Str := Str + IntToStr(i) + ', ';
   Str := Str + IntToStr(N) + '}';
   Memo1.Lines.Add(Str);
-  Memo1.Lines.Add('Íà ìíîæåñòâå àëüòåðíàòèâ Q çàäàíî áèíàðíîå îòíîøåíèå R');
+  Memo1.Lines.Add('ÐÐ° Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ðµ Ð°Ð»ÑŒÑ‚ÐµÑ€Ð½Ð°Ñ‚Ð¸Ð² Q Ð·Ð°Ð´Ð°Ð½Ð¾ Ð±Ð¸Ð½Ð°Ñ€Ð½Ð¾Ðµ Ð¾Ñ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ðµ R');
 end;
 
 procedure TForm1.BitBtn2Click(Sender: TObject);
@@ -121,7 +121,7 @@ var i, j : integer;
 begin
   Panel1.Enabled := true;
   GroupBox1.Enabled := true;
-  //Êîððåêòèðîâêà ââîäà
+  //ÐšÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²Ð²Ð¾Ð´Ð°
   for i := 1 to N do
   for j := 1 to N do
     if StringGrid1.Cells[i,j] = '' then
@@ -130,7 +130,7 @@ begin
       StringGrid1.Cells[i,j] := '0'
     else if StrToInt(StringGrid1.Cells[i,j]) > 1 then
       StringGrid1.Cells[i,j] := '1';
-  //Âûâîä áèíàðíîãî îòíîøåíèÿ
+  //Ð’Ñ‹Ð²Ð¾Ð´ Ð±Ð¸Ð½Ð°Ñ€Ð½Ð¾Ð³Ð¾ Ð¾Ñ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ñ
   Str := '(';
   for i := 1 to N do
   for j := 1 to N do
@@ -154,7 +154,7 @@ var Num, i : integer;
 begin
   Num := StrToInt(Edit2.Text);
   if (Num > N) OR (Num < 1) then
-    Memo1.Lines.Add('Ýëåìåíò îòñóòñòâóåò â ìíîæåñòâå Q')
+    Memo1.Lines.Add('Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ðµ Q')
   else
   if Num = 1 then
     Memo1.Lines.Add('R-(1) = 0')
@@ -175,7 +175,7 @@ var Num, i : integer;
 begin
   Num := StrToInt(Edit2.Text);
   if (Num > N) OR (Num < 1) then
-    Memo1.Lines.Add('Ýëåìåíò îòñóòñòâóåò â ìíîæåñòâå Q')
+    Memo1.Lines.Add('Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ðµ Q')
   else
   if Num = N then
     Memo1.Lines.Add('R+(' + IntToStr(Num) + ') = 0')
@@ -225,7 +225,7 @@ var i, j, k, k1 : integer;
     check : boolean;
 begin
   Form3.Show;
-  //Ðåôëåêñèâíîñòü
+  //Ð ÐµÑ„Ð»ÐµÐºÑÐ¸Ð²Ð½Ð¾ÑÑ‚ÑŒ
   check := true;
   for i := 1 to N do
   for j := 1 to N do
@@ -236,7 +236,7 @@ begin
           break
         end;
   Form3.CheckBox1.Checked := check;
-  //Àíòèðåôëåêñèâíîñòü
+  //ÐÐ½Ñ‚Ð¸Ñ€ÐµÑ„Ð»ÐµÐºÑÐ¸Ð²Ð½Ð¾ÑÑ‚ÑŒ
   check := true;
   for i := 1 to N do
   for j := 1 to N do
@@ -247,7 +247,7 @@ begin
           break
         end;
   Form3.CheckBox2.Checked := check;
-  //Ñèììåòðè÷íîñòü
+  //Ð¡Ð¸Ð¼Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡Ð½Ð¾ÑÑ‚ÑŒ
   check := true;
   for i := 1 to N do
   for j := 1 to N do
@@ -258,7 +258,7 @@ begin
           break
         end;
   Form3.CheckBox3.Checked := check;
-  //Àñèììåòðè÷íîñòü
+  //ÐÑÐ¸Ð¼Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡Ð½Ð¾ÑÑ‚ÑŒ
   for i := 1 to N do
   for j := 1 to N do
     Form2.StringGrid1.Cells[i,j] := StringGrid1.Cells[j,i];
@@ -271,7 +271,7 @@ begin
         break
       end;
   Form3.CheckBox4.Checked := check;
-  //Àíòèñèììåòðè÷íîñòü
+  //ÐÐ½Ñ‚Ð¸ÑÐ¸Ð¼Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡Ð½Ð¾ÑÑ‚ÑŒ
   check := true;
   for i := 1 to N do
   for j := 1 to N do
@@ -282,7 +282,7 @@ begin
           break
         end;
   Form3.CheckBox5.Checked := check;
-  //Òðàíçèòèâíîñòü
+  //Ð¢Ñ€Ð°Ð½Ð·Ð¸Ñ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ÑŒ
   k1 := 0;
   Check := False;
   for i := 1 to N do
@@ -301,7 +301,7 @@ begin
               end;
     end;
   Form3.CheckBox6.Checked := check;
-  //Àöèêëè÷íîñòü
+  //ÐÑ†Ð¸ÐºÐ»Ð¸Ñ‡Ð½Ð¾ÑÑ‚ÑŒ
   check := false;
   for k := 1 to n do
   for i := 1 to n do

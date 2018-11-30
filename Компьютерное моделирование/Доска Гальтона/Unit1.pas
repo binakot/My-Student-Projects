@@ -41,8 +41,8 @@ type
 
 var
   Form1: TForm1;
-  n : integer; //количество рядом стержней
-  D, r : real; //расстояние между стержнями и их радиус  
+  n : integer; //РєРѕР»РёС‡РµСЃС‚РІРѕ СЂСЏРґРѕРј СЃС‚РµСЂР¶РЅРµР№
+  D, r : real; //СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃС‚РµСЂР¶РЅСЏРјРё Рё РёС… СЂР°РґРёСѓСЃ  
   Xbegin, Xend, Ybegin, Yend : integer;
   curX, curY : real;
   massXY : array[1..100,1..100] of Coordinates;
@@ -87,13 +87,13 @@ begin
   Ybegin := 50;
   Yend := Round(D * n) + 50;
 
-  //Рисуем стержни
+  //Р РёСЃСѓРµРј СЃС‚РµСЂР¶РЅРё
   curX := Xbegin;
   curY := Ybegin;
   Image1.Canvas.Pen.Color := clRed;
   Image1.Canvas.Brush.Color := clRed;
-  for i := 1 to n do     //пробег по рядам
-  for j := 1 to i do     //проход по стержням ряда
+  for i := 1 to n do     //РїСЂРѕР±РµРі РїРѕ СЂСЏРґР°Рј
+  for j := 1 to i do     //РїСЂРѕС…РѕРґ РїРѕ СЃС‚РµСЂР¶РЅСЏРј СЂСЏРґР°
     begin
       Image1.Canvas.Ellipse(Round(curX - r), Round(curY - r), Round(curX + r), Round(curY + r));
       massXY[i,j].x := Round(CurX);
@@ -107,7 +107,7 @@ begin
         end
     end;
 
-  //Рисуем секции
+  //Р РёСЃСѓРµРј СЃРµРєС†РёРё
   Image1.Canvas.Pen.Color := clBlack;
   curX := 0;
   curY := Image1.Height;
@@ -118,15 +118,15 @@ begin
       curX := CurX + Image1.Width / (n - 1)
     end;
 
-  //Рисуем график наполненности секций
+  //Р РёСЃСѓРµРј РіСЂР°С„РёРє РЅР°РїРѕР»РЅРµРЅРЅРѕСЃС‚Рё СЃРµРєС†РёР№
   for i := 1 to n do
     Series1.Add(0);
 
-  //Заполняем массив интервалов значений координат для секций
+  //Р—Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ РёРЅС‚РµСЂРІР°Р»РѕРІ Р·РЅР°С‡РµРЅРёР№ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ СЃРµРєС†РёР№
   for i := 1 to n do
     massVal[i] := massXY[n,i].x;  
 
-  //обнуляем массив мощности секций
+  //РѕР±РЅСѓР»СЏРµРј РјР°СЃСЃРёРІ РјРѕС‰РЅРѕСЃС‚Рё СЃРµРєС†РёР№
   for i := 1 to n do
     massPower[i] := 0;
 
@@ -179,7 +179,7 @@ var i, j, NumCol : integer;
     rand : real;
 begin
 
-  //обнуляем массив мощности секций
+  //РѕР±РЅСѓР»СЏРµРј РјР°СЃСЃРёРІ РјРѕС‰РЅРѕСЃС‚Рё СЃРµРєС†РёР№
   for i := 1 to n do
     massPower[i] := 0;
 

@@ -251,7 +251,7 @@ begin
     end;
 end;
 
-procedure TForm1.SpeedButton4Click(Sender: TObject);   //Сжатие красный
+procedure TForm1.SpeedButton4Click(Sender: TObject);   //РЎР¶Р°С‚РёРµ РєСЂР°СЃРЅС‹Р№
 var
   i,j,xr,xl: integer;
   r,g,b,rn: byte;
@@ -271,7 +271,7 @@ begin
   gethist;
 end;
 
-procedure TForm1.SpeedButton1Click(Sender: TObject);  //сжатие зеленый
+procedure TForm1.SpeedButton1Click(Sender: TObject);  //СЃР¶Р°С‚РёРµ Р·РµР»РµРЅС‹Р№
 var
   i,j,xr,xl: integer;
   r,g,b,gn: byte;
@@ -291,7 +291,7 @@ begin
   gethist;
 end;
 
-procedure TForm1.SpeedButton3Click(Sender: TObject);  //сжатие синий
+procedure TForm1.SpeedButton3Click(Sender: TObject);  //СЃР¶Р°С‚РёРµ СЃРёРЅРёР№
 var
   i,j,xr,xl: integer;
   r,g,b,bn: byte;
@@ -311,7 +311,7 @@ begin
   gethist;
 end;
 
-procedure TForm1.SpeedButton6Click(Sender: TObject);   //расширение красный
+procedure TForm1.SpeedButton6Click(Sender: TObject);   //СЂР°СЃС€РёСЂРµРЅРёРµ РєСЂР°СЃРЅС‹Р№
 var
   i,j,xr,xl: integer;
   r,g,b,rn: byte;
@@ -331,7 +331,7 @@ begin
   gethist;
 end;
 
-procedure TForm1.SpeedButton2Click(Sender: TObject);   //растяжение зеленый
+procedure TForm1.SpeedButton2Click(Sender: TObject);   //СЂР°СЃС‚СЏР¶РµРЅРёРµ Р·РµР»РµРЅС‹Р№
 var
   i,j,xr,xl: integer;
   r,g,b,gn: byte;
@@ -351,7 +351,7 @@ begin
   gethist;
 end;
 
-procedure TForm1.SpeedButton5Click(Sender: TObject);  //растяжение синий
+procedure TForm1.SpeedButton5Click(Sender: TObject);  //СЂР°СЃС‚СЏР¶РµРЅРёРµ СЃРёРЅРёР№
 var
   i,j,xr,xl: integer;
 

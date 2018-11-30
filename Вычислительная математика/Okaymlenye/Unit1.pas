@@ -7,8 +7,8 @@ uses
   Dialogs, StdCtrls, Grids,math, XPMan;
 
 type
-    mat=array[1..5,1..5]of real;  //Матрица
-    mas=array[1..5]of real;    //Столбец
+    mat=array[1..5,1..5]of real;  //РњР°С‚СЂРёС†Р°
+    mas=array[1..5]of real;    //РЎС‚РѕР»Р±РµС†
 
   TForm1 = class(TForm)
     StringGrid1: TStringGrid;
@@ -22,16 +22,16 @@ type
     Label3: TLabel;
     XPManifest1: TXPManifest;
     procedure Button1Click(Sender: TObject);
-    procedure Mul(x,y:mat;var c:mat; i1,j1,k1:integer);   //Перемножение матриц
+    procedure Mul(x,y:mat;var c:mat; i1,j1,k1:integer);   //РџРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
     procedure mulch(x:mat;y:real;var c:mat; m:integer);
     procedure sub(y:real;x:mat;var c:mat; m:integer);
     procedure add(x,y:mat;var c:mat; m:integer);
-    procedure Ocaimleniya(k,l:byte);  //Окаймление
-    procedure zero(var x:mat; m:integer);  //Обнуление блока
+    procedure Ocaimleniya(k,l:byte);  //РћРєР°Р№РјР»РµРЅРёРµ
+    procedure zero(var x:mat; m:integer);  //РћР±РЅСѓР»РµРЅРёРµ Р±Р»РѕРєР°
     procedure StringGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure Edit1KeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure Round(var x:mat; m,l:integer);  //Округление
+    procedure Round(var x:mat; m,l:integer);  //РћРєСЂСѓРіР»РµРЅРёРµ
 
   private
     { Private declarations }
@@ -51,12 +51,12 @@ implementation
 
 
 
-procedure TForm1.StringGrid1KeyPress(Sender: TObject; var Key: Char);  //Ограничение ввода
+procedure TForm1.StringGrid1KeyPress(Sender: TObject; var Key: Char);  //РћРіСЂР°РЅРёС‡РµРЅРёРµ РІРІРѕРґР°
 begin
       if Not (Key in ['0'..'9',',','-', #8])then Key:=#0;
 end;
 
-procedure TForm1.zero(var x:mat; m:integer);  //Обнуление блока
+procedure TForm1.zero(var x:mat; m:integer);  //РћР±РЅСѓР»РµРЅРёРµ Р±Р»РѕРєР°
 var i,j:integer;
 begin
           for i:=1 to m do
@@ -72,30 +72,30 @@ begin
       begin
           if stringgrid1.Cells[i-1,j-1]<>''then
           a[j,i]:=strtofloat(stringgrid1.Cells[i-1,j-1])
-          else a[j,i]:=0;   //Если не введен элемент заменим его на 0
+          else a[j,i]:=0;   //Р•СЃР»Рё РЅРµ РІРІРµРґРµРЅ СЌР»РµРјРµРЅС‚ Р·Р°РјРµРЅРёРј РµРіРѕ РЅР° 0
       end;
 
-      zero(a1,n); zero(v,n); zero(q,n); zero(u,n); zero(r,n); //Обнуление доп матриц
-      a1[1,1]:=1/a[1,1]; //берем обратный первому элементу
+      zero(a1,n); zero(v,n); zero(q,n); zero(u,n); zero(r,n); //РћР±РЅСѓР»РµРЅРёРµ РґРѕРї РјР°С‚СЂРёС†
+      a1[1,1]:=1/a[1,1]; //Р±РµСЂРµРј РѕР±СЂР°С‚РЅС‹Р№ РїРµСЂРІРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ
       oa[1,1]:=1/a[1,1];
-      for i:=2 to n do  //Считываем блоки
+      for i:=2 to n do  //РЎС‡РёС‚С‹РІР°РµРј Р±Р»РѕРєРё
       begin
             for j:=1 to i-1 do
             begin
                   v[1,j]:=a[i,j];
                   u[j,1]:=a[j,i];
             end;
-            Ocaimleniya(i,j); //Выполняем окаймление
+            Ocaimleniya(i,j); //Р’С‹РїРѕР»РЅСЏРµРј РѕРєР°Р№РјР»РµРЅРёРµ
       end;
       oa[n,n]:=1/d;
 
       for i:=1 to n do
       for j:=1 to n do
-         stringgrid2.Cells[i-1,j-1]:=floattostr(oa[j,i]); //выводим матрицу
+         stringgrid2.Cells[i-1,j-1]:=floattostr(oa[j,i]); //РІС‹РІРѕРґРёРј РјР°С‚СЂРёС†Сѓ
 
-      mul(a,oa,e,n,n,n); //перемножаем матрицы для проверки
+      mul(a,oa,e,n,n,n); //РїРµСЂРµРјРЅРѕР¶Р°РµРј РјР°С‚СЂРёС†С‹ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 
-      for i:=1 to n do  //Округление
+      for i:=1 to n do  //РћРєСЂСѓРіР»РµРЅРёРµ
       for j:=1 to n do
       begin
             e[j,i]:=roundto(e[j,i],-2);
@@ -105,7 +105,7 @@ begin
 
 end;
 
-procedure TForm1.Ocaimleniya(k,l:byte); //Метод окаймления
+procedure TForm1.Ocaimleniya(k,l:byte); //РњРµС‚РѕРґ РѕРєР°Р№РјР»РµРЅРёСЏ
 var x,y:mat;
 i,j:byte;
 begin
@@ -142,7 +142,7 @@ begin
       a1:=oa;
 end;
 
-procedure TForm1.Mul(x,y:mat;var c:mat; i1,j1,k1:integer); //перемножение матриц
+procedure TForm1.Mul(x,y:mat;var c:mat; i1,j1,k1:integer); //РїРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
 var k,i,j:byte;
 begin
       zero(c,n);
@@ -158,7 +158,7 @@ begin
       end;
 end;
 
-procedure TForm1.sub(y:real;x:mat;var c:mat; m:integer); //Вычитаем
+procedure TForm1.sub(y:real;x:mat;var c:mat; m:integer); //Р’С‹С‡РёС‚Р°РµРј
 var i,j:byte;
 begin
       for i:=1 to m do
@@ -166,7 +166,7 @@ begin
       c[i,j]:=y-x[i,j];
 end;
 
-procedure TForm1.mulch(x:mat;y:real;var c:mat; m:integer); //умножаем
+procedure TForm1.mulch(x:mat;y:real;var c:mat; m:integer); //СѓРјРЅРѕР¶Р°РµРј
 var i,j:byte;
 begin
       for i:=1 to m do
@@ -174,7 +174,7 @@ begin
       c[i,j]:=y*x[i,j];
 end;
 
-procedure TForm1.add(x,y:mat;var c:mat; m:integer); //Прибовляем
+procedure TForm1.add(x,y:mat;var c:mat; m:integer); //РџСЂРёР±РѕРІР»СЏРµРј
 var i,j:byte;
 begin
       for i:=1 to m do
@@ -192,7 +192,7 @@ begin
     edit1.SetFocus;
 end;
 
-procedure TForm1.Round(var x:mat; m,l:integer); //Округление
+procedure TForm1.Round(var x:mat; m,l:integer); //РћРєСЂСѓРіР»РµРЅРёРµ
 var i,j,h:integer;
 s:string;
 begin

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, Spin, XPMan, Grids;
 
-  const n=50; // Количество строк и столбцов в поле StringGrid'a
+  const n=50; // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє Рё СЃС‚РѕР»Р±С†РѕРІ РІ РїРѕР»Рµ StringGrid'a
 
 type
   TForm1 = class(TForm)
@@ -57,7 +57,7 @@ type
 
   private
   public
-   // Создаётся два массива. В первом храняться * , во втором вычисляется число соседей
+   // РЎРѕР·РґР°С‘С‚СЃСЏ РґРІР° РјР°СЃСЃРёРІР°. Р’ РїРµСЂРІРѕРј С…СЂР°РЅСЏС‚СЊСЃСЏ * , РІРѕ РІС‚РѕСЂРѕРј РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ С‡РёСЃР»Рѕ СЃРѕСЃРµРґРµР№
    mass_1, mass_2 : Array [1..n, 1..n] of String;
   end;
 
@@ -69,7 +69,7 @@ implementation
 
 {$R *.dfm}
 
-// Пользовательская процедура для заполнения ячеек
+// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ РїСЂРѕС†РµРґСѓСЂР° РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ СЏС‡РµРµРє
 Procedure Drawing;
  var i, j, k, l : Integer;
 begin
@@ -79,32 +79,32 @@ begin
    For i := 1 to n do
    For j := 1 to n do
     begin
-     Mass_2[i,j] := '0'; // Обнуляем,
-     Mass_1[i,j] := ''   // очищаем массивы
+     Mass_2[i,j] := '0'; // РћР±РЅСѓР»СЏРµРј,
+     Mass_1[i,j] := ''   // РѕС‡РёС‰Р°РµРј РјР°СЃСЃРёРІС‹
     end;
 
    For i := 0 to n-1 do
    For j := 0 to n-1 do
-    If StringGrid1.Cells[j,i] = '*' then // Если находим * , то в массив mass_1 в те же координаты ставим *
+    If StringGrid1.Cells[j,i] = '*' then // Р•СЃР»Рё РЅР°С…РѕРґРёРј * , С‚Рѕ РІ РјР°СЃСЃРёРІ mass_1 РІ С‚Рµ Р¶Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹ СЃС‚Р°РІРёРј *
      mass_1[i+1,j+1] := '*';
 
    For i := 1 to n do
    For j := 1 to n do
     begin
-     If mass_1[i,j] = '*' then // Если находим *, то в массиве mass_2 увеличиваем все окружные ячейки на единицу
+     If mass_1[i,j] = '*' then // Р•СЃР»Рё РЅР°С…РѕРґРёРј *, С‚Рѕ РІ РјР°СЃСЃРёРІРµ mass_2 СѓРІРµР»РёС‡РёРІР°РµРј РІСЃРµ РѕРєСЂСѓР¶РЅС‹Рµ СЏС‡РµР№РєРё РЅР° РµРґРёРЅРёС†Сѓ
       begin
 
        For k := i-1 to i+1 do
        For l := j-1 to j+1 do
-        If (not (( k = i )   and ( l = j ))) and // Не увеливаем ячейку, где находится *
-                (( k > 0 )   and ( l > 0 ))  and // Не выходим за границы  StringGrid'a
+        If (not (( k = i )   and ( l = j ))) and // РќРµ СѓРІРµР»РёРІР°РµРј СЏС‡РµР№РєСѓ, РіРґРµ РЅР°С…РѕРґРёС‚СЃСЏ *
+                (( k > 0 )   and ( l > 0 ))  and // РќРµ РІС‹С…РѕРґРёРј Р·Р° РіСЂР°РЅРёС†С‹  StringGrid'a
                 (( k < n+1 ) and ( l < n+1 )) then
          mass_2[k,l] := IntToStr ( StrToInt( mass_2[k,l] )+1 )
 
       end
      end;
 
-   For i := 1 to n do  // Заполняем ячейки, согласно правилам игры
+   For i := 1 to n do  // Р—Р°РїРѕР»РЅСЏРµРј СЏС‡РµР№РєРё, СЃРѕРіР»Р°СЃРЅРѕ РїСЂР°РІРёР»Р°Рј РёРіСЂС‹
    For j := 1 to n do
     begin
      If mass_2[i,j] = '3' then StringGrid1.Cells[j-1,i-1] := '*';
@@ -113,7 +113,7 @@ begin
   end
 end;
 
-// Пользовательская процедура для очистки поля игры
+// РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ РїСЂРѕС†РµРґСѓСЂР° РґР»СЏ РѕС‡РёСЃС‚РєРё РїРѕР»СЏ РёРіСЂС‹
 Procedure Clearing;
  Var i, j : Integer;
 begin
@@ -131,13 +131,13 @@ begin
    end
 end;
 
-// Сворачивание программы с трей
+// РЎРІРѕСЂР°С‡РёРІР°РЅРёРµ РїСЂРѕРіСЂР°РјРјС‹ СЃ С‚СЂРµР№
 procedure TForm1.SpeedButton5Click(Sender: TObject);
 begin
  Application.Minimize
 end;
 
-// Закрытие программы
+// Р—Р°РєСЂС‹С‚РёРµ РїСЂРѕРіСЂР°РјРјС‹
 procedure TForm1.SpeedButton6Click(Sender: TObject);
 begin
  Close
@@ -145,17 +145,17 @@ end;
 
 procedure TForm1.SpeedButton7Click(Sender: TObject);
 begin
- SpeedButton7.Caption := 'Играть';
+ SpeedButton7.Caption := 'РРіСЂР°С‚СЊ';
  Timer1.Enabled := not ( Timer1.Enabled )
 end;
 
-// Очистка StringGrid'a
+// РћС‡РёСЃС‚РєР° StringGrid'a
 procedure TForm1.SpeedButton1Click(Sender: TObject);
 begin
  Clearing
 end;
 
-// Не зависимо от нажатой клавиши установка в выбранную ячеку *
+// РќРµ Р·Р°РІРёСЃРёРјРѕ РѕС‚ РЅР°Р¶Р°С‚РѕР№ РєР»Р°РІРёС€Рё СѓСЃС‚Р°РЅРѕРІРєР° РІ РІС‹Р±СЂР°РЅРЅСѓСЋ СЏС‡РµРєСѓ *
 procedure TForm1.StringGrid1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -163,14 +163,14 @@ begin
    Cells[Col,Row] := '*'
 end;
 
-// Прорисовка прототипа жизни
+// РџСЂРѕСЂРёСЃРѕРІРєР° РїСЂРѕС‚РѕС‚РёРїР° Р¶РёР·РЅРё
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
- SpeedButton7.Caption := 'Стоп';
+ SpeedButton7.Caption := 'РЎС‚РѕРї';
  Drawing
 end;
 
-// Убрать\Показать сетку
+// РЈР±СЂР°С‚СЊ\РџРѕРєР°Р·Р°С‚СЊ СЃРµС‚РєСѓ
 procedure TForm1.CheckBox1Click(Sender: TObject);
 begin
  If CheckBox1.Checked then
@@ -178,29 +178,29 @@ begin
  Else StringGrid1.GridLineWidth := 1
 end;
 
-// Задается количество случайно заполненных ячеек
+// Р—Р°РґР°РµС‚СЃСЏ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»СѓС‡Р°Р№РЅРѕ Р·Р°РїРѕР»РЅРµРЅРЅС‹С… СЏС‡РµРµРє
 procedure TForm1.SpinEdit1Change(Sender: TObject);
 begin
  If SpinEdit1.Value > 2550 then SpinEdit1.Value := 2550;
  If SpinEdit1.Value < 1 then SpinEdit1.Value := 1
 end;
 
-// Красивое появление панельки с настройками
+// РљСЂР°СЃРёРІРѕРµ РїРѕСЏРІР»РµРЅРёРµ РїР°РЅРµР»СЊРєРё СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё
 procedure TForm1.CheckBox2Click(Sender: TObject);
 begin
 
- If CheckBox2.Checked // Если стоит галочка, то выдвигаем панельку ...
+ If CheckBox2.Checked // Р•СЃР»Рё СЃС‚РѕРёС‚ РіР°Р»РѕС‡РєР°, С‚Рѕ РІС‹РґРІРёРіР°РµРј РїР°РЅРµР»СЊРєСѓ ...
   then
    begin
     While GroupBox1.Height < 97 do
      begin
-      GroupBox1.Height := GroupBox1.Height+1; // Приращение высоты панельки
-      CheckBox2.Enabled := False; // Делаем ЧекБокс недоступным
-      Application.ProcessMessages // Принудительная прорисовка
+      GroupBox1.Height := GroupBox1.Height+1; // РџСЂРёСЂР°С‰РµРЅРёРµ РІС‹СЃРѕС‚С‹ РїР°РЅРµР»СЊРєРё
+      CheckBox2.Enabled := False; // Р”РµР»Р°РµРј Р§РµРєР‘РѕРєСЃ РЅРµРґРѕСЃС‚СѓРїРЅС‹Рј
+      Application.ProcessMessages // РџСЂРёРЅСѓРґРёС‚РµР»СЊРЅР°СЏ РїСЂРѕСЂРёСЃРѕРІРєР°
      end;
    end
 
- Else // иначе - задвигаем панельку.
+ Else // РёРЅР°С‡Рµ - Р·Р°РґРІРёРіР°РµРј РїР°РЅРµР»СЊРєСѓ.
   begin
     While GroupBox1.Height > 0 do
      begin
@@ -210,17 +210,17 @@ begin
      end
    end;
 
- CheckBox2.Enabled := True // Делаем ЧекБокс доступным
+ CheckBox2.Enabled := True // Р”РµР»Р°РµРј Р§РµРєР‘РѕРєСЃ РґРѕСЃС‚СѓРїРЅС‹Рј
 end;
 
 
-// Случайное заполнение ячеек
+// РЎР»СѓС‡Р°Р№РЅРѕРµ Р·Р°РїРѕР»РЅРµРЅРёРµ СЏС‡РµРµРє
 procedure TForm1.SpeedButton4Click(Sender: TObject);
  Label restart;
 Var kol_zap, i, j : Integer;
 begin
  Randomize;
- If SpeedButton7.Caption<>'Играть' then ShowMessage('Игра "Жизнь" уже запущена')
+ If SpeedButton7.Caption<>'РРіСЂР°С‚СЊ' then ShowMessage('РРіСЂР° "Р–РёР·РЅСЊ" СѓР¶Рµ Р·Р°РїСѓС‰РµРЅР°')
 
   Else
    begin
@@ -238,8 +238,8 @@ restart :  i := random(n);
    end
 end;
 
-// Ставит звездочку, либо пустую строку в позицию клика левой
-// кнопкой мыши
+// РЎС‚Р°РІРёС‚ Р·РІРµР·РґРѕС‡РєСѓ, Р»РёР±Рѕ РїСѓСЃС‚СѓСЋ СЃС‚СЂРѕРєСѓ РІ РїРѕР·РёС†РёСЋ РєР»РёРєР° Р»РµРІРѕР№
+// РєРЅРѕРїРєРѕР№ РјС‹С€Рё
 procedure TForm1.StringGrid1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
@@ -248,13 +248,13 @@ begin
    Else Cells[Col,Row] := ''
 end;
 
-// Задает скорость изменения жизненного процесса
+// Р—Р°РґР°РµС‚ СЃРєРѕСЂРѕСЃС‚СЊ РёР·РјРµРЅРµРЅРёСЏ Р¶РёР·РЅРµРЅРЅРѕРіРѕ РїСЂРѕС†РµСЃСЃР°
 procedure TForm1.Edit1Change(Sender: TObject);
 begin
  Timer1.Interval := StrToInt( Edit1.Text )
 end;
 
-// Запрет на ввод не цифровой информации в компонет Edit
+// Р—Р°РїСЂРµС‚ РЅР° РІРІРѕРґ РЅРµ С†РёС„СЂРѕРІРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РІ РєРѕРјРїРѕРЅРµС‚ Edit
 procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
  if not (key in ['0'..'9',#8] ) then key := #0

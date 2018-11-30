@@ -77,17 +77,17 @@ var x,y,
     i,j:integer;
     Str: string;
 begin
-  n:=StrToInt(EditOfCount.Text);      //кол-во узлов
-  Xn:=strtofloat(EditOfX.Text);       //в какой точке искать значение функции
-  E:=strtofloat(EditOfAccuracy.Text); //точность
+  n:=StrToInt(EditOfCount.Text);      //РєРѕР»-РІРѕ СѓР·Р»РѕРІ
+  Xn:=strtofloat(EditOfX.Text);       //РІ РєР°РєРѕР№ С‚РѕС‡РєРµ РёСЃРєР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё
+  E:=strtofloat(EditOfAccuracy.Text); //С‚РѕС‡РЅРѕСЃС‚СЊ
 
-  for i:=0 to n-1 do      //считываем таблично заданную функцию
+  for i:=0 to n-1 do      //СЃС‡РёС‚С‹РІР°РµРј С‚Р°Р±Р»РёС‡РЅРѕ Р·Р°РґР°РЅРЅСѓСЋ С„СѓРЅРєС†РёСЋ
     begin
       x[i]:=strtofloat(SG1.Cells[1,i+1]);
       y[i]:=strtofloat(SG1.Cells[2,i+1]);
     end;
 
-  for i:=0 to n-1 do     //получаем столбец x0-Xn
+  for i:=0 to n-1 do     //РїРѕР»СѓС‡Р°РµРј СЃС‚РѕР»Р±РµС† x0-Xn
     begin
       Dl[i]:=x[i]-Xn;
     end;
@@ -113,12 +113,12 @@ begin
 
   i:=1;
   repeat
-    inc(i);     //увеличеваем шаг
+    inc(i);     //СѓРІРµР»РёС‡РµРІР°РµРј С€Р°Рі
     LPrev:=LCur;
     LCur:=buf;
     x[i]:=StrToFloat(SG1.Cells[1,i+1]);
     y[i]:=StrToFloat(SG1.Cells[2,i+1]);
-    Dl[i]:=x[i]-Xn;   //получаем столбец x0-Xn
+    Dl[i]:=x[i]-Xn;   //РїРѕР»СѓС‡Р°РµРј СЃС‚РѕР»Р±РµС† x0-Xn
 
     LCur[0]:=(y[i-1]*Dl[i]-y[i]*Dl[i-1])/(x[i]-x[i-1]);  //L(i,i+1)[Xn]
 

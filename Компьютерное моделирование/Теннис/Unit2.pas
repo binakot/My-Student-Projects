@@ -47,7 +47,7 @@ begin
   StringGrid1.Cells[5,0] := 'x';
   StringGrid1.Cells[6,0] := 'y'; 
 
-//Параметры модели
+//РџР°СЂР°РјРµС‚СЂС‹ РјРѕРґРµР»Рё
   Angle1 := StrToFloat(Form1.Edit1.Text);
   Angle2 := StrToFloat(Form1.Edit2.Text);
   V1 := StrToFloat(Form1.Edit3.Text);
@@ -59,7 +59,7 @@ begin
   k1 := 6 * Pi * dyn * (d / 2);
   S := Pi * sqr(d / 2);
   k2 := 0.5 * c * S * p;
-//Входные параметры
+//Р’С…РѕРґРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
   CurV := Random(Round(V2 - V1)) + V1;
   CurAngle := Random(Round(Angle2 - Angle1)) + Angle1;
   x := 0;
@@ -80,7 +80,7 @@ begin
   StringGrid1.Cells[5,i] := FloatToStr(x);
   StringGrid1.Cells[6,i] := FloatToStr(y);
 
-//Расчетные формулы
+//Р Р°СЃС‡РµС‚РЅС‹Рµ С„РѕСЂРјСѓР»С‹
   repeat
     Ax := 0;
     Ay := -g;

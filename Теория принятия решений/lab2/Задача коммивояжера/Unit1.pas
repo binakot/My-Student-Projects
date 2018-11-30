@@ -41,11 +41,11 @@ var
   Form1: TForm1;
   Count : integer;
   First, Last, i, j, k : integer;
-  Mas : array[1..10,1..10] of integer; //Матрица смежности
-  c,     //Матрица кратчайших расстояний
-  pred,  //Массив предыдущих вершин,
-  fl,    //Массив флагов
-  d : array[1..10] of integer; //Массив для записи пути
+  Mas : array[1..10,1..10] of integer; //РњР°С‚СЂРёС†Р° СЃРјРµР¶РЅРѕСЃС‚Рё
+  c,     //РњР°С‚СЂРёС†Р° РєСЂР°С‚С‡Р°Р№С€РёС… СЂР°СЃСЃС‚РѕСЏРЅРёР№
+  pred,  //РњР°СЃСЃРёРІ РїСЂРµРґС‹РґСѓС‰РёС… РІРµСЂС€РёРЅ,
+  fl,    //РњР°СЃСЃРёРІ С„Р»Р°РіРѕРІ
+  d : array[1..10] of integer; //РњР°СЃСЃРёРІ РґР»СЏ Р·Р°РїРёСЃРё РїСѓС‚Рё
 
 implementation
 
@@ -101,7 +101,7 @@ begin
   StringGrid1.Cells[4,5] := '4';
   StringGrid1.Cells[5,5] := '0';
 end;
-//Подсчет длины пути
+//РџРѕРґСЃС‡РµС‚ РґР»РёРЅС‹ РїСѓС‚Рё
 function GetSum : integer;
 var i, res : integer;
 begin
@@ -110,89 +110,89 @@ begin
     res := res + Mas[d[i],d[i+1]];
   result := res;
 end;
-//Вывод всех путей
+//Р’С‹РІРѕРґ РІСЃРµС… РїСѓС‚РµР№
 procedure AllWay(Num : integer);
 var i : integer;
     Str : String;
 begin
-  if Num = Last then  //Если вершина является целью
+  if Num = Last then  //Р•СЃР»Рё РІРµСЂС€РёРЅР° СЏРІР»СЏРµС‚СЃСЏ С†РµР»СЊСЋ
     begin
       Str := IntToStr(First);
       for i := 1 to j do
         Str := Str + '->' + IntToStr(d[i]);
-      Form1.Memo1.Lines.Add(Str + ' = ' + IntToStr(GetSum));  //выводим путь 
-      exit      //выходим
+      Form1.Memo1.Lines.Add(Str + ' = ' + IntToStr(GetSum));  //РІС‹РІРѕРґРёРј РїСѓС‚СЊ 
+      exit      //РІС‹С…РѕРґРёРј
     end;
-  fl[Num] := 1;    //Отмечаем вершину
+  fl[Num] := 1;    //РћС‚РјРµС‡Р°РµРј РІРµСЂС€РёРЅСѓ
   for i := 1 to Count do
     if (fl[i] = 0) and (Mas[Num,i]<>100500) then
       begin
         inc(j);
-        d[j] := i;     //Записываем путь
+        d[j] := i;     //Р—Р°РїРёСЃС‹РІР°РµРј РїСѓС‚СЊ
         AllWay(i);
         dec(j);
       end;
-    fl[Num]:=0;   //Отмечаем что вершина свободна
+    fl[Num]:=0;   //РћС‚РјРµС‡Р°РµРј С‡С‚Рѕ РІРµСЂС€РёРЅР° СЃРІРѕР±РѕРґРЅР°
 end;
-//Алгоритм Форда-Беллмана
+//РђР»РіРѕСЂРёС‚Рј Р¤РѕСЂРґР°-Р‘РµР»Р»РјР°РЅР°
 procedure AlgFordBellman;
 var Str : String;
 begin
-  //Считываем матрицу
+  //РЎС‡РёС‚С‹РІР°РµРј РјР°С‚СЂРёС†Сѓ
   for i := 1 to Count do
   for j := 1 to Count do
     if (Form1.StringGrid1.Cells[j,i] = '0') OR (Form1.StringGrid1.Cells[j,i] = '-1') OR (Form1.StringGrid1.Cells[j,i] = '00') then
       Mas[i,j] := 100500
     else
       Mas[i,j] := StrToint(Form1.StringGrid1.Cells[j,i]);
-  //Считываем источник и цель
+  //РЎС‡РёС‚С‹РІР°РµРј РёСЃС‚РѕС‡РЅРёРє Рё С†РµР»СЊ
   First := StrToInt(Form1.Edit5.Text);
   Last := StrToInt(Form1.Edit7.Text);
-  //Записываем D(1)
+  //Р—Р°РїРёСЃС‹РІР°РµРј D(1)
   for j := 1 to Count do
     begin
       c[j] := Mas[First,j];
       if Mas[first,j] < 100500 then
-        pred[j] := first;  //Если существует путь, то записываем его
+        pred[j] := first;  //Р•СЃР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚ РїСѓС‚СЊ, С‚Рѕ Р·Р°РїРёСЃС‹РІР°РµРј РµРіРѕ
     end;
 
   for i := 3 to Count do
   for j := 1 to Count do
     if j <> First then
       for k := 1 to Count do
-        if (c[k] < 100500) AND (c[k] + Mas[k,j] < c[j]) then //Если вершина достижима и путь более выгодный
+        if (c[k] < 100500) AND (c[k] + Mas[k,j] < c[j]) then //Р•СЃР»Рё РІРµСЂС€РёРЅР° РґРѕСЃС‚РёР¶РёРјР° Рё РїСѓС‚СЊ Р±РѕР»РµРµ РІС‹РіРѕРґРЅС‹Р№
           begin
-            c[j] := c[k] + Mas[k,j];  //Записываем новое значение
-            pred[j] := k;             //Записываем предыдущую вершину
+            c[j] := c[k] + Mas[k,j];  //Р—Р°РїРёСЃС‹РІР°РµРј РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ
+            pred[j] := k;             //Р—Р°РїРёСЃС‹РІР°РµРј РїСЂРµРґС‹РґСѓС‰СѓСЋ РІРµСЂС€РёРЅСѓ
           end;
 
-  if c[Last] = 100500 then    //проверяем цель на достижимость
-    Form1.Memo1.Lines.Add('Цель недостижима из текущего источника')
+  if c[Last] = 100500 then    //РїСЂРѕРІРµСЂСЏРµРј С†РµР»СЊ РЅР° РґРѕСЃС‚РёР¶РёРјРѕСЃС‚СЊ
+    Form1.Memo1.Lines.Add('Р¦РµР»СЊ РЅРµРґРѕСЃС‚РёР¶РёРјР° РёР· С‚РµРєСѓС‰РµРіРѕ РёСЃС‚РѕС‡РЅРёРєР°')
   else
     begin
-      Form1.Memo1.Lines.Add('Кротчайший путь: ');
+      Form1.Memo1.Lines.Add('РљСЂРѕС‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ: ');
       str := IntToStr(First);
       i := Last;
       k := 1;
       while i <> First do
         begin
-         d[k] := i;   //Записываем путь
+         d[k] := i;   //Р—Р°РїРёСЃС‹РІР°РµРј РїСѓС‚СЊ
          inc(k);
          i := pred[i]
         end;
       for i := k-1 downto 1 do
-        Str := Str + '->' + IntToStr(d[i]); //Выводим кротчайший путь
+        Str := Str + '->' + IntToStr(d[i]); //Р’С‹РІРѕРґРёРј РєСЂРѕС‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ
       Form1.Memo1.Lines.Add(Str);
-      Form1.Memo1.Lines.Add('Все возможные пути: ');
+      Form1.Memo1.Lines.Add('Р’СЃРµ РІРѕР·РјРѕР¶РЅС‹Рµ РїСѓС‚Рё: ');
       j := 0;
-      AllWay(First);    //выводим все пути
+      AllWay(First);    //РІС‹РІРѕРґРёРј РІСЃРµ РїСѓС‚Рё
     end;
 end;
 
 procedure TForm1.BitBtn2Click(Sender: TObject);
 begin
   Memo1.Lines.Clear;
-  Memo1.Lines.Add('Алгоритм Форда-Беллмана: ');
+  Memo1.Lines.Add('РђР»РіРѕСЂРёС‚Рј Р¤РѕСЂРґР°-Р‘РµР»Р»РјР°РЅР°: ');
   Memo1.Lines.Add('**************************************');
   AlgFordBellman;
   Memo1.Lines.Add('**************************************');
