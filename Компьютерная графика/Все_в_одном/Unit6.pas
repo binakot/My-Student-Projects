@@ -298,7 +298,7 @@ begin
   except
    on econverterror do
     begin
-     showmessage('Ошибка! Некоректный ввод.');
+     showmessage('РћС€РёР±РєР°! РќРµРєРѕСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ.');
      exit;
     end;
  end;
@@ -317,7 +317,7 @@ procedure TForm5.SpeedButton3Click(Sender: TObject);
 begin
  if range=false then
   begin
-   showmessage('Ошибка! Сначало постройте прямоугольную область.');
+   showmessage('РћС€РёР±РєР°! РЎРЅР°С‡Р°Р»Рѕ РїРѕСЃС‚СЂРѕР№С‚Рµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅСѓСЋ РѕР±Р»Р°СЃС‚СЊ.');
    exit;
   end;
  try
@@ -328,7 +328,7 @@ begin
   except
    on econverterror do
     begin
-     showmessage('Ошибка! Некоректный ввод.');
+     showmessage('РћС€РёР±РєР°! РќРµРєРѕСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ.');
      exit;
     end;
  end;

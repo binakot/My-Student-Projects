@@ -2,14 +2,14 @@ unit Data;
 
 interface
 
-type mass=array[0..5] of real;    //столбец
-     matrix=array[0..5,0..5] of real;  //матрица
+type mass=array[0..5] of real;    //СЃС‚РѕР»Р±РµС†
+     matrix=array[0..5,0..5] of real;  //РјР°С‚СЂРёС†Р°
 
 var
-  a,a1,alfa,d,q,e:matrix;  //Исходная матрица, матрица alfa
-  x,x0,b,b1,beta:mass;   //Столбец корней уровнения, столбец приближенний, столбец свободныщ членов, стобец для проверки, столбец beta
-  n,k:integer;  //Размерность, шаг
-  Eps,normAlfa,normAlfa2,normBeta,norma:real; //Эпсилон, нормы
+  a,a1,alfa,d,q,e:matrix;  //РСЃС…РѕРґРЅР°СЏ РјР°С‚СЂРёС†Р°, РјР°С‚СЂРёС†Р° alfa
+  x,x0,b,b1,beta:mass;   //РЎС‚РѕР»Р±РµС† РєРѕСЂРЅРµР№ СѓСЂРѕРІРЅРµРЅРёСЏ, СЃС‚РѕР»Р±РµС† РїСЂРёР±Р»РёР¶РµРЅРЅРёР№, СЃС‚РѕР»Р±РµС† СЃРІРѕР±РѕРґРЅС‹С‰ С‡Р»РµРЅРѕРІ, СЃС‚РѕР±РµС† РґР»СЏ РїСЂРѕРІРµСЂРєРё, СЃС‚РѕР»Р±РµС† beta
+  n,k:integer;  //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ, С€Р°Рі
+  Eps,normAlfa,normAlfa2,normBeta,norma:real; //Р­РїСЃРёР»РѕРЅ, РЅРѕСЂРјС‹
 
 implementation
 

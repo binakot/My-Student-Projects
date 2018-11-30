@@ -39,8 +39,8 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Randomize;
-  StringGrid1.Cells[0,0] := '№';
-  StringGrid1.Cells[1,0] := 'Карта';
+  StringGrid1.Cells[0,0] := 'в„–';
+  StringGrid1.Cells[1,0] := 'РљР°СЂС‚Р°';
 end;
 
 procedure TForm1.BitBtn1Click(Sender: TObject);
@@ -68,35 +68,35 @@ begin
     if (curP < Nher / N) then
       begin
         Chart1.Series[0].AddXY(i,Nher/N);
-        StringGrid1.Cells[1,i] := 'Карта червей';
+        StringGrid1.Cells[1,i] := 'РљР°СЂС‚Р° С‡РµСЂРІРµР№';
         Nher := Nher - 1;
       end
     else
     if (curP >= Nher / N)and(curP < Ntref / N + Nher / N) then
       begin
         Chart4.Series[0].AddXY(i,Ntref/N);
-        StringGrid1.Cells[1,i] := 'Карта треф';
+        StringGrid1.Cells[1,i] := 'РљР°СЂС‚Р° С‚СЂРµС„';
         Ntref := Ntref - 1;
       end
     else
     if (curP >= Ntref / N + Nher / N)and(curP < Npik / N + Ntref / N + Nher / N) then
       begin
         Chart2.Series[0].AddXY(i,Npik/N);
-        StringGrid1.Cells[1,i] := 'Карта пик';
+        StringGrid1.Cells[1,i] := 'РљР°СЂС‚Р° РїРёРє';
         Npik := Npik - 1;
       end
     else
     if (curP >= Npik / N + Ntref / N + Nher / N)and(curP < Nbub / N + Npik / N + Ntref / N + Nher / N) then
       begin
         Chart3.Series[0].AddXY(i,Nbub/N);
-        StringGrid1.Cells[1,i] := 'Карта буби';
+        StringGrid1.Cells[1,i] := 'РљР°СЂС‚Р° Р±СѓР±Рё';
         Nbub := Nbub - 1;
       end
     else
     if (curP >= Nbub / N + Npik / N + Ntref / N + Nher / N) then
       begin
         Chart5.Series[0].AddXY(i,Njok/N);
-        StringGrid1.Cells[1,i] := 'Джокер';
+        StringGrid1.Cells[1,i] := 'Р”Р¶РѕРєРµСЂ';
         Njok := Njok - 1;
       end;
 

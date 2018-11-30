@@ -26,11 +26,11 @@ type
       Shift: TShiftState);
     procedure StringGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn4Click(Sender: TObject);
-    procedure Mul(x,y:matrix;var c:matrix; i1,j1,k1:integer);   //Перемножение матриц
+    procedure Mul(x,y:matrix;var c:matrix; i1,j1,k1:integer);   //РџРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
     procedure mulch(x:matrix;y:real;var c:matrix; m:integer);
     procedure sub(y:real;x:matrix;var c:matrix; m:integer);
     procedure add(x,y:matrix;var c:matrix; m:integer);
-    procedure zero(var x:matrix; m:integer);  //Обнуление блока
+    procedure zero(var x:matrix; m:integer);  //РћР±РЅСѓР»РµРЅРёРµ Р±Р»РѕРєР°
     procedure Okaim(a: matrix; var b: matrix; n: integer);
     procedure ymnojenie(var c:matrix; a,b:matrix; d:integer);
   private
@@ -81,8 +81,8 @@ begin
   StringGrid8.Cells[3,0]:='i=3';
   StringGrid8.Cells[4,0]:='i=4';
   StringGrid8.Cells[5,0]:='i=5';
-  stringgrid2.Cells[0,0]:='Своб.члены';
-  StringGrid7.Cells[0,0]:='Решения';
+  stringgrid2.Cells[0,0]:='РЎРІРѕР±.С‡Р»РµРЅС‹';
+  StringGrid7.Cells[0,0]:='Р РµС€РµРЅРёСЏ';
   StringGrid7.Cells[1,0]:='X';
   StringGrid7.Cells[0,1]:='1';
   StringGrid7.Cells[0,2]:='2';
@@ -112,7 +112,7 @@ begin
   end
 end;
 
-procedure TForm1.zero(var x:matrix; m:integer);  //Обнуление блока
+procedure TForm1.zero(var x:matrix; m:integer);  //РћР±РЅСѓР»РµРЅРёРµ Р±Р»РѕРєР°
 var i,j:integer;
 begin
           for i:=1 to m do
@@ -120,7 +120,7 @@ begin
           x[i,j]:=0;
 end;
 
-procedure TForm1.Mul(x,y:matrix;var c:matrix; i1,j1,k1:integer); //перемножение матриц
+procedure TForm1.Mul(x,y:matrix;var c:matrix; i1,j1,k1:integer); //РїРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
 var k,i,j:byte;
 begin
       zero(c,n);
@@ -136,7 +136,7 @@ begin
       end;
 end;
 
-procedure TForm1.sub(y:real;x:matrix;var c:matrix; m:integer); //Вычитаем
+procedure TForm1.sub(y:real;x:matrix;var c:matrix; m:integer); //Р’С‹С‡РёС‚Р°РµРј
 var i,j:byte;
 begin
       for i:=1 to m do
@@ -144,7 +144,7 @@ begin
       c[i,j]:=y-x[i,j];
 end;
 
-procedure TForm1.mulch(x:matrix;y:real;var c:matrix; m:integer); //умножаем
+procedure TForm1.mulch(x:matrix;y:real;var c:matrix; m:integer); //СѓРјРЅРѕР¶Р°РµРј
 var i,j:byte;
 begin
       for i:=1 to m do
@@ -152,7 +152,7 @@ begin
       c[i,j]:=y*x[i,j];
 end;
 
-procedure TForm1.add(x,y:matrix;var c:matrix; m:integer); //Прибовляем
+procedure TForm1.add(x,y:matrix;var c:matrix; m:integer); //РџСЂРёР±РѕРІР»СЏРµРј
 var i,j:byte;
 begin
       for i:=1 to m do
@@ -287,7 +287,7 @@ end;
 procedure TForm1.BitBtn4Click(Sender: TObject);
 var x:matrix; i,j,k,int:byte; cont,cont1,c:real;
 begin
-  //Считываем матрицу А
+  //РЎС‡РёС‚С‹РІР°РµРј РјР°С‚СЂРёС†Сѓ Рђ
 
   for i:=1 to n do
   for j:=1 to n do
@@ -295,14 +295,14 @@ begin
         a[i,j]:=strtofloat(stringgrid1.Cells[j,i]);
         b[i]:=strtofloat(stringgrid2.Cells[0,i])
       end;
-//Находим обратную методом окаймления
+//РќР°С…РѕРґРёРј РѕР±СЂР°С‚РЅСѓСЋ РјРµС‚РѕРґРѕРј РѕРєР°Р№РјР»РµРЅРёСЏ
   okaim(a,oa,n);
 
       for i:=1 to n do
       for j:=1 to n do
-         stringgrid8.Cells[i,j]:=floattostr(oa[j,i]); //выводим матрицу 
+         stringgrid8.Cells[i,j]:=floattostr(oa[j,i]); //РІС‹РІРѕРґРёРј РјР°С‚СЂРёС†Сѓ 
 
-//Находим неизвестные
+//РќР°С…РѕРґРёРј РЅРµРёР·РІРµСЃС‚РЅС‹Рµ
    for i:=1 to n do
      begin
        sum:=0;

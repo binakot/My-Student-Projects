@@ -124,13 +124,13 @@ begin
   StringGrid2.Cells[9,0] := 'Di=Yi'' - Yi';
   StringGrid2.Cells[10,0] := 'Di^2';
   StringGrid2.Cells[11,0] := 'Delta';
-  //Номер строки
+  //РќРѕРјРµСЂ СЃС‚СЂРѕРєРё
   for i := 1 to 19 do
     begin
       StringGrid2.Cells[0,i] := IntToStr(i);
     end;
   StringGrid2.Cells[0,20] := 'E';
-  //Выводим Хi
+  //Р’С‹РІРѕРґРёРј РҐi
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -138,7 +138,7 @@ begin
       Sum := Sum + masX[i];
     end;
   StringGrid2.Cells[1,20] := FloatToStr(Sum);
-  //Выводим Уi'
+  //Р’С‹РІРѕРґРёРј РЈi'
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -146,7 +146,7 @@ begin
       Sum := Sum + masY[i];
     end;
   StringGrid2.Cells[2,20] := FloatToStr(Sum);
-  //Выводим Хi^2
+  //Р’С‹РІРѕРґРёРј РҐi^2
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -154,7 +154,7 @@ begin
       Sum := Sum + masX[i]*masX[i];
     end;
   StringGrid2.Cells[3,20] := FloatToStr(Sum);
-  //Выводим Xi^3
+  //Р’С‹РІРѕРґРёРј Xi^3
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -162,7 +162,7 @@ begin
       Sum := Sum + Power(masX[i],3);
     end;
   StringGrid2.Cells[4,20] := FloatToStr(Sum);
-  //Выводим Xi^4
+  //Р’С‹РІРѕРґРёРј Xi^4
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -170,7 +170,7 @@ begin
       Sum := Sum + Power(masX[i],4);
     end;
   StringGrid2.Cells[5,20] := FloatToStr(Sum);
-  //Выводим Xi*Yi'
+  //Р’С‹РІРѕРґРёРј Xi*Yi'
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -178,7 +178,7 @@ begin
       Sum := Sum + masX[i]*masY[i];
     end;
   StringGrid2.Cells[6,20] := FloatToStr(Sum);
-  //Выводим Xi^2*Yi'
+  //Р’С‹РІРѕРґРёРј Xi^2*Yi'
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -186,8 +186,8 @@ begin
       Sum := Sum + masX[i]*masX[i]*masY[i];
     end;
   StringGrid2.Cells[7,20] := FloatToStr(Sum);
-  // Находим по Крамеру a0, a1, a2
-  // Заполняем главную матрицу
+  // РќР°С…РѕРґРёРј РїРѕ РљСЂР°РјРµСЂСѓ a0, a1, a2
+  // Р—Р°РїРѕР»РЅСЏРµРј РіР»Р°РІРЅСѓСЋ РјР°С‚СЂРёС†Сѓ
   MainMat[1,1] := 19;
   MainMat[1,2] := StrToFloat(StringGrid2.Cells[1,20]);
   MainMat[1,3] := StrToFloat(StringGrid2.Cells[3,20]);
@@ -197,7 +197,7 @@ begin
   MainMat[3,1] := StrToFloat(StringGrid2.Cells[3,20]);
   MainMat[3,2] := StrToFloat(StringGrid2.Cells[4,20]);
   MainMat[3,3] := StrToFloat(StringGrid2.Cells[5,20]);
-  // Заполняем 1 матрицу
+  // Р—Р°РїРѕР»РЅСЏРµРј 1 РјР°С‚СЂРёС†Сѓ
   Mat1[1,1] := StrToFloat(StringGrid2.Cells[2,20]);
   Mat1[1,2] := StrToFloat(StringGrid2.Cells[1,20]);
   Mat1[1,3] := StrToFloat(StringGrid2.Cells[3,20]);
@@ -207,7 +207,7 @@ begin
   Mat1[3,1] := StrToFloat(StringGrid2.Cells[7,20]);
   Mat1[3,2] := StrToFloat(StringGrid2.Cells[4,20]);
   Mat1[3,3] := StrToFloat(StringGrid2.Cells[5,20]);
-  // Заполняем 2 матрицу
+  // Р—Р°РїРѕР»РЅСЏРµРј 2 РјР°С‚СЂРёС†Сѓ
   Mat2[1,1] := 19;
   Mat2[1,2] := StrToFloat(StringGrid2.Cells[2,20]);
   Mat2[1,3] := StrToFloat(StringGrid2.Cells[3,20]);
@@ -217,7 +217,7 @@ begin
   Mat2[3,1] := StrToFloat(StringGrid2.Cells[3,20]);
   Mat2[3,2] := StrToFloat(StringGrid2.Cells[7,20]);
   Mat2[3,3] := StrToFloat(StringGrid2.Cells[5,20]);
-  // Заполняем 3 матрицу
+  // Р—Р°РїРѕР»РЅСЏРµРј 3 РјР°С‚СЂРёС†Сѓ
   Mat3[1,1] := 19;
   Mat3[1,2] := StrToFloat(StringGrid2.Cells[1,20]);
   Mat3[1,3] := StrToFloat(StringGrid2.Cells[2,20]);
@@ -227,27 +227,27 @@ begin
   Mat3[3,1] := StrToFloat(StringGrid2.Cells[3,20]);
   Mat3[3,2] := StrToFloat(StringGrid2.Cells[4,20]);
   Mat3[3,3] := StrToFloat(StringGrid2.Cells[7,20]);
-  // Вычисляем определители
-  // det А = а11а22а33 + а12а23а31 + а13а21а32 - а31а22а13 - а21а12а33 - а11а32а23
+  // Р’С‹С‡РёСЃР»СЏРµРј РѕРїСЂРµРґРµР»РёС‚РµР»Рё
+  // det Рђ = Р°11Р°22Р°33 + Р°12Р°23Р°31 + Р°13Р°21Р°32 - Р°31Р°22Р°13 - Р°21Р°12Р°33 - Р°11Р°32Р°23
   DetMainMat := MainMat[1,1]*MainMat[2,2]*MainMat[3,3] + MainMat[1,2]*MainMat[2,3]*MainMat[3,1] + MainMat[1,3]*MainMat[2,1]*MainMat[3,2] - MainMat[3,1]*MainMat[2,2]*MainMat[1,3] - MainMat[2,1]*MainMat[1,2]*MainMat[3,3] - MainMat[1,1]*MainMat[3,2]*MainMat[2,3];
   DetMat1 := Mat1[1,1]*Mat1[2,2]*Mat1[3,3] + Mat1[1,2]*Mat1[2,3]*Mat1[3,1] + Mat1[1,3]*Mat1[2,1]*Mat1[3,2] - Mat1[3,1]*Mat1[2,2]*Mat1[1,3] - Mat1[2,1]*Mat1[1,2]*Mat1[3,3] - Mat1[1,1]*Mat1[3,2]*Mat1[2,3];
   DetMat2 := Mat2[1,1]*Mat2[2,2]*Mat2[3,3] + Mat2[1,2]*Mat2[2,3]*Mat2[3,1] + Mat2[1,3]*Mat2[2,1]*Mat2[3,2] - Mat2[3,1]*Mat2[2,2]*Mat2[1,3] - Mat2[2,1]*Mat2[1,2]*Mat2[3,3] - Mat2[1,1]*Mat2[3,2]*Mat2[2,3];
   DetMat3 := Mat3[1,1]*Mat3[2,2]*Mat3[3,3] + Mat3[1,2]*Mat3[2,3]*Mat3[3,1] + Mat3[1,3]*Mat3[2,1]*Mat3[3,2] - Mat3[3,1]*Mat3[2,2]*Mat3[1,3] - Mat3[2,1]*Mat3[1,2]*Mat3[3,3] - Mat3[1,1]*Mat3[3,2]*Mat3[2,3];
-  // Находим неизвестные
+  // РќР°С…РѕРґРёРј РЅРµРёР·РІРµСЃС‚РЅС‹Рµ
   a0 := DetMat1 / DetMainMat;
   a1 := DetMat2 / DetMainMat;
   a2 := DetMat3 / DetMainMat;
-  //Выводим коэффициенты
+  //Р’С‹РІРѕРґРёРј РєРѕСЌС„С„РёС†РёРµРЅС‚С‹
   Edit2.Text := FloatToStr(a0);
   Edit3.Text := FloatToStr(a1);
   Edit5.Text := FloatToStr(a2);
-  //Выводим y = a0 + a1*x + a2*x^2
+  //Р’С‹РІРѕРґРёРј y = a0 + a1*x + a2*x^2
   for i := 1 to 19 do
     StringGrid2.Cells[8,i] := FloatToStr(a0 + a1*masX[i] + a2*masX[i]*masX[i]);
-  //Выводим Di = Yi' - Yi
+  //Р’С‹РІРѕРґРёРј Di = Yi' - Yi
   for i := 1 to 19 do
     StringGrid2.Cells[9,i] := FloatToStr(masY[i] - StrToFloat(StringGrid2.Cells[8,i]));
-  //Выводим Di^2
+  //Р’С‹РІРѕРґРёРј Di^2
   Sum := 0;
   for i := 1 to 19 do
     begin
@@ -255,7 +255,7 @@ begin
       Sum := Sum + StrToFloat(StringGrid2.Cells[9,i])*StrToFloat(StringGrid2.Cells[9,i]);
     end;
   StringGrid2.Cells[10,20] := FloatToStr(Sum);
-  // Находим Delta
+  // РќР°С…РѕРґРёРј Delta
   StringGrid2.Cells[11,20] := FloatToStr(sqrt(Sum/18));
   Edit4.Text := StringGrid2.Cells[11,20];
 end;

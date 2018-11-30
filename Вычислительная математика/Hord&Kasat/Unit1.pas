@@ -110,10 +110,10 @@ begin
   RichEdit1.Clear;
   Itter:=0;
   prov:=false;
-  a0:=StrToFloat(edit1.text);   //Получаем левый край
-  b0:=StrToFloat(edit2.text);   //Получаем правый край
-  h:=10*eps;   //шаг
-  deltaX:=eps/10;  //Приращение
+  a0:=StrToFloat(edit1.text);   //РџРѕР»СѓС‡Р°РµРј Р»РµРІС‹Р№ РєСЂР°Р№
+  b0:=StrToFloat(edit2.text);   //РџРѕР»СѓС‡Р°РµРј РїСЂР°РІС‹Р№ РєСЂР°Р№
+  h:=10*eps;   //С€Р°Рі
+  deltaX:=eps/10;  //РџСЂРёСЂР°С‰РµРЅРёРµ
   a:=a0;
   b:=b0;
   while a<b do
@@ -122,7 +122,7 @@ begin
       Value2:=GetFunc(a+h);
       if Value1*Value2<0 then
         begin
-          RichEdit1.Lines.Add('Поиск приближенного значения корня:');
+          RichEdit1.Lines.Add('РџРѕРёСЃРє РїСЂРёР±Р»РёР¶РµРЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РєРѕСЂРЅСЏ:');
           RichEdit1.Lines.Add('_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _');
           Go(a,a+h);
           Prov:=true;
@@ -130,7 +130,7 @@ begin
       a:=a+h;
       Itter:=0;
     end;
-  if prov=false then RichEdit1.Lines.Add('На данном промежутке корней нет!');
+  if prov=false then RichEdit1.Lines.Add('РќР° РґР°РЅРЅРѕРј РїСЂРѕРјРµР¶СѓС‚РєРµ РєРѕСЂРЅРµР№ РЅРµС‚!');
 end;
 
 procedure TForm1.Go(Left,Right:real);
@@ -138,12 +138,12 @@ var
    a1,a2,b1,b2,Proiz1,Proiz2,Value,Nev: Real;
 begin
       a1:=Left; b1:=Right;
-      RichEdit1.Lines.Add('   Итерация № '+IntToStr(Itter));
-      RichEdit1.Lines.Add('       Левая граница = '+FloatToStr(a1));
-      RichEdit1.Lines.Add('       Правая граница = '+FloatToStr(b1));
+      RichEdit1.Lines.Add('   РС‚РµСЂР°С†РёСЏ в„– '+IntToStr(Itter));
+      RichEdit1.Lines.Add('       Р›РµРІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(a1));
+      RichEdit1.Lines.Add('       РџСЂР°РІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(b1));
 
-      Proiz1:=FirstProiz((a1+b1)/2);        //Первая производная
-      Proiz2:=SecondProiz((a1+b1)/2);       //Вторая производная
+      Proiz1:=FirstProiz((a1+b1)/2);        //РџРµСЂРІР°СЏ РїСЂРѕРёР·РІРѕРґРЅР°СЏ
+      Proiz2:=SecondProiz((a1+b1)/2);       //Р’С‚РѕСЂР°СЏ РїСЂРѕРёР·РІРѕРґРЅР°СЏ
 
       if Proiz1*Proiz2>=0 then
         while Abs(b1-a1)>=eps do
@@ -153,9 +153,9 @@ begin
             a1:=a2;
             b1:=b2;
             Inc(Itter);
-            RichEdit1.Lines.Add('   Итерация № '+IntToStr(Itter));
-            RichEdit1.Lines.Add('       Левая граница = '+FloatToStr(a1));
-            RichEdit1.Lines.Add('       Правая граница = '+FloatToStr(b1));
+            RichEdit1.Lines.Add('   РС‚РµСЂР°С†РёСЏ в„– '+IntToStr(Itter));
+            RichEdit1.Lines.Add('       Р›РµРІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(a1));
+            RichEdit1.Lines.Add('       РџСЂР°РІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(b1));
           end
       else
         while Abs(b1-a1)>=eps do
@@ -165,21 +165,21 @@ begin
             a1:=a2;
             b1:=b2;
             Inc(Itter);
-            RichEdit1.Lines.Add('   Итерация № '+IntToStr(Itter));
-            RichEdit1.Lines.Add('       Левая граница = '+FloatToStr(a1));
-            RichEdit1.Lines.Add('       Правая граница = '+FloatToStr(b1));
+            RichEdit1.Lines.Add('   РС‚РµСЂР°С†РёСЏ в„– '+IntToStr(Itter));
+            RichEdit1.Lines.Add('       Р›РµРІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(a1));
+            RichEdit1.Lines.Add('       РџСЂР°РІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(b1));
           end;
       RichEdit1.Lines.Add('_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _');
       Value:=(a1+b1)/2;
-      RichEdit1.Lines.Add('Приближенное значение корня = '+FloatToStr(value));
+      RichEdit1.Lines.Add('РџСЂРёР±Р»РёР¶РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РєРѕСЂРЅСЏ = '+FloatToStr(value));
       Nev:=GetFunc(value);
-      RichEdit1.Lines.Add('Невязка = '+FloatToStr(Nev));
+      RichEdit1.Lines.Add('РќРµРІСЏР·РєР° = '+FloatToStr(Nev));
       RichEdit1.Lines.Add('___________________________________');
       RichEdit1.Lines.Add(' ');
       if Nev>1 then
         begin
           RichEdit1.Clear;
-          RichEdit1.Lines.Add('На данном промежутке корней нет!');
+          RichEdit1.Lines.Add('РќР° РґР°РЅРЅРѕРј РїСЂРѕРјРµР¶СѓС‚РєРµ РєРѕСЂРЅРµР№ РЅРµС‚!');
         end;
 end;
 

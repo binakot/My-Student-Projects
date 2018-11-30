@@ -56,10 +56,10 @@ end;
 
 procedure TForm1.BitBtn4Click(Sender: TObject);
 begin
-  if BitBtn4.Caption = 'Убрать перегородку' then
+  if BitBtn4.Caption = 'РЈР±СЂР°С‚СЊ РїРµСЂРµРіРѕСЂРѕРґРєСѓ' then
     begin
       Limit := false;
-      BitBtn4.Caption := 'Поставить перегородку';
+      BitBtn4.Caption := 'РџРѕСЃС‚Р°РІРёС‚СЊ РїРµСЂРµРіРѕСЂРѕРґРєСѓ';
       Image1.Canvas.Pen.Color := clWhite;
       Image1.Canvas.MoveTo(250,0);
       Image1.Canvas.LineTo(250,400);
@@ -67,7 +67,7 @@ begin
   else
     begin
       Limit := true;
-      BitBtn4.Caption := 'Убрать перегородку';
+      BitBtn4.Caption := 'РЈР±СЂР°С‚СЊ РїРµСЂРµРіРѕСЂРѕРґРєСѓ';
       Image1.Canvas.Pen.Color := clBlack;
       Image1.Canvas.MoveTo(250,0);
       Image1.Canvas.LineTo(250,400);
@@ -82,7 +82,7 @@ begin
   Image1.Canvas.Pen.Color := clBlack;
   Image1.Canvas.MoveTo(250,0);
   Image1.Canvas.LineTo(250,400);
-  BitBtn4.Caption := 'Убрать перегородку';
+  BitBtn4.Caption := 'РЈР±СЂР°С‚СЊ РїРµСЂРµРіРѕСЂРѕРґРєСѓ';
   Image1.Canvas.Rectangle(140,190,160,210);
   Image1.Canvas.Rectangle(340,190,360,210);
 end;

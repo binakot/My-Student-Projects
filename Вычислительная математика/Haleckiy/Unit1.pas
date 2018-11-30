@@ -62,7 +62,7 @@ procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
       n:=strtoint(edit1.Text);
-    stringgrid1.ColCount:=n+1; stringgrid1.RowCount:=n;   //применение
+    stringgrid1.ColCount:=n+1; stringgrid1.RowCount:=n;   //РїСЂРёРјРµРЅРµРЅРёРµ
     edit1.SetFocus;
    with StringGrid1 do
     begin

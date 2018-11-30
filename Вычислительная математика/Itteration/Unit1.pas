@@ -121,9 +121,9 @@ begin
   StringGrid1.Cells[3,0]:='j=3';
   StringGrid1.Cells[4,0]:='j=4';
   StringGrid1.Cells[5,0]:='j=5';
-  stringgrid2.Cells[0,0]:='Своб.члены';
-  StringGrid3.Cells[0,0]:='Решения';
-  StringGrid4.Cells[0,0]:='Проверка';
+  stringgrid2.Cells[0,0]:='РЎРІРѕР±.С‡Р»РµРЅС‹';
+  StringGrid3.Cells[0,0]:='Р РµС€РµРЅРёСЏ';
+  StringGrid4.Cells[0,0]:='РџСЂРѕРІРµСЂРєР°';
   StringGrid3.Cells[1,0]:='X';
   StringGrid3.Cells[0,1]:='1';
   StringGrid3.Cells[0,2]:='2';
@@ -177,7 +177,7 @@ begin
   StringGrid8.Cells[0,14]:='13';
 end;
 
-procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;  //Применяем размерность
+procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;  //РџСЂРёРјРµРЅСЏРµРј СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ
   Shift: TShiftState);
 begin
   if edit1.text<>'' then
@@ -242,7 +242,7 @@ begin
   for i:=0 to n-1 do
   for j:=0 to n-1 do
     aa[i,j]:=a[i+1,j+1];
-  if aa[0,0]=0 then       //если первый элемент 0, то поменяем столбцы
+  if aa[0,0]=0 then       //РµСЃР»Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ 0, С‚Рѕ РїРѕРјРµРЅСЏРµРј СЃС‚РѕР»Р±С†С‹
     begin
       for q:=0 to n-1 do
         begin
@@ -258,7 +258,7 @@ begin
             end;
           if aa[0,0]<>0 then break
         end;
-      if aa[0,0]=0 then        //если все равно 0, то поменяем строки
+      if aa[0,0]=0 then        //РµСЃР»Рё РІСЃРµ СЂР°РІРЅРѕ 0, С‚Рѕ РїРѕРјРµРЅСЏРµРј СЃС‚СЂРѕРєРё
         for q:=0 to n-1 do
           begin
             if aa[0,q]<>0 then
@@ -275,32 +275,32 @@ begin
           end;
     end;
 
-  mobr1[0,0]:=1/aa[0,0];  //выносим первый элемент
-  z:=0;                  //порядок клеточной матрицы
+  mobr1[0,0]:=1/aa[0,0];  //РІС‹РЅРѕСЃРёРј РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚
+  z:=0;                  //РїРѕСЂСЏРґРѕРє РєР»РµС‚РѕС‡РЅРѕР№ РјР°С‚СЂРёС†С‹
   for i:=0 to n do
   for j:=0 to n do
-    a2[i,j]:=0;       //обнуляем доп матрицу
+    a2[i,j]:=0;       //РѕР±РЅСѓР»СЏРµРј РґРѕРї РјР°С‚СЂРёС†Сѓ
 
 repeat
-    inc(z);         //увеличиваем счетчик
+    inc(z);         //СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє
     for i:=0 to z do
     for j:=0 to z do
-        a2[i,j]:=aa[i,j];     //записываем всю матрицу а в доп матрицу
+        a2[i,j]:=aa[i,j];     //Р·Р°РїРёСЃС‹РІР°РµРј РІСЃСЋ РјР°С‚СЂРёС†Сѓ Р° РІ РґРѕРї РјР°С‚СЂРёС†Сѓ
 
     for i:=0 to z-1 do
-      u[i,0]:=a2[i,z];       //всю строку запишем в одну матрицу
+      u[i,0]:=a2[i,z];       //РІСЃСЋ СЃС‚СЂРѕРєСѓ Р·Р°РїРёС€РµРј РІ РѕРґРЅСѓ РјР°С‚СЂРёС†Сѓ
 
     for i:=0 to z-1 do
-      v[0,i]:=a2[z,i];       //весь столбец в другую
+      v[0,i]:=a2[z,i];       //РІРµСЃСЊ СЃС‚РѕР»Р±РµС† РІ РґСЂСѓРіСѓСЋ
 
-    ymnojenie (uob,mobr1,u,z-1);   //умножим матрицы
-    ymnojenie (vob,v,mobr1,z-1);   //и получим все окаймленные матрицы
+    ymnojenie (uob,mobr1,u,z-1);   //СѓРјРЅРѕР¶РёРј РјР°С‚СЂРёС†С‹
+    ymnojenie (vob,v,mobr1,z-1);   //Рё РїРѕР»СѓС‡РёРј РІСЃРµ РѕРєР°Р№РјР»РµРЅРЅС‹Рµ РјР°С‚СЂРёС†С‹
 
     sum:=0;
     for i:=0 to z-1 do
-      sum:=a2[z,i]*uob[i,0]+sum;    //находим сумму
+      sum:=a2[z,i]*uob[i,0]+sum;    //РЅР°С…РѕРґРёРј СЃСѓРјРјСѓ
 
-    ch:=a2[z,z]-sum;         //что выносим из следующей матрицы
+    ch:=a2[z,z]-sum;         //С‡С‚Рѕ РІС‹РЅРѕСЃРёРј РёР· СЃР»РµРґСѓСЋС‰РµР№ РјР°С‚СЂРёС†С‹
 
 
     for i:=0 to z-1 do                                    {p}
@@ -317,14 +317,14 @@ repeat
 
   for i:=0 to z do
   for j:=0 to z do
-      mobr1[i,j]:=mobr2[i,j]  //записываем полученный результат в матрицу
-until z=(n-1);   //проводим цикл для всей матрицы
+      mobr1[i,j]:=mobr2[i,j]  //Р·Р°РїРёСЃС‹РІР°РµРј РїРѕР»СѓС‡РµРЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚ РІ РјР°С‚СЂРёС†Сѓ
+until z=(n-1);   //РїСЂРѕРІРѕРґРёРј С†РёРєР» РґР»СЏ РІСЃРµР№ РјР°С‚СЂРёС†С‹
 
   for i:=0 to n-1 do
   for j:=0 to n-1 do
-      bb[i,j]:=mobr1[i,j]; //записываем обратную матрицу в исходную
+      bb[i,j]:=mobr1[i,j]; //Р·Р°РїРёСЃС‹РІР°РµРј РѕР±СЂР°С‚РЅСѓСЋ РјР°С‚СЂРёС†Сѓ РІ РёСЃС…РѕРґРЅСѓСЋ
 
-  if per2<>0 then  //если переставляли строки надо это учесть
+  if per2<>0 then  //РµСЃР»Рё РїРµСЂРµСЃС‚Р°РІР»СЏР»Рё СЃС‚СЂРѕРєРё РЅР°РґРѕ СЌС‚Рѕ СѓС‡РµСЃС‚СЊ
   for c:=0 to n-1 do
       begin
         p:=bb[0,c];
@@ -332,7 +332,7 @@ until z=(n-1);   //проводим цикл для всей матрицы
         bb[per2,c]:=p;
       end
   else
-    if per1<>0 then     //если пересталяли столбцы тоже учтем
+    if per1<>0 then     //РµСЃР»Рё РїРµСЂРµСЃС‚Р°Р»СЏР»Рё СЃС‚РѕР»Р±С†С‹ С‚РѕР¶Рµ СѓС‡С‚РµРј
       for c:=0 to n-1 do
         begin
           p:=bb[c,0];
@@ -394,7 +394,7 @@ end;
 procedure TForm1.MatToIter;
 var i,j:byte; sum:real;
 begin
-        Okaim(a,a1,n); //считаем обратную матрицу
+        Okaim(a,a1,n); //СЃС‡РёС‚Р°РµРј РѕР±СЂР°С‚РЅСѓСЋ РјР°С‚СЂРёС†Сѓ
         for i:=1 to n do
         for j:=1 to n do
           stringgrid7.Cells[i,j]:=floattostr(a1[j,i]);
@@ -410,11 +410,11 @@ begin
 
         for i:=1 to n do
         for j:=1 to n do
-          q[i,j]:=1/(n*normAlfa2*i*j);    //матрица Q с достаточно малыми элементами
+          q[i,j]:=1/(n*normAlfa2*i*j);    //РјР°С‚СЂРёС†Р° Q СЃ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РјР°Р»С‹РјРё СЌР»РµРјРµРЅС‚Р°РјРё
 
         for i:=1 to n do
         for j:=1 to n do
-          d[i,j]:=q[i,j]-a1[i,j];   //матрица D
+          d[i,j]:=q[i,j]-a1[i,j];   //РјР°С‚СЂРёС†Р° D
 
         MulMatrix(alfa,q,a,n);      //Alfa=Q*A
 
@@ -446,16 +446,16 @@ var i,j:integer;
 procedure TForm1.BitBtn1Click(Sender: TObject);
 var i,j,str:integer; sum,cur:real; OutFile:TextFile;
 begin
-//Считываем данные
+//РЎС‡РёС‚С‹РІР°РµРј РґР°РЅРЅС‹Рµ
   GetData;
-//Если на диагонали 0, то меняем строки
+//Р•СЃР»Рё РЅР° РґРёР°РіРѕРЅР°Р»Рё 0, С‚Рѕ РјРµРЅСЏРµРј СЃС‚СЂРѕРєРё
   Zero;
-//Считаем определитель матрицы А
+//РЎС‡РёС‚Р°РµРј РѕРїСЂРµРґРµР»РёС‚РµР»СЊ РјР°С‚СЂРёС†С‹ Рђ
   if detN(a,n)<>0 then checkbox1.Checked:=true else checkbox1.Checked:=false;
-//Проверяем условия сходимости и взависимости от результата приводим матрицу или сразу переходим к итерационному процессу
+//РџСЂРѕРІРµСЂСЏРµРј СѓСЃР»РѕРІРёСЏ СЃС…РѕРґРёРјРѕСЃС‚Рё Рё РІР·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂРµР·СѓР»СЊС‚Р°С‚Р° РїСЂРёРІРѕРґРёРј РјР°С‚СЂРёС†Сѓ РёР»Рё СЃСЂР°Р·Сѓ РїРµСЂРµС…РѕРґРёРј Рє РёС‚РµСЂР°С†РёРѕРЅРЅРѕРјСѓ РїСЂРѕС†РµСЃСЃСѓ
   if Check then ChangeMat
   else MatToIter;
-//Выведем alfa и beta
+//Р’С‹РІРµРґРµРј alfa Рё beta
   for i:=1 to n do
   for j:=1 to n do
     stringgrid5.Cells[j,i]:=floattostr(alfa[i,j]);
@@ -476,7 +476,7 @@ begin
   for i:=1 to n do
     if beta[i]>normBeta then
       normBeta:=beta[i];
-//Итерационный процесс
+//РС‚РµСЂР°С†РёРѕРЅРЅС‹Р№ РїСЂРѕС†РµСЃСЃ
   x0:=beta;
   k:=0;
   repeat
@@ -506,12 +506,12 @@ begin
       Stringgrid8.Cells[i,k+1]:=floattostr(x0[i])
     end;
 
-//Выводим решение на экран
+//Р’С‹РІРѕРґРёРј СЂРµС€РµРЅРёРµ РЅР° СЌРєСЂР°РЅ
   for i:=1 to n do
   begin
     stringgrid3.Cells[1,i]:=floattostr(x[i])
   end;
-//Выполним проверку
+//Р’С‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєСѓ
    for i:=1 to n do
      begin
        sum:=0;
@@ -521,13 +521,13 @@ begin
      end;
    for i:=1 to n do
      stringgrid4.Cells[0,i]:=floattostr(b1[i]);
-//Невязки
+//РќРµРІСЏР·РєРё
    for i:=1 to n do
      begin
        stringgrid9.Cells[0,i]:=floattostr(roundto(abs(b1[i]-b[i]),-8));
      end;
 
-//Вывод в файл
+//Р’С‹РІРѕРґ РІ С„Р°Р№Р»
   AssignFile(OutFile,'out.XLS');
   Rewrite(OutFile);
 

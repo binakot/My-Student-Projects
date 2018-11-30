@@ -42,20 +42,20 @@ begin
       Cells[3,0]:= 'Y''';
     end;
 end;
-//Решаем
+//Р РµС€Р°РµРј
 procedure TForm5.BitBtn1Click(Sender: TObject);
 var x,y: extended;
     going: boolean;
     i: integer;
 begin
-  i:= 0;        //шаг = 0
-  x:= x0;       //переменная x из начального условия
-  y:= y0;       //переменная y из начального условия
-  //получаем шаг
+  i:= 0;        //С€Р°Рі = 0
+  x:= x0;       //РїРµСЂРµРјРµРЅРЅР°СЏ x РёР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ
+  y:= y0;       //РїРµСЂРµРјРµРЅРЅР°СЏ y РёР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ
+  //РїРѕР»СѓС‡Р°РµРј С€Р°Рі
   h:= strtofloat(edit1.text);
-  going:= true;          //продолжаем процесс
+  going:= true;          //РїСЂРѕРґРѕР»Р¶Р°РµРј РїСЂРѕС†РµСЃСЃ
 
-  if (RadioButton1.Checked) then        //если 3 порядок
+  if (RadioButton1.Checked) then        //РµСЃР»Рё 3 РїРѕСЂСЏРґРѕРє
   begin
     ClearGrid(StringGrid1);
     StringGrid1.RowCount:= 2;
@@ -64,7 +64,7 @@ begin
     StringGrid1.Cells[2,1]:= FloatToStr(y);
     StringGrid1.Cells[3,1]:= FloatToStr(GetF(x,y));
     i:= 1;
-    while (going) do     //начинаем процесс
+    while (going) do     //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
       begin
         going:= EilerConstStep(x, y, 3);
         StringGrid1.Cells[0,i+1]:= IntToStr(i);
@@ -75,14 +75,14 @@ begin
         StringGrid1.RowCount:= i + 1
       end;
     StringGrid1.RowCount := StringGrid1.RowCount + 2;
-    StringGrid1.Cells[1,i+1]:= 'Проверка:';
+    StringGrid1.Cells[1,i+1]:= 'РџСЂРѕРІРµСЂРєР°:';
     StringGrid1.Cells[2,i+1]:= 'Yn = ';
     StringGrid1.Cells[3,i+1]:= FloatToStr(res);
     StringGrid1.Cells[2,i+2]:= 'Yn - Y = ';
     StringGrid1.Cells[3,i+2]:= FloatToStr(RoundTo(abs(res-y),-18))
   end
   else
-  if (RadioButton2.Checked) then        //если 4 порядок
+  if (RadioButton2.Checked) then        //РµСЃР»Рё 4 РїРѕСЂСЏРґРѕРє
   begin
     ClearGrid(StringGrid1);
     StringGrid1.RowCount:= 2;
@@ -91,7 +91,7 @@ begin
     StringGrid1.Cells[2,1]:= FloatToStr(y);
     StringGrid1.Cells[3,1]:= FloatToStr(GetF(x,y));
     i:= 1;
-    while (going) do     //начинаем процесс
+    while (going) do     //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
       begin
         going:= EilerConstStep(x, y, 4);
         StringGrid1.Cells[0,i+1]:= IntToStr(i);
@@ -102,7 +102,7 @@ begin
         StringGrid1.RowCount:= i + 1
       end;
     StringGrid1.RowCount := StringGrid1.RowCount + 2;
-    StringGrid1.Cells[1,i+1]:= 'Проверка:';
+    StringGrid1.Cells[1,i+1]:= 'РџСЂРѕРІРµСЂРєР°:';
     StringGrid1.Cells[2,i+1]:= 'Yn = ';
     StringGrid1.Cells[3,i+1]:= FloatToStr(res);
     StringGrid1.Cells[2,i+2]:= 'Yn - Y = ';

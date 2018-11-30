@@ -142,13 +142,13 @@ begin
  except
   on EConvertError do
    begin
-    showmessage('Введены неверные данные!');
+    showmessage('Р’РІРµРґРµРЅС‹ РЅРµРІРµСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ!');
     exit;
    end;
  end;
  if (x>299) or (x<0) or (y>299) or (y<0) then
   begin
-   showmessage('Выход за пределы допустимых значений!');
+   showmessage('Р’С‹С…РѕРґ Р·Р° РїСЂРµРґРµР»С‹ РґРѕРїСѓСЃС‚РёРјС‹С… Р·РЅР°С‡РµРЅРёР№!');
    exit;
   end;
  colcur:=pixelcolor(x,y);
@@ -174,13 +174,13 @@ begin
  except
   on EConvertError do
    begin
-    showmessage('Введены неверные данные!');
+    showmessage('Р’РІРµРґРµРЅС‹ РЅРµРІРµСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ!');
     exit;
    end;
  end;
  if (x>299) or (x<0) or (y>299) or (y<0) then
   begin
-   showmessage('Выход за пределы допустимых значений!');
+   showmessage('Р’С‹С…РѕРґ Р·Р° РїСЂРµРґРµР»С‹ РґРѕРїСѓСЃС‚РёРјС‹С… Р·РЅР°С‡РµРЅРёР№!');
    exit;
   end;
  colcur:=pixelcolor(x,y);
@@ -214,7 +214,7 @@ begin
  except
   on EConvertError do
    begin
-    showmessage('Введены неверные данные!');
+    showmessage('Р’РІРµРґРµРЅС‹ РЅРµРІРµСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ!');
     exit;
    end;
  end;
@@ -223,7 +223,7 @@ begin
   begin
    if (x[i]>299) or (x[i]<0) or (y[i]>299) or (y[i]<0) then
     begin
-     showmessage('Выход за пределы допустимых значений!');
+     showmessage('Р’С‹С…РѕРґ Р·Р° РїСЂРµРґРµР»С‹ РґРѕРїСѓСЃС‚РёРјС‹С… Р·РЅР°С‡РµРЅРёР№!');
      exit;
     end;
   end;
@@ -325,14 +325,14 @@ var
  i,j,y_max,y_min,n,m,y_cur,k,l,length_tr,length_tar,group: integer;
  f: textfile;
 begin
- assignfile(f,'Заливка многоугольником.txt');
+ assignfile(f,'Р—Р°Р»РёРІРєР° РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРєРѕРј.txt');
  rewrite(f);
- writeln(f,'Координаты многоугольника:');
+ writeln(f,'РљРѕРѕСЂРґРёРЅР°С‚С‹ РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРєР°:');
  for i := 1 to col_rib do
   begin
    writeln(f,'x[',i,']->',x[i]:4,', y[',i,']->',y[i]:4);
   end;
- {поиск y[min] и y[max]}
+ {РїРѕРёСЃРє y[min] Рё y[max]}
  y_min:=y[1];
  y_max:=y[1];
  for i := 1 to col_rib do
@@ -342,8 +342,8 @@ begin
   end;
  writeln(f,'y[min]->',y_min:4);
  writeln(f,'y[max]->',y_max:4);
- {создание таблицы ребер}
- {запись ребер в таблицу}
+ {СЃРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЂРµР±РµСЂ}
+ {Р·Р°РїРёСЃСЊ СЂРµР±РµСЂ РІ С‚Р°Р±Р»РёС†Сѓ}
  j:=0;
  for i := 1 to col_rib do
   begin
@@ -403,7 +403,7 @@ begin
     end;
   end;
  length_tr:=j;
- {сортировка по нарастанию y[min]}
+ {СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РЅР°СЂР°СЃС‚Р°РЅРёСЋ y[min]}
  for i := 1 to length_tr do
   begin
    for j := i+1 to length_tr do
@@ -428,7 +428,7 @@ begin
       end;
     end;
   end;
- {растановка групп}
+ {СЂР°СЃС‚Р°РЅРѕРІРєР° РіСЂСѓРїРї}
  k:=round(tr[1,3]);
  l:=1;
  for i := 1 to length_tr do
@@ -440,7 +440,7 @@ begin
     end;
    tr[i,1]:=l;
   end;
- {сортировка каждой группы по нарастанию x[нач.]}
+ {СЃРѕСЂС‚РёСЂРѕРІРєР° РєР°Р¶РґРѕР№ РіСЂСѓРїРїС‹ РїРѕ РЅР°СЂР°СЃС‚Р°РЅРёСЋ x[РЅР°С‡.]}
  k:=1;
  l:=0;
  for i := 1 to length_tr do
@@ -478,24 +478,24 @@ begin
       end;
     end;
   end;
- {вычисление deltaX}
+ {РІС‹С‡РёСЃР»РµРЅРёРµ deltaX}
  for i := 1 to length_tr do
   begin
    tr[i,7]:=(tr[i,6]-tr[i,5])/(tr[i,4]-tr[i,3]);
   end;
- {вывод таблицы ребер в файл}
- writeln(f,'Таблица ребер:');
- writeln(f,'Группа Ребро Y[min] Y[max] X[нач.] X[кон.] DeltaX');
+ {РІС‹РІРѕРґ С‚Р°Р±Р»РёС†С‹ СЂРµР±РµСЂ РІ С„Р°Р№Р»}
+ writeln(f,'РўР°Р±Р»РёС†Р° СЂРµР±РµСЂ:');
+ writeln(f,'Р“СЂСѓРїРїР° Р РµР±СЂРѕ Y[min] Y[max] X[РЅР°С‡.] X[РєРѕРЅ.] DeltaX');
  for i := 1 to length_tr do
   begin
    writeln(f,tr[i,1]:6:0,tr[i,2]:6:0,tr[i,3]:7:0,tr[i,4]:7:0,tr[i,5]:8:0,tr[i,6]:8:0,tr[i,7]:7:3);
   end;
- {заполнение области}
+ {Р·Р°РїРѕР»РЅРµРЅРёРµ РѕР±Р»Р°СЃС‚Рё}
  group:=1;
  length_tar:=0;
  y_cur:=y_min;
  repeat
-  {перенос группы из таблицы ребер в таблицу активных ребер}
+  {РїРµСЂРµРЅРѕСЃ РіСЂСѓРїРїС‹ РёР· С‚Р°Р±Р»РёС†С‹ СЂРµР±РµСЂ РІ С‚Р°Р±Р»РёС†Сѓ Р°РєС‚РёРІРЅС‹С… СЂРµР±РµСЂ}
   if y_cur=tr[1,3] then
    begin
     l:=0;
@@ -504,7 +504,7 @@ begin
       tar_:=tar;
       l:=length_tar;
      end;
-    {вычисление колличества ребер группы}
+    {РІС‹С‡РёСЃР»РµРЅРёРµ РєРѕР»Р»РёС‡РµСЃС‚РІР° СЂРµР±РµСЂ РіСЂСѓРїРїС‹}
     for i := 1 to length_tr do
      begin
       n:=i;
@@ -515,7 +515,7 @@ begin
         break;
        end;
      end;
-    {копирование группы ребер из таблицы ребер в таблицу активных ребер}
+    {РєРѕРїРёСЂРѕРІР°РЅРёРµ РіСЂСѓРїРїС‹ СЂРµР±РµСЂ РёР· С‚Р°Р±Р»РёС†С‹ СЂРµР±РµСЂ РІ С‚Р°Р±Р»РёС†Сѓ Р°РєС‚РёРІРЅС‹С… СЂРµР±РµСЂ}
     for i := 1 to n do
      begin
       tar[i,1]:=tr[i,2];
@@ -524,7 +524,7 @@ begin
       tar[i,4]:=tr[i,7];
      end;
     length_tar:=n;
-    {удаление группы из таблицы ребер}
+    {СѓРґР°Р»РµРЅРёРµ РіСЂСѓРїРїС‹ РёР· С‚Р°Р±Р»РёС†С‹ СЂРµР±РµСЂ}
     for i := 1 to length_tr do
      begin
       tr[i,1]:=tr[i+n,1];
@@ -536,7 +536,7 @@ begin
       tr[i,7]:=tr[i+n,7];
      end;
     length_tr:=length_tr-n;
-    {дописывание ребер в таблицу активных ребер}
+    {РґРѕРїРёСЃС‹РІР°РЅРёРµ СЂРµР±РµСЂ РІ С‚Р°Р±Р»РёС†Сѓ Р°РєС‚РёРІРЅС‹С… СЂРµР±РµСЂ}
     if l<>0 then
      begin
       for i := 1 to l do
@@ -549,7 +549,7 @@ begin
        end;
      end;
    end;
-  {сортировка по нарастанию x[нач.]}
+  {СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РЅР°СЂР°СЃС‚Р°РЅРёСЋ x[РЅР°С‡.]}
   for i := 1 to length_tar do
    begin
     for j := i+1 to length_tar do
@@ -571,21 +571,21 @@ begin
        end;
      end;
    end;
-  {вывод таблиц в файл}
+  {РІС‹РІРѕРґ С‚Р°Р±Р»РёС† РІ С„Р°Р№Р»}
   writeln(f,'y[current]->',y_cur:4);
-  writeln(f,'Таблица ребер:');
-  writeln(f,'Группа Ребро Y[min] Y[max] X[нач.] X[кон.] DeltaX');
+  writeln(f,'РўР°Р±Р»РёС†Р° СЂРµР±РµСЂ:');
+  writeln(f,'Р“СЂСѓРїРїР° Р РµР±СЂРѕ Y[min] Y[max] X[РЅР°С‡.] X[РєРѕРЅ.] DeltaX');
   for i := 1 to length_tr do
    begin
     writeln(f,tr[i,1]:6:0,tr[i,2]:6:0,tr[i,3]:7:0,tr[i,4]:7:0,tr[i,5]:8:0,tr[i,6]:8:0,tr[i,7]:7:2);
    end;
-  writeln(f,'Таблица активных ребер:');
-  writeln(f,'Ребро Y[max] X[нач.] DeltaX');
+  writeln(f,'РўР°Р±Р»РёС†Р° Р°РєС‚РёРІРЅС‹С… СЂРµР±РµСЂ:');
+  writeln(f,'Р РµР±СЂРѕ Y[max] X[РЅР°С‡.] DeltaX');
   for i := 1 to length_tar do
    begin
     writeln(f,tar[i,1]:5:0,tar[i,2]:7:0,tar[i,3]:8:0,tar[i,4]:7:2);
    end;
-  {проведение сканирующей строки}
+  {РїСЂРѕРІРµРґРµРЅРёРµ СЃРєР°РЅРёСЂСѓСЋС‰РµР№ СЃС‚СЂРѕРєРё}
   for i := 2 to length_tar do
    begin
     image1.Canvas.MoveTo(round(tar[1,3]),y_cur);
@@ -593,7 +593,7 @@ begin
    end;
   if y_cur+1<>y_max then
    begin
-    {удаление ребер из таблицы активных ребер для которых y=y[max]}
+    {СѓРґР°Р»РµРЅРёРµ СЂРµР±РµСЂ РёР· С‚Р°Р±Р»РёС†С‹ Р°РєС‚РёРІРЅС‹С… СЂРµР±РµСЂ РґР»СЏ РєРѕС‚РѕСЂС‹С… y=y[max]}
     k:=length_tar;
     for i := 1 to length_tar do
      begin
@@ -613,13 +613,13 @@ begin
        end;
      end;
     length_tar:=k;
-    {для всех ребер в таблице активных ребер x[нач.]:=x[нач.]+deltaX}
+    {РґР»СЏ РІСЃРµС… СЂРµР±РµСЂ РІ С‚Р°Р±Р»РёС†Рµ Р°РєС‚РёРІРЅС‹С… СЂРµР±РµСЂ x[РЅР°С‡.]:=x[РЅР°С‡.]+deltaX}
     for i := 1 to length_tar do
      begin
       tar[i,3]:=tar[i,3]+tar[i,4];
      end;
    end;
-  {переход на следующую строку}
+  {РїРµСЂРµС…РѕРґ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ СЃС‚СЂРѕРєСѓ}
   inc(y_cur);
  until y_cur>y_max;
  closefile(f);

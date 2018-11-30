@@ -83,31 +83,31 @@ var value,x1,x2,y1,y2,t,a1,b1:real;
 begin
   a1:=a;
   b1:=b;
-  t:=(-1+sqrt(5))/2;  //находим t для золотого сечения
-  x1:=b1-t*(b1-a1);   //находим х1, х2
-  x2:=a1+t*(b1-a1);   //по формулам
-  y1:=GetH(x,y,x1);   //находим значение функции Н
-  y2:=GetH(x,y,x2);   //в этих точках
+  t:=(-1+sqrt(5))/2;  //РЅР°С…РѕРґРёРј t РґР»СЏ Р·РѕР»РѕС‚РѕРіРѕ СЃРµС‡РµРЅРёСЏ
+  x1:=b1-t*(b1-a1);   //РЅР°С…РѕРґРёРј С…1, С…2
+  x2:=a1+t*(b1-a1);   //РїРѕ С„РѕСЂРјСѓР»Р°Рј
+  y1:=GetH(x,y,x1);   //РЅР°С…РѕРґРёРј Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё Рќ
+  y2:=GetH(x,y,x2);   //РІ СЌС‚РёС… С‚РѕС‡РєР°С…
     repeat
       if y1>y2 then
         begin
-          a1:=x1;      //для дальнейшего деления
-          x1:=x2;     //оставляем (х1,b)
+          a1:=x1;      //РґР»СЏ РґР°Р»СЊРЅРµР№С€РµРіРѕ РґРµР»РµРЅРёСЏ
+          x1:=x2;     //РѕСЃС‚Р°РІР»СЏРµРј (С…1,b)
           y1:=y2;
-          x2:=a1+t*(b1-a1);   //находим новый x2
+          x2:=a1+t*(b1-a1);   //РЅР°С…РѕРґРёРј РЅРѕРІС‹Р№ x2
           y2:=GetH(x,y,x2);
         end
       else
         begin
-          b1:=x2;      //иначе оставляем
+          b1:=x2;      //РёРЅР°С‡Рµ РѕСЃС‚Р°РІР»СЏРµРј
           x2:=x1;     //(a,x2)
           y2:=y1;
-          x1:=b1-t*(b1-a1);   //находим новый x1
+          x1:=b1-t*(b1-a1);   //РЅР°С…РѕРґРёРј РЅРѕРІС‹Р№ x1
           y1:=GetH(x,y,x1);
         end;
-    until (b1-a1)<eps;    //продолжаем пока длина интервала не будет меньше точности
+    until (b1-a1)<eps;    //РїСЂРѕРґРѕР»Р¶Р°РµРј РїРѕРєР° РґР»РёРЅР° РёРЅС‚РµСЂРІР°Р»Р° РЅРµ Р±СѓРґРµС‚ РјРµРЅСЊС€Рµ С‚РѕС‡РЅРѕСЃС‚Рё
 
-  value:=(a1+b1)/2;    //результатом берем середину последнего промежутка
+  value:=(a1+b1)/2;    //СЂРµР·СѓР»СЊС‚Р°С‚РѕРј Р±РµСЂРµРј СЃРµСЂРµРґРёРЅСѓ РїРѕСЃР»РµРґРЅРµРіРѕ РїСЂРѕРјРµР¶СѓС‚РєР°
   result:=value;
 end;
 
@@ -118,10 +118,10 @@ var h1,min1,min2,minH,
     value:real;
     i,n:integer;
 begin
-  h1:=10*eps;  //шаг берем равный 10*точность
-  a1:=a;       //начинаем с левой границе
+  h1:=10*eps;  //С€Р°Рі Р±РµСЂРµРј СЂР°РІРЅС‹Р№ 10*С‚РѕС‡РЅРѕСЃС‚СЊ
+  a1:=a;       //РЅР°С‡РёРЅР°РµРј СЃ Р»РµРІРѕР№ РіСЂР°РЅРёС†Рµ
   i:=0;
-  repeat                 //помещаем все ямы в массив
+  repeat                 //РїРѕРјРµС‰Р°РµРј РІСЃРµ СЏРјС‹ РІ РјР°СЃСЃРёРІ
      y1:= GetH(x,y,a1);
      y2:= GetH(x,y,a1+h1);
      y3:= GetH(x,y,a1+2*h1);
@@ -132,7 +132,7 @@ begin
        end;
      a1:=a1+h1;
   until a1>=b;
-  n:=i;   //кол-во найденных ям
+  n:=i;   //РєРѕР»-РІРѕ РЅР°Р№РґРµРЅРЅС‹С… СЏРј
 
   minH:=a1+h1;
   min1:=GoldSelect(x,y,minH-h1,minH+h1);
@@ -157,12 +157,12 @@ begin
   eps:=strtofloat(edit1.Text)/10;
   x0:=strtofloat(edit4.Text);
   y0:=strtofloat(edit5.Text);
-  RichEdit1.Lines.Add('Начальное приближение: x0 = '+floattostr(x0)+', y0 = '+floattostr(y0));
+  RichEdit1.Lines.Add('РќР°С‡Р°Р»СЊРЅРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ: x0 = '+floattostr(x0)+', y0 = '+floattostr(y0));
   RichEdit1.Lines.Add('eps = '+floattostr(eps));
   i:=0;
   repeat
     inc(i);
-    RichEdit1.Lines.Add('________________'+inttostr(i)+'-й спуск _________________');
+    RichEdit1.Lines.Add('________________'+inttostr(i)+'-Р№ СЃРїСѓСЃРє _________________');
 
     h:=GlobalMin(x0,y0,a,b);
     RichEdit1.Lines.Add('   h = '+floattostr(h));
@@ -181,7 +181,7 @@ begin
     RichEdit1.Lines.Add('   F(x,y) = '+floattostr(GetF(x0,y0)))
   until sqrt(sqr(GetdFdX(x0,y0))+sqr(GetdFdY(x0,y0)))<eps;
 
-  RichEdit1.Lines.Add('________________'+inttostr(i+1)+'-й спуск _________________');
+  RichEdit1.Lines.Add('________________'+inttostr(i+1)+'-Р№ СЃРїСѓСЃРє _________________');
   h:=GlobalMin(x0,y0,a,b);
   RichEdit1.Lines.Add('   h = '+floattostr(h));
   x:=x0-h*GetdFdX(x0,y0);
@@ -198,7 +198,7 @@ begin
   x:=(x+x0)/2;
   y:=(y+y0)/2; 
     
-  RichEdit1.Lines.Add('_____________ Минимум Функции ____________');
+  RichEdit1.Lines.Add('_____________ РњРёРЅРёРјСѓРј Р¤СѓРЅРєС†РёРё ____________');
   RichEdit1.Lines.Add('   x = '+floattostr(x));
   RichEdit1.Lines.Add('   y = '+floattostr(y));
   RichEdit1.Lines.Add('   F(x,y) = '+floattostr(GetF(x,y)));

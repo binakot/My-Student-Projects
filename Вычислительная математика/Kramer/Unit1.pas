@@ -7,8 +7,8 @@ uses
   Dialogs, XPMan, StdCtrls, Grids, Buttons;
 
 type
-  mass=array[1..5] of real;    //Матрица-столбец
-  matrix=array[1..5,1..5] of real;  //Квадратная матрица
+  mass=array[1..5] of real;    //РњР°С‚СЂРёС†Р°-СЃС‚РѕР»Р±РµС†
+  matrix=array[1..5,1..5] of real;  //РљРІР°РґСЂР°С‚РЅР°СЏ РјР°С‚СЂРёС†Р°
 
 type
   TForm1 = class(TForm)
@@ -35,9 +35,9 @@ var
   Form1: TForm1;
 
 var
-  a,exta:matrix;  //Исходная матрица и матрица с замененными столбцами
-  b,x,b1:mass;   //Столбец свободных членов и столбец неизвестных
-  n,st1,st2,k,kk:integer;  //Размерность
+  a,exta:matrix;  //РСЃС…РѕРґРЅР°СЏ РјР°С‚СЂРёС†Р° Рё РјР°С‚СЂРёС†Р° СЃ Р·Р°РјРµРЅРµРЅРЅС‹РјРё СЃС‚РѕР»Р±С†Р°РјРё
+  b,x,b1:mass;   //РЎС‚РѕР»Р±РµС† СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ Рё СЃС‚РѕР»Р±РµС† РЅРµРёР·РІРµСЃС‚РЅС‹С…
+  n,st1,st2,k,kk:integer;  //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ
 
 implementation
 
@@ -103,8 +103,8 @@ begin
   StringGrid1.Cells[3,0]:='j=3';
   StringGrid1.Cells[4,0]:='j=4';
   StringGrid1.Cells[5,0]:='j=5';
-  stringgrid2.Cells[0,0]:='Своб.члены';
-  StringGrid3.Cells[0,0]:='Решения';
+  stringgrid2.Cells[0,0]:='РЎРІРѕР±.С‡Р»РµРЅС‹';
+  StringGrid3.Cells[0,0]:='Р РµС€РµРЅРёСЏ';
   StringGrid3.Cells[1,0]:='X';
   StringGrid3.Cells[0,1]:='1';
   StringGrid3.Cells[0,2]:='2';
@@ -116,7 +116,7 @@ begin
   stringgrid3.ColCount:=2; stringgrid3.RowCount:=2
 end;
 
-procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;  //Применяем размерность
+procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;  //РџСЂРёРјРµРЅСЏРµРј СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ
   Shift: TShiftState);
 begin
   if edit1.text<>'' then
@@ -136,7 +136,7 @@ procedure TForm1.BitBtn1Click(Sender: TObject);
 var i,j:integer; cur,sum:real; OutFile : TextFile;
 begin
 
-//Считываем коэффициенты и свободные члены в массив a и b
+//РЎС‡РёС‚С‹РІР°РµРј РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ Рё СЃРІРѕР±РѕРґРЅС‹Рµ С‡Р»РµРЅС‹ РІ РјР°СЃСЃРёРІ a Рё b
   for i:=1 to n do
   for j:=1 to n do
     begin
@@ -144,7 +144,7 @@ begin
       b[i]:=strtofloat(stringgrid2.Cells[0,i])
     end;
 
-//вычислем по формуле Крамера
+//РІС‹С‡РёСЃР»РµРј РїРѕ С„РѕСЂРјСѓР»Рµ РљСЂР°РјРµСЂР°
    if n=1 then x[1]:=b[1]/a[1,1]
    else
      begin
@@ -159,20 +159,20 @@ begin
 
 
   if n=4 then x[1]:=-x[1];
-//Выводим решение на экран
+//Р’С‹РІРѕРґРёРј СЂРµС€РµРЅРёРµ РЅР° СЌРєСЂР°РЅ
   for i:=1 to n do
   begin
     stringgrid3.Cells[1,i]:=floattostr(x[i])
   end;
 
-//Округления
+//РћРєСЂСѓРіР»РµРЅРёСЏ
   for i:=1 to n do
       stringgrid3.Cells[1,i]:=floattostr(Round(strtofloat(stringgrid3.Cells[1,i])*100)/100);
 
   for i:=1 to n do
       x[i]:=strtofloat(stringgrid3.Cells[1,i]);
 
-//Выполним проверку
+//Р’С‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєСѓ
    for i:=1 to n do
      begin
        sum:=0;
@@ -183,7 +183,7 @@ begin
    for i:=1 to n do
      stringgrid4.Cells[0,i]:=floattostr(b1[i]);
 
-//Вывод в файл
+//Р’С‹РІРѕРґ РІ С„Р°Р№Р»
   AssignFile(OutFile,'out.XLS');
   Rewrite(OutFile);
 

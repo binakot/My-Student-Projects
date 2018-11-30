@@ -54,17 +54,17 @@ type
    
 var
   Form1: TForm1;
-  q1, q2 : extended; //заряды частиц движ. и фикс.
-  m : extended; //масса движ. частицы
-  x1, y1, x2, y2 : extended;  //нач. координаты частиц
-  V : extended; //нач. скорость движ. частицы
+  q1, q2 : extended; //Р·Р°СЂСЏРґС‹ С‡Р°СЃС‚РёС† РґРІРёР¶. Рё С„РёРєСЃ.
+  m : extended; //РјР°СЃСЃР° РґРІРёР¶. С‡Р°СЃС‚РёС†С‹
+  x1, y1, x2, y2 : extended;  //РЅР°С‡. РєРѕРѕСЂРґРёРЅР°С‚С‹ С‡Р°СЃС‚РёС†
+  V : extended; //РЅР°С‡. СЃРєРѕСЂРѕСЃС‚СЊ РґРІРёР¶. С‡Р°СЃС‚РёС†С‹
   Vx, Vy : extended; //
   Ax, Ay : extended; //
   h : extended; //
-  distance : extended; //расстояние между зарядами
-  angle : extended; //угол скорости относительно оси, соед. заряды
+  distance : extended; //СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ Р·Р°СЂСЏРґР°РјРё
+  angle : extended; //СѓРіРѕР» СЃРєРѕСЂРѕСЃС‚Рё РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РѕСЃРё, СЃРѕРµРґ. Р·Р°СЂСЏРґС‹
   deltaT : extended; //
-  unlike : integer; //разноименные или одноименные
+  unlike : integer; //СЂР°Р·РЅРѕРёРјРµРЅРЅС‹Рµ РёР»Рё РѕРґРЅРѕРёРјРµРЅРЅС‹Рµ
   k, E0 : extended; //
   dVx, dVy, dx, dy : extended;
 
@@ -84,7 +84,7 @@ begin
   Image1.Canvas.LineTo(450,455);
   Image1.Canvas.MoveTo(350,450);
   Image1.Canvas.LineTo(450,450);
-  Image1.Canvas.TextOut(390,460,'1 м');
+  Image1.Canvas.TextOut(390,460,'1 Рј');
   E0 := 0.85 * power(10,-12);
 end;
 
@@ -166,7 +166,7 @@ begin
   Image1.Canvas.LineTo(450,455);
   Image1.Canvas.MoveTo(350,450);
   Image1.Canvas.LineTo(450,450);
-  Image1.Canvas.TextOut(390,460,'1 м');
+  Image1.Canvas.TextOut(390,460,'1 Рј');
   q1 := StrToFloat(Edit1.Text);
   m := StrToFloat(Edit2.Text);
   x1 := StrToFloat(Edit3.Text);

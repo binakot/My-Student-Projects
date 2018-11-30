@@ -1,4 +1,4 @@
-//нахождение обратной матрицы
+//РЅР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹
 unit ObratMatrix;
 
 interface
@@ -9,7 +9,7 @@ procedure obrM(var a:Matrix;n:integer);
 
 implementation
 
-//нахождение обратной матрицы
+//РЅР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹
 procedure obrM(var a:Matrix;n:integer);
 var i,j,k:integer; l,e,u:matrix; sum:real;
 begin
@@ -40,7 +40,7 @@ for j:=1 to n do begin
 end;
 end;
 
-//присваиваем значение начальной матрице
+//РїСЂРёСЃРІР°РёРІР°РµРј Р·РЅР°С‡РµРЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕР№ РјР°С‚СЂРёС†Рµ
 for i:=1 to n do
 for j:=1 to n do
   a[i,j]:=u[j,i];

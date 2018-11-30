@@ -143,9 +143,9 @@ begin
   StringGrid1.Cells[3,0]:='j=3';
   StringGrid1.Cells[4,0]:='j=4';
   StringGrid1.Cells[5,0]:='j=5';
-  stringgrid2.Cells[0,0]:='Своб.члены';
-  StringGrid3.Cells[0,0]:='Решения';
-  StringGrid4.Cells[0,0]:='Проверка';
+  stringgrid2.Cells[0,0]:='РЎРІРѕР±.С‡Р»РµРЅС‹';
+  StringGrid3.Cells[0,0]:='Р РµС€РµРЅРёСЏ';
+  StringGrid4.Cells[0,0]:='РџСЂРѕРІРµСЂРєР°';
   StringGrid3.Cells[1,0]:='X';
   StringGrid3.Cells[0,1]:='1';
   StringGrid3.Cells[0,2]:='2';
@@ -199,7 +199,7 @@ begin
   StringGrid8.Cells[0,14]:='13';
 end;
 
-procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;  //Применяем размерность
+procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;  //РџСЂРёРјРµРЅСЏРµРј СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ
   Shift: TShiftState);
 begin
   if edit1.text<>'' then
@@ -215,7 +215,7 @@ begin
     else edit1.text:='';
   end
 end;
-//перемножение матрицы на матрицу
+//РїРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° РјР°С‚СЂРёС†Сѓ
 procedure TForm1.MulMatrix(var c:matrix; a,b:matrix; n:integer);
 var i,j,l:integer; s:real;
 begin
@@ -228,7 +228,7 @@ begin
         c[i,l]:=s;
        end
 end;
-//перемножение матрицы на столбец
+//РїРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° СЃС‚РѕР»Р±РµС†
 procedure TForm1.MulMatrix2(var c:mass; a:matrix; b:mass; n:integer);
 var i,j:integer; sum:real;
 begin
@@ -302,20 +302,20 @@ end;
 procedure TForm1.BitBtn1Click(Sender: TObject);
 var i,j,str:integer; sum,sum1,sum2,cur:real; OutFile:TextFile;
 begin
-//Считываем коэффициенты и свободные члены в массив a и b
+//РЎС‡РёС‚С‹РІР°РµРј РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ Рё СЃРІРѕР±РѕРґРЅС‹Рµ С‡Р»РµРЅС‹ РІ РјР°СЃСЃРёРІ a Рё b
   getdata;
-//проверяем нули на диагонали
+//РїСЂРѕРІРµСЂСЏРµРј РЅСѓР»Рё РЅР° РґРёР°РіРѕРЅР°Р»Рё
   Zero;
-//Получаем транспорированную матрицу
+//РџРѕР»СѓС‡Р°РµРј С‚СЂР°РЅСЃРїРѕСЂРёСЂРѕРІР°РЅРЅСѓСЋ РјР°С‚СЂРёС†Сѓ
   for i:=1 to n do
   for j:=1 to n do
     begin
       at[i,j]:=a[j,i];
       stringgrid7.Cells[j,i]:=floattostr(at[i,j]);
     end;
-//Считаем определитель матрицы А
+//РЎС‡РёС‚Р°РµРј РѕРїСЂРµРґРµР»РёС‚РµР»СЊ РјР°С‚СЂРёС†С‹ Рђ
   if detN(a,n)<>0 then checkbox1.Checked:=true else checkbox1.Checked:=false;
-//Приводим к нормальному виду
+//РџСЂРёРІРѕРґРёРј Рє РЅРѕСЂРјР°Р»СЊРЅРѕРјСѓ РІРёРґСѓ
   MulMatrix(alfa,at,a,n);    //At*A=A
   MulMatrix2(beta,at,b,n);   //At*b=B
 
@@ -333,13 +333,13 @@ begin
 
   for i:=1 to n do
   for j:=1 to n do
-    stringgrid5.Cells[j,i]:=floattostr(alfa[i,j]); //выведем альфа
+    stringgrid5.Cells[j,i]:=floattostr(alfa[i,j]); //РІС‹РІРµРґРµРј Р°Р»СЊС„Р°
   for i:=1 to n do
-    stringgrid6.Cells[0,i]:=floattostr(beta[i]); //выведем бета
-//Считаем нормы
+    stringgrid6.Cells[0,i]:=floattostr(beta[i]); //РІС‹РІРµРґРµРј Р±РµС‚Р°
+//РЎС‡РёС‚Р°РµРј РЅРѕСЂРјС‹
   n1:=norm1(alfa);
   n2:=norm2(alfa);
-  if (n1<1)or(n2<1) then label9.Caption:='Процесс сходится';
+  if (n1<1)or(n2<1) then label9.Caption:='РџСЂРѕС†РµСЃСЃ СЃС…РѕРґРёС‚СЃСЏ';
 //NormAlfa
   normAlfa:=0;
   for i:=1 to n do
@@ -354,7 +354,7 @@ begin
   for i:=1 to n do
     if beta[i]>normBeta then
       normBeta:=beta[i];
-//Считаем методом Зейделя
+//РЎС‡РёС‚Р°РµРј РјРµС‚РѕРґРѕРј Р—РµР№РґРµР»СЏ
   x0:=beta;
   for i:=1 to n do
     x[i]:=0;
@@ -391,12 +391,12 @@ begin
         begin
           Stringgrid8.Cells[i,k+1]:=floattostr(x0[i])
         end;
-//Выводим решение на экран
+//Р’С‹РІРѕРґРёРј СЂРµС€РµРЅРёРµ РЅР° СЌРєСЂР°РЅ
   for i:=1 to n do
   begin
     stringgrid3.Cells[1,i]:=floattostr(x[i])
   end;
-//Выполним проверку
+//Р’С‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєСѓ
    for i:=1 to n do
      begin
        sum:=0;
@@ -406,12 +406,12 @@ begin
      end;
    for i:=1 to n do
      stringgrid4.Cells[0,i]:=floattostr(b1[i]);
-//Невязки
+//РќРµРІСЏР·РєРё
    for i:=1 to n do
      begin
        stringgrid9.Cells[0,i]:=floattostr(roundto(abs(oldb[i]-b1[i]),-6));
      end;
-//Вывод в файл
+//Р’С‹РІРѕРґ РІ С„Р°Р№Р»
   AssignFile(OutFile,'out.XLS');
   Rewrite(OutFile);
 

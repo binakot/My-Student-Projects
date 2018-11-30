@@ -48,12 +48,12 @@ implementation
 
 {$R *.dfm}
               
-procedure TForm1.BitBtn2Click(Sender: TObject);   //Закрытие приложения
+procedure TForm1.BitBtn2Click(Sender: TObject);   //Р—Р°РєСЂС‹С‚РёРµ РїСЂРёР»РѕР¶РµРЅРёСЏ
 begin
   close
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);  //обработка интерфейса
+procedure TForm1.FormCreate(Sender: TObject);  //РѕР±СЂР°Р±РѕС‚РєР° РёРЅС‚РµСЂС„РµР№СЃР°
 begin
   StringGrid1.Cells[0,0]:='a[i,j]';
   StringGrid1.Cells[0,1]:='j=1';
@@ -77,8 +77,8 @@ begin
   StringGrid8.Cells[3,0]:='i=3';
   StringGrid8.Cells[4,0]:='i=4';
   StringGrid8.Cells[5,0]:='i=5';
-  stringgrid2.Cells[0,0]:='Своб.члены';
-  StringGrid7.Cells[0,0]:='Решения';
+  stringgrid2.Cells[0,0]:='РЎРІРѕР±.С‡Р»РµРЅС‹';
+  StringGrid7.Cells[0,0]:='Р РµС€РµРЅРёСЏ';
   StringGrid7.Cells[1,0]:='X';
   StringGrid7.Cells[0,1]:='1';
   StringGrid7.Cells[0,2]:='2';
@@ -92,7 +92,7 @@ begin
 end;
 
 procedure TForm1.Edit1KeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);  //Применение размерности
+  Shift: TShiftState);  //РџСЂРёРјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё
 begin
 if edit1.text<>'' then
   begin
@@ -114,7 +114,7 @@ var i,j,g,k,kk,st:integer; sum,Cur:real;
     OutFile : TextFile;
 begin
 
-//Считываем матрицу А
+//РЎС‡РёС‚С‹РІР°РµРј РјР°С‚СЂРёС†Сѓ Рђ
 
   for i:=1 to n do
   for j:=1 to n do
@@ -122,7 +122,7 @@ begin
         a[i,j]:=strtofloat(stringgrid1.Cells[j,i]);
         b[i]:=strtofloat(stringgrid2.Cells[0,i])
       end;
-//Избавляемся от нулей на диагонали
+//РР·Р±Р°РІР»СЏРµРјСЃСЏ РѕС‚ РЅСѓР»РµР№ РЅР° РґРёР°РіРѕРЅР°Р»Рё
   for i:=1 to n do
     begin
       if a[i,i]=0 then
@@ -136,16 +136,16 @@ begin
             end;
         end;
     end;
-//вычисление определителя
+//РІС‹С‡РёСЃР»РµРЅРёРµ РѕРїСЂРµРґРµР»РёС‚РµР»СЏ
 
   if n=1 then edit2.text:=stringgrid1.cells[1,1]
     else edit2.text:=floattostr(detn(a,n));
 
-//Вычисление треугольных матриц
+//Р’С‹С‡РёСЃР»РµРЅРёРµ С‚СЂРµСѓРіРѕР»СЊРЅС‹С… РјР°С‚СЂРёС†
 
   maketreugol(a,n,t,r);
 
-//Выведем значение на экран T1 и T2
+//Р’С‹РІРµРґРµРј Р·РЅР°С‡РµРЅРёРµ РЅР° СЌРєСЂР°РЅ T1 Рё T2
 
    for i:=1 to n do
    for j:=1 to n do
@@ -154,7 +154,7 @@ begin
        stringgrid4.Cells[i-1,j-1]:=floattostr(r[j,i])
      end;
 
-//Находим обратные матрицы к T1 и T2
+//РќР°С…РѕРґРёРј РѕР±СЂР°С‚РЅС‹Рµ РјР°С‚СЂРёС†С‹ Рє T1 Рё T2
 
    for i:=1 to n do
    for j:=1 to n do
@@ -173,7 +173,7 @@ begin
       r1[i,j]:=curr[i,j]
     end;
 
-//Выводим обратные к треугольным матрицы
+//Р’С‹РІРѕРґРёРј РѕР±СЂР°С‚РЅС‹Рµ Рє С‚СЂРµСѓРіРѕР»СЊРЅС‹Рј РјР°С‚СЂРёС†С‹
 
    for i:=1 to n do
    for j:=1 to n do
@@ -182,7 +182,7 @@ begin
        stringgrid6.Cells[i-1,j-1]:=floattostr(r1[j,i])
      end;
 
-//Найдем обратную исходной матрицу A(-1)=T2(-1)*T1(-1)
+//РќР°Р№РґРµРј РѕР±СЂР°С‚РЅСѓСЋ РёСЃС…РѕРґРЅРѕР№ РјР°С‚СЂРёС†Сѓ A(-1)=T2(-1)*T1(-1)
 
     for i:=1 to n do
     for j:=1 to n do
@@ -193,13 +193,13 @@ begin
         a1[i,j]:=sum
       end;
 
-//Выведем обратную матрицу на экран
+//Р’С‹РІРµРґРµРј РѕР±СЂР°С‚РЅСѓСЋ РјР°С‚СЂРёС†Сѓ РЅР° СЌРєСЂР°РЅ
 
    for i:=1 to n do
    for j:=1 to n do
      stringgrid8.Cells[i,j]:=floattostr(a1[j,i]);
 
-//Находим неизвестные
+//РќР°С…РѕРґРёРј РЅРµРёР·РІРµСЃС‚РЅС‹Рµ
    for i:=1 to n do
      begin
        sum:=0;
@@ -209,17 +209,17 @@ begin
      end;
 
 
-//Выведем неизвестные
+//Р’С‹РІРµРґРµРј РЅРµРёР·РІРµСЃС‚РЅС‹Рµ
    for i:=1 to n do
      stringgrid7.Cells[1,i]:=floattostr(x[i]);
 
-//Округления
+//РћРєСЂСѓРіР»РµРЅРёСЏ
 
   for i:=1 to n do
       stringgrid7.Cells[1,i]:=floattostr(Round(strtofloat(stringgrid7.Cells[1,i])*100)/100);
 
   
-//Выполним проверку
+//Р’С‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєСѓ
    for i:=1 to n do
      begin
        sum:=0;
@@ -230,7 +230,7 @@ begin
    for i:=1 to n do
      stringgrid9.Cells[0,i]:=floattostr(b1[i]);
 
-//Вывод в файл
+//Р’С‹РІРѕРґ РІ С„Р°Р№Р»
   AssignFile(OutFile,'out.XLS');
   Rewrite(OutFile);
 

@@ -7,23 +7,23 @@ uses Grids, math;
 function GetF(x, y: extended):extended;
 procedure ClearGrid(SG: TStringGrid); 
 
-var eps: extended;     //точность
-    x0, y0: extended;  //начальные координаты
-    Xn: extended;     //конечная координата
-    h: extended;      //шаг
-    mas: array[1..4,1..2] of extended;    //массив для метода Адамса
-    y1,pr,kr,f0: extended;                   //производная от y, прогноз, коррекция
+var eps: extended;     //С‚РѕС‡РЅРѕСЃС‚СЊ
+    x0, y0: extended;  //РЅР°С‡Р°Р»СЊРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹
+    Xn: extended;     //РєРѕРЅРµС‡РЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р°
+    h: extended;      //С€Р°Рі
+    mas: array[1..4,1..2] of extended;    //РјР°СЃСЃРёРІ РґР»СЏ РјРµС‚РѕРґР° РђРґР°РјСЃР°
+    y1,pr,kr,f0: extended;                   //РїСЂРѕРёР·РІРѕРґРЅР°СЏ РѕС‚ y, РїСЂРѕРіРЅРѕР·, РєРѕСЂСЂРµРєС†РёСЏ
     res: extended;
 
 implementation
-//нахождение значений функций
+//РЅР°С…РѕР¶РґРµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёР№
 function GetF(x, y: extended):extended;
 var value: extended;
 begin
   value:= y/x + x + 1;
   result:= value;
 end;
-//очистка StringGrid
+//РѕС‡РёСЃС‚РєР° StringGrid
 procedure ClearGrid(SG: TStringGrid);
 var i: integer;
 begin

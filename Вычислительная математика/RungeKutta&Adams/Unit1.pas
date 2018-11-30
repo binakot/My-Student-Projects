@@ -52,54 +52,54 @@ implementation
 uses Unit2, Unit3, Unit4, Unit5, Unit6;
 
 {$R *.dfm}
-//Метод Рунге-Кутта
+//РњРµС‚РѕРґ Р СѓРЅРіРµ-РљСѓС‚С‚Р°
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  res:= strtofloat(edit7.text);   //Получаем истинное значение
-  eps:= strtofloat(edit3.text);   //Получаем точность
-  x0:= strtofloat(edit5.text);    //Получаем x0
-  y0:= strtofloat(edit4.text);    //Получаем y0
-  Xn:= strtofloat(edit2.text);    //Получаем Xn
+  res:= strtofloat(edit7.text);   //РџРѕР»СѓС‡Р°РµРј РёСЃС‚РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+  eps:= strtofloat(edit3.text);   //РџРѕР»СѓС‡Р°РµРј С‚РѕС‡РЅРѕСЃС‚СЊ
+  x0:= strtofloat(edit5.text);    //РџРѕР»СѓС‡Р°РµРј x0
+  y0:= strtofloat(edit4.text);    //РџРѕР»СѓС‡Р°РµРј y0
+  Xn:= strtofloat(edit2.text);    //РџРѕР»СѓС‡Р°РµРј Xn
   Form2.ShowModal;
 end;
-//Метод Адамса
+//РњРµС‚РѕРґ РђРґР°РјСЃР°
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  res:= strtofloat(edit7.text);   //Получаем истинное значение
-  eps:= strtofloat(edit3.text);   //Получаем точность
-  x0:= strtofloat(edit5.text);    //Получаем x0
-  y0:= strtofloat(edit4.text);    //Получаем y0
-  Xn:= strtofloat(edit2.text);    //Получаем Xn
+  res:= strtofloat(edit7.text);   //РџРѕР»СѓС‡Р°РµРј РёСЃС‚РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+  eps:= strtofloat(edit3.text);   //РџРѕР»СѓС‡Р°РµРј С‚РѕС‡РЅРѕСЃС‚СЊ
+  x0:= strtofloat(edit5.text);    //РџРѕР»СѓС‡Р°РµРј x0
+  y0:= strtofloat(edit4.text);    //РџРѕР»СѓС‡Р°РµРј y0
+  Xn:= strtofloat(edit2.text);    //РџРѕР»СѓС‡Р°РµРј Xn
   Form3.ShowModal;
 end;
-//Сравнение методов
+//РЎСЂР°РІРЅРµРЅРёРµ РјРµС‚РѕРґРѕРІ
 procedure TForm1.Button3Click(Sender: TObject);
 begin
-  res:= strtofloat(edit7.text);   //Получаем истинное значение
-  eps:= strtofloat(edit3.text);   //Получаем точность
-  x0:= strtofloat(edit5.text);    //Получаем x0
-  y0:= strtofloat(edit4.text);    //Получаем y0
-  Xn:= strtofloat(edit2.text);    //Получаем Xn
+  res:= strtofloat(edit7.text);   //РџРѕР»СѓС‡Р°РµРј РёСЃС‚РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+  eps:= strtofloat(edit3.text);   //РџРѕР»СѓС‡Р°РµРј С‚РѕС‡РЅРѕСЃС‚СЊ
+  x0:= strtofloat(edit5.text);    //РџРѕР»СѓС‡Р°РµРј x0
+  y0:= strtofloat(edit4.text);    //РџРѕР»СѓС‡Р°РµРј y0
+  Xn:= strtofloat(edit2.text);    //РџРѕР»СѓС‡Р°РµРј Xn
   Form6.ShowModal;
 end;
-//метод прогноза и коррекции
+//РјРµС‚РѕРґ РїСЂРѕРіРЅРѕР·Р° Рё РєРѕСЂСЂРµРєС†РёРё
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-  res:= strtofloat(edit7.text);   //Получаем истинное значение
-  eps:= strtofloat(edit3.text);   //Получаем точность
-  x0:= strtofloat(edit5.text);    //Получаем x0
-  y0:= strtofloat(edit4.text);    //Получаем y0
-  Xn:= strtofloat(edit2.text);    //Получаем Xn
+  res:= strtofloat(edit7.text);   //РџРѕР»СѓС‡Р°РµРј РёСЃС‚РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+  eps:= strtofloat(edit3.text);   //РџРѕР»СѓС‡Р°РµРј С‚РѕС‡РЅРѕСЃС‚СЊ
+  x0:= strtofloat(edit5.text);    //РџРѕР»СѓС‡Р°РµРј x0
+  y0:= strtofloat(edit4.text);    //РџРѕР»СѓС‡Р°РµРј y0
+  Xn:= strtofloat(edit2.text);    //РџРѕР»СѓС‡Р°РµРј Xn
   Form4.ShowModal;
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
 begin
-  res:= strtofloat(edit7.text);   //Получаем истинное значение
-  eps:= strtofloat(edit3.text);   //Получаем точность
-  x0:= strtofloat(edit5.text);    //Получаем x0
-  y0:= strtofloat(edit4.text);    //Получаем y0
-  Xn:= strtofloat(edit2.text);    //Получаем Xn
+  res:= strtofloat(edit7.text);   //РџРѕР»СѓС‡Р°РµРј РёСЃС‚РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+  eps:= strtofloat(edit3.text);   //РџРѕР»СѓС‡Р°РµРј С‚РѕС‡РЅРѕСЃС‚СЊ
+  x0:= strtofloat(edit5.text);    //РџРѕР»СѓС‡Р°РµРј x0
+  y0:= strtofloat(edit4.text);    //РџРѕР»СѓС‡Р°РµРј y0
+  Xn:= strtofloat(edit2.text);    //РџРѕР»СѓС‡Р°РµРј Xn
   Form5.ShowModal;
 end;
 

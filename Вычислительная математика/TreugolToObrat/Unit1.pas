@@ -124,23 +124,23 @@ begin
     if (n>=1)and(n<=5) then
       begin
         statictext1.Caption:='';
-        stringgrid1.ColCount:=n; stringgrid1.RowCount:=n;   //применение
-        stringgrid2.ColCount:=n; stringgrid2.RowCount:=n;   //размерности
-        stringgrid3.ColCount:=n; stringgrid3.RowCount:=n;   //для
-        stringgrid4.ColCount:=n; stringgrid4.RowCount:=n;   //матриц
+        stringgrid1.ColCount:=n; stringgrid1.RowCount:=n;   //РїСЂРёРјРµРЅРµРЅРёРµ
+        stringgrid2.ColCount:=n; stringgrid2.RowCount:=n;   //СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё
+        stringgrid3.ColCount:=n; stringgrid3.RowCount:=n;   //РґР»СЏ
+        stringgrid4.ColCount:=n; stringgrid4.RowCount:=n;   //РјР°С‚СЂРёС†
         stringgrid5.ColCount:=n; stringgrid5.RowCount:=n;   //
         stringgrid6.ColCount:=n; stringgrid6.RowCount:=n;   //
         stringgrid7.ColCount:=n; stringgrid7.RowCount:=n;   //
         stringgrid8.ColCount:=n; stringgrid8.RowCount:=n;   //
         stringgrid9.ColCount:=n; stringgrid9.RowCount:=n;   //
         stringgrid10.ColCount:=n; stringgrid10.RowCount:=n; //
-        CheckBox1.Checked:=true                             //Проверка размерности +
+        CheckBox1.Checked:=true                             //РџСЂРѕРІРµСЂРєР° СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё +
       end
     else
       begin
-        CheckBox1.Checked:=false;  //Проверка размерности -
+        CheckBox1.Checked:=false;  //РџСЂРѕРІРµСЂРєР° СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё -
         edit1.Text:='';
-        statictext1.Caption:='Размерность не меньше 1 и не больше 5!'
+        statictext1.Caption:='Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ РЅРµ РјРµРЅСЊС€Рµ 1 Рё РЅРµ Р±РѕР»СЊС€Рµ 5!'
       end
   end
 end;
@@ -150,30 +150,30 @@ var i,j,g,k,kk:integer; sum:real;
     curT, curR:matrix;
 begin
 
-//Считываем матрицу А
+//РЎС‡РёС‚С‹РІР°РµРј РјР°С‚СЂРёС†Сѓ Рђ
 
-  checkbox2.Checked:=true; //Проверка значений матрицы +
+  checkbox2.Checked:=true; //РџСЂРѕРІРµСЂРєР° Р·РЅР°С‡РµРЅРёР№ РјР°С‚СЂРёС†С‹ +
   for i:=1 to n do
   for j:=1 to n do
     if stringgrid1.Cells[i-1,j-1]='' then
       begin
-        checkbox2.Checked:=false; //Проверка значений матрицы -
-        statictext1.Caption:='Введите все значения матрицы!'
+        checkbox2.Checked:=false; //РџСЂРѕРІРµСЂРєР° Р·РЅР°С‡РµРЅРёР№ РјР°С‚СЂРёС†С‹ -
+        statictext1.Caption:='Р’РІРµРґРёС‚Рµ РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ РјР°С‚СЂРёС†С‹!'
       end
     else
       a[j,i]:=strtofloat(stringgrid1.Cells[i-1,j-1]);
 
-//вычисление определителя
+//РІС‹С‡РёСЃР»РµРЅРёРµ РѕРїСЂРµРґРµР»РёС‚РµР»СЏ
 
   edit2.text:=floattostr(detn(a,n));
-  if edit2.text<>'0' then checkbox3.Checked:=true  //Проверка определителя
+  if edit2.text<>'0' then checkbox3.Checked:=true  //РџСЂРѕРІРµСЂРєР° РѕРїСЂРµРґРµР»РёС‚РµР»СЏ
   else checkbox3.Checked:=false;
 
-//Вычисление треугольных матриц
+//Р’С‹С‡РёСЃР»РµРЅРёРµ С‚СЂРµСѓРіРѕР»СЊРЅС‹С… РјР°С‚СЂРёС†
 
   maketreugol(a,n,t,r);
 
-//Выведем значение на экран T1 и T2
+//Р’С‹РІРµРґРµРј Р·РЅР°С‡РµРЅРёРµ РЅР° СЌРєСЂР°РЅ T1 Рё T2
 
    for i:=1 to n do
    for j:=1 to n do
@@ -182,7 +182,7 @@ begin
        stringgrid4.Cells[i-1,j-1]:=floattostr(r[j,i])
      end;
 
-//Проверка A=T1*T2
+//РџСЂРѕРІРµСЂРєР° A=T1*T2
 
     for i:=1 to n do
     for j:=1 to n do
@@ -193,7 +193,7 @@ begin
         aa[i,j]:=sum
       end;
 
-  //Выведем T1*T2 на экран
+  //Р’С‹РІРµРґРµРј T1*T2 РЅР° СЌРєСЂР°РЅ
 
    for i:=1 to n do
    for j:=1 to n do
@@ -201,12 +201,12 @@ begin
        stringgrid7.Cells[i-1,j-1]:=floattostr(aa[j,i])
      end;
 
-    checkbox4.Checked:=true;              //Проверка равенства A=T1*T2 +
+    checkbox4.Checked:=true;              //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° A=T1*T2 +
     for i:=1 to n do
     for j:=1 to n do
-      if a[i,j]<>aa[i,j] then checkbox4.Checked:=false;   //Проверка равенства A=T1*T2 -
+      if a[i,j]<>aa[i,j] then checkbox4.Checked:=false;   //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° A=T1*T2 -
 
-//Находим обратные матрицы к T1 и T2
+//РќР°С…РѕРґРёРј РѕР±СЂР°С‚РЅС‹Рµ РјР°С‚СЂРёС†С‹ Рє T1 Рё T2
 
    for i:=1 to n do
    for j:=1 to n do
@@ -225,9 +225,9 @@ begin
       r1[i,j]:=curr[i,j]
     end;
 
-//Выполним проверку T1*T1(-1)=E, T2*T2(-1)=E
+//Р’С‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєСѓ T1*T1(-1)=E, T2*T2(-1)=E
 
-  //Проверка T1*T1(-1)=E
+  //РџСЂРѕРІРµСЂРєР° T1*T1(-1)=E
 
     for i:=1 to n do
     for j:=1 to n do
@@ -238,7 +238,7 @@ begin
         aa[j,i]:=sum
       end;
 
-  //Выведем T1*T1(-1) на экран
+  //Р’С‹РІРµРґРµРј T1*T1(-1) РЅР° СЌРєСЂР°РЅ
 
    for i:=1 to n do
    for j:=1 to n do
@@ -246,17 +246,17 @@ begin
        stringgrid8.Cells[i-1,j-1]:=floattostr(aa[j,i])
      end;
 
-    checkbox5.Checked:=true;              //Проверка равенства T1*T1(-1)=E +
+    checkbox5.Checked:=true;              //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T1*T1(-1)=E +
     for i:=1 to n do
     for j:=1 to n do
       begin
         if i=j then
-          if aa[i,j]<>1 then checkbox5.Checked:=false;   //Проверка равенства T1*T1(-1)=E -
+          if aa[i,j]<>1 then checkbox5.Checked:=false;   //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T1*T1(-1)=E -
         if i<>j then
-          if aa[i,j]<>0 then checkbox5.Checked:=false    //Проверка равенства T1*T1(-1)=E -
+          if aa[i,j]<>0 then checkbox5.Checked:=false    //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T1*T1(-1)=E -
       end;
 
-  //Проверка T2*T2(-1)=E
+  //РџСЂРѕРІРµСЂРєР° T2*T2(-1)=E
 
     for i:=1 to n do
     for j:=1 to n do
@@ -267,7 +267,7 @@ begin
         aa[i,j]:=sum
       end;
 
-  //Выведем T1*T1(-1) на экран
+  //Р’С‹РІРµРґРµРј T1*T1(-1) РЅР° СЌРєСЂР°РЅ
 
    for i:=1 to n do
    for j:=1 to n do
@@ -275,17 +275,17 @@ begin
        stringgrid9.Cells[i-1,j-1]:=floattostr(aa[j,i])
      end;
 
-    checkbox6.Checked:=true;              //Проверка равенства T2*T2(-1)=E +
+    checkbox6.Checked:=true;              //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T2*T2(-1)=E +
     for i:=1 to n do
     for j:=1 to n do
       begin
         if i=j then
-          if aa[i,j]<>1 then checkbox6.Checked:=false;   //Проверка равенства T2*T2(-1)=E -
+          if aa[i,j]<>1 then checkbox6.Checked:=false;   //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T2*T2(-1)=E -
         if i<>j then
-          if aa[i,j]<>0 then checkbox6.Checked:=false    //Проверка равенства T2*T2(-1)=E -
+          if aa[i,j]<>0 then checkbox6.Checked:=false    //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T2*T2(-1)=E -
       end;
 
-//Выводим обратные к треугольным матрицы
+//Р’С‹РІРѕРґРёРј РѕР±СЂР°С‚РЅС‹Рµ Рє С‚СЂРµСѓРіРѕР»СЊРЅС‹Рј РјР°С‚СЂРёС†С‹
 
    for i:=1 to n do
    for j:=1 to n do
@@ -294,7 +294,7 @@ begin
        stringgrid6.Cells[i-1,j-1]:=floattostr(r1[j,i])
      end;
 
-//Найдем обратную исходной матрицу A(-1)=T2(-1)*T1(-1)
+//РќР°Р№РґРµРј РѕР±СЂР°С‚РЅСѓСЋ РёСЃС…РѕРґРЅРѕР№ РјР°С‚СЂРёС†Сѓ A(-1)=T2(-1)*T1(-1)
 
     for i:=1 to n do
     for j:=1 to n do
@@ -305,13 +305,13 @@ begin
         a1[i,j]:=sum
       end;
 
-//Выведем обратную матрицу на экран
+//Р’С‹РІРµРґРµРј РѕР±СЂР°С‚РЅСѓСЋ РјР°С‚СЂРёС†Сѓ РЅР° СЌРєСЂР°РЅ
 
    for i:=1 to n do
    for j:=1 to n do
      stringgrid2.Cells[i-1,j-1]:=floattostr(a1[j,i]);
 
-//Выполним проверку A*A(-1)=E
+//Р’С‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєСѓ A*A(-1)=E
 
     for i:=1 to n do
     for j:=1 to n do
@@ -322,7 +322,7 @@ begin
         aa[i,j]:=sum
       end;
 
-    //Выведем A1*A1(-1) на экран
+    //Р’С‹РІРµРґРµРј A1*A1(-1) РЅР° СЌРєСЂР°РЅ
 
    for i:=1 to n do
    for j:=1 to n do
@@ -330,19 +330,19 @@ begin
        stringgrid10.Cells[i-1,j-1]:=floattostr(aa[j,i])
      end;
 
-   //Теперь сравним эту матрицу с единичной
+   //РўРµРїРµСЂСЊ СЃСЂР°РІРЅРёРј СЌС‚Сѓ РјР°С‚СЂРёС†Сѓ СЃ РµРґРёРЅРёС‡РЅРѕР№
 
     checkbox7.Checked:=true;
     for i:=1 to n do
     for j:=1 to n do
       begin
         if i=j then
-          if aa[i,j]<>1 then checkbox7.Checked:=false;   //Проверка равенства T2*T2(-1)=E -
+          if aa[i,j]<>1 then checkbox7.Checked:=false;   //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T2*T2(-1)=E -
         if i<>j then
-          if aa[i,j]<>0 then checkbox7.Checked:=false    //Проверка равенства T2*T2(-1)=E -
+          if aa[i,j]<>0 then checkbox7.Checked:=false    //РџСЂРѕРІРµСЂРєР° СЂР°РІРµРЅСЃС‚РІР° T2*T2(-1)=E -
       end;
 
-//Округления
+//РћРєСЂСѓРіР»РµРЅРёСЏ
 
   for i:=1 to n do
   for j:=1 to n do

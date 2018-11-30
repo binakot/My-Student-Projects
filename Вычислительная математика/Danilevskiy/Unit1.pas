@@ -123,48 +123,48 @@ var i,j,k,rs,re:integer;
 begin
   rs:=0;
   re:=3;
-  GetA;    //считваем матрицу A
+  GetA;    //СЃС‡РёС‚РІР°РµРј РјР°С‚СЂРёС†Сѓ A
   zero(a1);     
-  ControlSum1(1,a);      //считаем сигма1
-  DisplayMat(a,rs,re);   //Выводим
+  ControlSum1(1,a);      //СЃС‡РёС‚Р°РµРј СЃРёРіРјР°1
+  DisplayMat(a,rs,re);   //Р’С‹РІРѕРґРёРј
   zero(s);
   zero(sm);
-  a1:=a;        //сохраняем полученную матрицу
+  a1:=a;        //СЃРѕС…СЂР°РЅСЏРµРј РїРѕР»СѓС‡РµРЅРЅСѓСЋ РјР°С‚СЂРёС†Сѓ
   acur:=a;
   for i:=n downto 2 do
     begin
-      zero(M);          //обнуляем M
-      GetM(i,a);        //вычисляем M из А
+      zero(M);          //РѕР±РЅСѓР»СЏРµРј M
+      GetM(i,a);        //РІС‹С‡РёСЃР»СЏРµРј M РёР· Рђ
       Mul(a,M,b);       //B = A * M
-      round(m);         //округляем M
+      round(m);         //РѕРєСЂСѓРіР»СЏРµРј M
       for j:=1 to n do
-        sm[i-1,j]:=m[i-1,j];   //сохрняем M в Ms
-      DisplayM(m,rs+5,i-1);    //выведем на экран
-      ControlSum1(1,b);        //считаем сигма1
-      ControlSum2(i,b);        //считаем сигма2
+        sm[i-1,j]:=m[i-1,j];   //СЃРѕС…СЂРЅСЏРµРј M РІ Ms
+      DisplayM(m,rs+5,i-1);    //РІС‹РІРµРґРµРј РЅР° СЌРєСЂР°РЅ
+      ControlSum1(1,b);        //СЃС‡РёС‚Р°РµРј СЃРёРіРјР°1
+      ControlSum2(i,b);        //СЃС‡РёС‚Р°РµРј СЃРёРіРјР°2
       rs:=rs+6;
       re:=re+6;
-      zero(iM);                //обнуляем iM
-      GetInvM(i,a);            //получаем обратную M из А
+      zero(iM);                //РѕР±РЅСѓР»СЏРµРј iM
+      GetInvM(i,a);            //РїРѕР»СѓС‡Р°РµРј РѕР±СЂР°С‚РЅСѓСЋ M РёР· Рђ
       Mul(iM,b,c);             //C = iM * B
-      round(im);               //округляем iM
-      DisplayIM(im,rs,re,i-1); //выведем на экран
-      round(b);                //округляем B
-      DisplayMat(b,rs,re);     //выведем на экран
-      zero(a);                 //обнуляем А
+      round(im);               //РѕРєСЂСѓРіР»СЏРµРј iM
+      DisplayIM(im,rs,re,i-1); //РІС‹РІРµРґРµРј РЅР° СЌРєСЂР°РЅ
+      round(b);                //РѕРєСЂСѓРіР»СЏРµРј B
+      DisplayMat(b,rs,re);     //РІС‹РІРµРґРµРј РЅР° СЌРєСЂР°РЅ
+      zero(a);                 //РѕР±РЅСѓР»СЏРµРј Рђ
       a1:=b;
       a:=c;
-      zero(b);                 //обнуляем B
-      zero(c);                 //обнуляем C
+      zero(b);                 //РѕР±РЅСѓР»СЏРµРј B
+      zero(c);                 //РѕР±РЅСѓР»СЏРµРј C
     end;
-  round(a);                    //округляем A
-  ControlSum1(1,a);            //считаем сигма1
+  round(a);                    //РѕРєСЂСѓРіР»СЏРµРј A
+  ControlSum1(1,a);            //СЃС‡РёС‚Р°РµРј СЃРёРіРјР°1
   for i:=2 to 6 do
     stringgrid2.Cells[i,22]:=floattostr(a[1,i-1]);
-  GetEigenValues;              //Собственные значения
+  GetEigenValues;              //РЎРѕР±СЃС‚РІРµРЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
   edit2.Text:=floattostr(lm[1]+lm[2]+lm[3]+lm[4]);
   zero(x);
-  GetEigenVectors;             //Собственный вектор
+  GetEigenVectors;             //РЎРѕР±СЃС‚РІРµРЅРЅС‹Р№ РІРµРєС‚РѕСЂ
   for j:=1 to n do
   for k:=1 to n do
     x[j,1]:=x[j,1]+acur[j,k]*sa[1,k];
@@ -177,7 +177,7 @@ begin
       stringgrid7.Cells[i-1,0]:=floattostr(x[i,1]);
     end;
 end;
-//Считываем матрицу A
+//РЎС‡РёС‚С‹РІР°РµРј РјР°С‚СЂРёС†Сѓ A
 procedure TForm1.GetA;
 var i,j:byte;
 begin
@@ -188,7 +188,7 @@ begin
     else
       a[j,i]:=0
 end;
-//Собственные значения
+//РЎРѕР±СЃС‚РІРµРЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 procedure TForm1.GetEigenValues;
 var i:integer;
 begin
@@ -196,7 +196,7 @@ begin
   for i:=1 to n do
     stringgrid3.Cells[i-1,0]:=floattostr(roundto(lm[i],-3))
 end;
-//Собственный вектор
+//РЎРѕР±СЃС‚РІРµРЅРЅС‹Р№ РІРµРєС‚РѕСЂ
 procedure TForm1.GetEigenVectors;
 var i,j,k:integer;
     t:real;
@@ -224,7 +224,7 @@ begin
      stringgrid5.Cells[i-1,j-1]:=floattostr(roundto(sp[i,j],-3));
    stringgrid2.Cells[7,14]:='0';stringgrid2.Cells[7,19]:='0'
 end;
-//Получаем матрицу M
+//РџРѕР»СѓС‡Р°РµРј РјР°С‚СЂРёС†Сѓ M
 procedure TForm1.GetM(r:integer;x:mat);
 var i:integer;
     s:real;
@@ -240,7 +240,7 @@ begin
     s:=s+m[r-1,i];
   m[r-1,n+1]:=s-m[r-1,r-1]-1
 end;
-//Получаем обратную матрицу M
+//РџРѕР»СѓС‡Р°РµРј РѕР±СЂР°С‚РЅСѓСЋ РјР°С‚СЂРёС†Сѓ M
 procedure TForm1.GetInvM(r:integer;x:mat);
 var i:integer;
     s:real;
@@ -254,7 +254,7 @@ begin
     s:=s+im[r-1,i];
   im[r-1,n+1]:=s
 end;
-//перемножение матриц
+//РїРµСЂРµРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
 procedure TForm1.Mul(x,y:mat;var z:mat);
 var i,j,k:integer;
 begin
@@ -263,7 +263,7 @@ begin
   for k:=1 to n do
     z[i,j]:=z[i,j]+x[i,k]*y[k,j]
 end;
-//Сигма 1
+//РЎРёРіРјР° 1
 procedure TForm1.ControlSum1(r:integer;var x:mat);
 var i,j:integer;
 s:real;
@@ -277,14 +277,14 @@ begin
       s:=0
     end
 end;
-//Сигма 2
+//РЎРёРіРјР° 2
 procedure TForm1.ControlSum2(r:integer;var x:mat);
 var i:integer;
 begin
   for i:=1 to n do
     x[i,6]:=a1[i,5]+a1[i,r-1]*m[r-1,5]
 end;
-//Вывод на экран матрицы
+//Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ РјР°С‚СЂРёС†С‹
 procedure TForm1.DisplayMat(x:mat;rs,re:integer);
 var i,j,p,q:integer;
 begin
@@ -301,7 +301,7 @@ begin
       inc(p)
     end;
 end;
-//Вывод на экран матрицы
+//Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ РјР°С‚СЂРёС†С‹
 procedure TForm1.DisplayM(x:mat; r,rm:integer);
 var i:integer;
 begin
@@ -309,7 +309,7 @@ begin
     stringgrid2.Cells[i,r]:=floattostr(roundto(x[rm,i-1],-3));
   stringgrid2.Cells[rm+1,r]:=stringgrid2.Cells[rm+1,r]+'   - 1'
 end;
-//Вывод на экран матрицы
+//Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ РјР°С‚СЂРёС†С‹
 procedure TForm1.DisplayIM(x:mat; rs,re,rm:integer);
 var i,j:integer;
 begin
@@ -322,7 +322,7 @@ begin
       for i:=2 to 6 do
       stringgrid2.Cells[i,rs-2]:=floattostr(roundto(x[rm,i-1],-3));
 end;
-//округление матрицы
+//РѕРєСЂСѓРіР»РµРЅРёРµ РјР°С‚СЂРёС†С‹
 procedure TForm1.round(var x:mat);
 var i,j:integer;
 begin
@@ -330,7 +330,7 @@ begin
   for j:=1 to n+1 do
     x[i,j]:=RoundTo(x[i,j],-6)
 end;
-//отбрасывание дробной части у элементов матрицы
+//РѕС‚Р±СЂР°СЃС‹РІР°РЅРёРµ РґСЂРѕР±РЅРѕР№ С‡Р°СЃС‚Рё Сѓ СЌР»РµРјРµРЅС‚РѕРІ РјР°С‚СЂРёС†С‹
 procedure TForm1.truncM(var x:mat);
 var i,j:integer;
 begin
@@ -338,7 +338,7 @@ begin
   for j:=1 to n do
     x[i,j]:=RoundTo(x[i,j],-1)
 end;
-//обнуление матрицы
+//РѕР±РЅСѓР»РµРЅРёРµ РјР°С‚СЂРёС†С‹
 procedure TForm1.zero(var x:mat);
 var i,j:integer;
 begin
@@ -347,7 +347,7 @@ begin
     x[i,j]:=0
 end;
 
-//Метод хорд и касательных
+//РњРµС‚РѕРґ С…РѕСЂРґ Рё РєР°СЃР°С‚РµР»СЊРЅС‹С…
 procedure TForm1.Separat;
 var a,b,Value1,Value2:real;
 f:boolean;
@@ -365,13 +365,13 @@ begin
         begin
           inc(count);
           RichEdit1.Lines.Add('***********************************************************');
-          RichEdit1.Lines.Add('Поиск приближенного значения корня:');
+          RichEdit1.Lines.Add('РџРѕРёСЃРє РїСЂРёР±Р»РёР¶РµРЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РєРѕСЂРЅСЏ:');
           Finder(a,a+Step);
           f:=false
         end;
       a:=a+Step
     end;
-  if f then  RichEdit1.Lines.Add('На заданном промежутке корней не найдено');
+  if f then  RichEdit1.Lines.Add('РќР° Р·Р°РґР°РЅРЅРѕРј РїСЂРѕРјРµР¶СѓС‚РєРµ РєРѕСЂРЅРµР№ РЅРµ РЅР°Р№РґРµРЅРѕ');
 end;
 
 function TForm1.GetValue(x:Real):Real;
@@ -388,9 +388,9 @@ var
 begin
    a1:=LBorder; b1:=RBorder;
    Step:=0;
-   RichEdit1.Lines.Add(' Номер итерации -> '+IntToStr(Step));
-   RichEdit1.Lines.Add('       Левая граница = '+FloatToStr(a1));
-   RichEdit1.Lines.Add('       Правая граница = '+FloatToStr(b1));
+   RichEdit1.Lines.Add(' РќРѕРјРµСЂ РёС‚РµСЂР°С†РёРё -> '+IntToStr(Step));
+   RichEdit1.Lines.Add('       Р›РµРІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(a1));
+   RichEdit1.Lines.Add('       РџСЂР°РІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(b1));
 
    FirstDer:=GetFirstDer((a1+b1)/2);
    SecondDer:=GetSecondDer((a1+b1)/2);
@@ -403,9 +403,9 @@ begin
          a1:=a2;
          b1:=b2;
          Inc(Step);
-         RichEdit1.Lines.Add(' Номер итерации -> '+IntToStr(Step));
-         RichEdit1.Lines.Add('       Левая граница = '+FloatToStr(a1));
-         RichEdit1.Lines.Add('       Правая граница = '+FloatToStr(b1));
+         RichEdit1.Lines.Add(' РќРѕРјРµСЂ РёС‚РµСЂР°С†РёРё -> '+IntToStr(Step));
+         RichEdit1.Lines.Add('       Р›РµРІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(a1));
+         RichEdit1.Lines.Add('       РџСЂР°РІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(b1));
        end
    else
      while Abs(b1-a1)>sen do
@@ -415,15 +415,15 @@ begin
          a1:=a2;
          b1:=b2;
          Inc(Step);
-         RichEdit1.Lines.Add(' Номер итерации -> '+IntToStr(Step));
-         RichEdit1.Lines.Add('       Левая граница = '+FloatToStr(a1));
-         RichEdit1.Lines.Add('       Правая граница = '+FloatToStr(b1));
+         RichEdit1.Lines.Add(' РќРѕРјРµСЂ РёС‚РµСЂР°С†РёРё -> '+IntToStr(Step));
+         RichEdit1.Lines.Add('       Р›РµРІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(a1));
+         RichEdit1.Lines.Add('       РџСЂР°РІР°СЏ РіСЂР°РЅРёС†Р° = '+FloatToStr(b1));
       end;
    Value:=(a1+b1)/2;
    lm[count]:=Value;
-   RichEdit1.Lines.Add('   --->Приближенное значение корня = '+FloatToStr(value));
+   RichEdit1.Lines.Add('   --->РџСЂРёР±Р»РёР¶РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РєРѕСЂРЅСЏ = '+FloatToStr(value));
    Nev:=GetValue(value);
-   RichEdit1.Lines.Add('   --->Невязка = '+FloatToStr(Nev))
+   RichEdit1.Lines.Add('   --->РќРµРІСЏР·РєР° = '+FloatToStr(Nev))
 end;
 
 function TForm1.GetFirstDer(x:Real):Real;

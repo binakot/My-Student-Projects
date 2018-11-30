@@ -50,12 +50,12 @@ begin
   with StringGrid1 do
     begin
       RowCount:=1;
-      Cells[0,0]:= 'Метод';
-      Cells[1,0]:= 'Порядок';
-      Cells[2,0]:= 'Шаг';
-      Cells[3,0]:= 'Погрешность';
-      Cells[4,0]:= 'Итерация';
-      Cells[5,0]:= 'Время'
+      Cells[0,0]:= 'РњРµС‚РѕРґ';
+      Cells[1,0]:= 'РџРѕСЂСЏРґРѕРє';
+      Cells[2,0]:= 'РЁР°Рі';
+      Cells[3,0]:= 'РџРѕРіСЂРµС€РЅРѕСЃС‚СЊ';
+      Cells[4,0]:= 'РС‚РµСЂР°С†РёСЏ';
+      Cells[5,0]:= 'Р’СЂРµРјСЏ'
     end;
 //------------------------------------------------------------------
   StringGrid1.RowCount:= StringGrid1.RowCount + 1;
@@ -74,7 +74,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,1]:= 'Рунге-Кутты';
+      Cells[0,1]:= 'Р СѓРЅРіРµ-РљСѓС‚С‚С‹';
       Cells[1,1]:= '3';
       Cells[2,1]:= FloatToStr(curH);
       Cells[3,1]:= FloatToStr(RoundTo(abs(res-y),-18));
@@ -98,9 +98,9 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,2]:= 'Рунге-Кутты';
+      Cells[0,2]:= 'Р СѓРЅРіРµ-РљСѓС‚С‚С‹';
       Cells[1,2]:= '3';
-      Cells[2,2]:= 'Авто';
+      Cells[2,2]:= 'РђРІС‚Рѕ';
       Cells[3,2]:= FloatToStr(RoundTo(abs(res-y),-18));
       Cells[4,2]:= FloatToStr(i);
       Cells[5,2]:= IntToStr(time2-time1);
@@ -122,7 +122,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,3]:= 'Рунге-Кутты';
+      Cells[0,3]:= 'Р СѓРЅРіРµ-РљСѓС‚С‚С‹';
       Cells[1,3]:= '4';
       Cells[2,3]:= FloatToStr(curH);
       Cells[3,3]:= FloatToStr(RoundTo(abs(res-y),-18));
@@ -146,9 +146,9 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,4]:= 'Рунге-Кутты';
+      Cells[0,4]:= 'Р СѓРЅРіРµ-РљСѓС‚С‚С‹';
       Cells[1,4]:= '4';
-      Cells[2,4]:= 'Авто';
+      Cells[2,4]:= 'РђРІС‚Рѕ';
       Cells[3,4]:= FloatToStr(RoundTo(abs(res-y),-18));
       Cells[4,4]:= FloatToStr(i);
       Cells[5,4]:= IntToStr(time2-time1);
@@ -173,7 +173,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,5]:= 'Адамса';
+      Cells[0,5]:= 'РђРґР°РјСЃР°';
       Cells[1,5]:= '3';
       Cells[2,5]:= FloatToStr(curH);
       Cells[3,5]:= FloatToStr(RoundTo(abs(res-y),-18));
@@ -199,9 +199,9 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,6]:= 'Адамса';
+      Cells[0,6]:= 'РђРґР°РјСЃР°';
       Cells[1,6]:= '3';
-      Cells[2,6]:= 'Авто';
+      Cells[2,6]:= 'РђРІС‚Рѕ';
       Cells[3,6]:= FloatToStr(RoundTo(abs(res-y),-18));
       Cells[4,6]:= FloatToStr(i);
       Cells[5,6]:= IntToStr(time2-time1);
@@ -225,7 +225,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,7]:= 'Адамса';
+      Cells[0,7]:= 'РђРґР°РјСЃР°';
       Cells[1,7]:= '4';
       Cells[2,7]:= FloatToStr(curH);
       Cells[3,7]:= FloatToStr(RoundTo(abs(res-y),-18));
@@ -251,9 +251,9 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,8]:= 'Адамса';
+      Cells[0,8]:= 'РђРґР°РјСЃР°';
       Cells[1,8]:= '4';
-      Cells[2,8]:= 'Авто';
+      Cells[2,8]:= 'РђРІС‚Рѕ';
       Cells[3,8]:= FloatToStr(RoundTo(abs(res-y),-18));
       Cells[4,8]:= FloatToStr(i);
       Cells[5,8]:= IntToStr(time2-time1);
@@ -278,7 +278,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,9]:= 'Прог. и кор.';
+      Cells[0,9]:= 'РџСЂРѕРі. Рё РєРѕСЂ.';
       Cells[1,9]:= '3';
       Cells[2,9]:= FloatToStr(curH);
       Cells[3,9]:= FloatToStr(RoundTo(abs(res-kr),-18));
@@ -304,9 +304,9 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,10]:= 'Прог. и кор.';
+      Cells[0,10]:= 'РџСЂРѕРі. Рё РєРѕСЂ.';
       Cells[1,10]:= '3';
-      Cells[2,10]:= 'Авто';
+      Cells[2,10]:= 'РђРІС‚Рѕ';
       Cells[3,10]:= FloatToStr(RoundTo(abs(res-kr),-18));
       Cells[4,10]:= FloatToStr(i);
       Cells[5,10]:= IntToStr(time2-time1);
@@ -330,7 +330,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,11]:= 'Прог. и кор.';
+      Cells[0,11]:= 'РџСЂРѕРі. Рё РєРѕСЂ.';
       Cells[1,11]:= '4';
       Cells[2,11]:= FloatToStr(curH);
       Cells[3,11]:= FloatToStr(RoundTo(abs(res-kr),-18));
@@ -356,9 +356,9 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,12]:= 'Прог. и кор.';
+      Cells[0,12]:= 'РџСЂРѕРі. Рё РєРѕСЂ.';
       Cells[1,12]:= '4';
-      Cells[2,12]:= 'Авто';
+      Cells[2,12]:= 'РђРІС‚Рѕ';
       Cells[3,12]:= FloatToStr(RoundTo(abs(res-kr),-18));
       Cells[4,12]:= FloatToStr(i);
       Cells[5,12]:= IntToStr(time2-time1);
@@ -381,7 +381,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,13]:= 'Мод. Эйлера';
+      Cells[0,13]:= 'РњРѕРґ. Р­Р№Р»РµСЂР°';
       Cells[1,13]:= '3';
       Cells[2,13]:= FloatToStr(curH);
       Cells[3,13]:= FloatToStr(RoundTo(abs(res-y),-18));
@@ -405,7 +405,7 @@ begin
 
   with StringGrid1 do
     begin
-      Cells[0,14]:= 'Мод. Эйлера';
+      Cells[0,14]:= 'РњРѕРґ. Р­Р№Р»РµСЂР°';
       Cells[1,14]:= '4';
       Cells[2,14]:= FloatToStr(curH);
       Cells[3,14]:= FloatToStr(RoundTo(abs(res-y),-18));

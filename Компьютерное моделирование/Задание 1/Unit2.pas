@@ -31,10 +31,10 @@ begin
   i := 0;
 
   StringGrid1.Cells[0,0] := 'h(c)';
-  StringGrid1.Cells[1,0] := 'Шар';
-  StringGrid1.Cells[2,0] := 'Полусфера';
-  StringGrid1.Cells[3,0] := 'Диск';
-  StringGrid1.Cells[4,0] := 'Каплевидная';
+  StringGrid1.Cells[1,0] := 'РЁР°СЂ';
+  StringGrid1.Cells[2,0] := 'РџРѕР»СѓСЃС„РµСЂР°';
+  StringGrid1.Cells[3,0] := 'Р”РёСЃРє';
+  StringGrid1.Cells[4,0] := 'РљР°РїР»РµРІРёРґРЅР°СЏ';
 
   timer := StrToFloat(Form1.Edit1.Text);
   m := StrToFloat(Form1.Edit2.Text);

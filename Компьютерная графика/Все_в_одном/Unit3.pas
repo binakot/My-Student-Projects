@@ -172,18 +172,18 @@ begin
  except
   on EConvertError do
    begin
-    showmessage('Ââåäåíû íåâåðíûå äàííûå!');
+    showmessage('Ð’Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ!');
     exit;
    end;
  end;
  if (xc>299) or (xc<0) or (yc>299) or (yc<0) or (rc<1) then
   begin
-   showmessage('Âûõîä çà ïðåäåëû äîïóñòèìûõ çíà÷åíèé!');
+   showmessage('Ð’Ñ‹Ñ…Ð¾Ð´ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹!');
    exit;
   end;
  if ((xc+rc)>299) or ((yc+rc)>299) or ((xc-rc)<0) or ((yc-rc)<0) then
   begin
-   showmessage('Îêðóæíîñòü âûõîäèò çà ïðåäåëû ðèñóíêà!');
+   showmessage('ÐžÐºÑ€ÑƒÐ¶Ð½Ð¾ÑÑ‚ÑŒ Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ñ‚ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‹ Ñ€Ð¸ÑÑƒÐ½ÐºÐ°!');
    exit;
   end;
  bresenham_circle;
@@ -199,18 +199,18 @@ begin
  except
   on EConvertError do
    begin
-    showmessage('Ââåäåíû íåâåðíûå äàííûå!');
+    showmessage('Ð’Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ!');
     exit;
    end;
  end;
  if (xe>299) or (xe<0) or (ye>299) or (ye<0) or (ae<1) or (be<1) then
   begin
-   showmessage('Âûõîä çà ïðåäåëû äîïóñòèìûõ çíà÷åíèé!');
+   showmessage('Ð’Ñ‹Ñ…Ð¾Ð´ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹!');
    exit;
   end;
  if ((xe+ae)>299) or ((ye+be)>299) or ((xe-ae)<0) or ((ye-be)<0) then
   begin
-   showmessage('Ýëëèïñ âûõîäèò çà ïðåäåëû ðèñóíêà!');
+   showmessage('Ð­Ð»Ð»Ð¸Ð¿Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ñ‚ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‹ Ñ€Ð¸ÑÑƒÐ½ÐºÐ°!');
    exit;
   end;
  bresenham_ellipse;

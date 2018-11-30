@@ -77,17 +77,17 @@ begin
           Image3.Canvas.Pixels[i,j]:=rgb(r,g,b);
         end;
     end;
-  if round(10*k)/10=0.0 then label5.Caption:='Полдень';
-  if round(10*k)/10=0.1 then label5.Caption:='Обеденное время';
-  if round(10*k)/10=0.2 then label5.Caption:='День';
-  if round(10*k)/10=0.3 then label5.Caption:='День';
-  if round(10*k)/10=0.4 then label5.Caption:='Вечереет';
-  if round(10*k)/10=0.5 then label5.Caption:='Вечер';
-  if round(10*k)/10=0.6 then label5.Caption:='Поздний вечер';
-  if round(10*k)/10=0.7 then label5.Caption:='Сумерки';
-  if round(10*k)/10=0.8 then label5.Caption:='Ночь';
-  if round(10*k)/10=0.9 then label5.Caption:='ночь';
-  if round(10*k)/10=1.0 then label5.Caption:='Полночь';
+  if round(10*k)/10=0.0 then label5.Caption:='РџРѕР»РґРµРЅСЊ';
+  if round(10*k)/10=0.1 then label5.Caption:='РћР±РµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ';
+  if round(10*k)/10=0.2 then label5.Caption:='Р”РµРЅСЊ';
+  if round(10*k)/10=0.3 then label5.Caption:='Р”РµРЅСЊ';
+  if round(10*k)/10=0.4 then label5.Caption:='Р’РµС‡РµСЂРµРµС‚';
+  if round(10*k)/10=0.5 then label5.Caption:='Р’РµС‡РµСЂ';
+  if round(10*k)/10=0.6 then label5.Caption:='РџРѕР·РґРЅРёР№ РІРµС‡РµСЂ';
+  if round(10*k)/10=0.7 then label5.Caption:='РЎСѓРјРµСЂРєРё';
+  if round(10*k)/10=0.8 then label5.Caption:='РќРѕС‡СЊ';
+  if round(10*k)/10=0.9 then label5.Caption:='РЅРѕС‡СЊ';
+  if round(10*k)/10=1.0 then label5.Caption:='РџРѕР»РЅРѕС‡СЊ';
 end;
 
 function TForm1.action(var c1,c2: byte; var k: real): byte;

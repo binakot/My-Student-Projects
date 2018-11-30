@@ -48,42 +48,42 @@ begin
       Cells[3,0]:= 'Y''';
     end;
 end;
-//Постоянный шаг
+//РџРѕСЃС‚РѕСЏРЅРЅС‹Р№ С€Р°Рі
 procedure TForm3.RadioButton4Click(Sender: TObject);
 begin
-  edit1.Text:= '0,001';      //Шаг по умолчанию
+  edit1.Text:= '0,001';      //РЁР°Рі РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
   edit1.visible:= true;
   label1.Visible:= true;
 end;
-//АвтоШаг
+//РђРІС‚РѕРЁР°Рі
 procedure TForm3.RadioButton3Click(Sender: TObject);
 begin
   edit1.visible:= false;
   label1.Visible:= false;
 end;
-//Решаем
+//Р РµС€Р°РµРј
 procedure TForm3.BitBtn1Click(Sender: TObject);
 var k1,k2,k3,k4,x,y: extended;
     going: boolean;
     i: integer;
 begin
-  i:= 0;        //шаг = 0
-  x:= x0;       //переменная x из начального условия
-  y:= y0;       //переменная y из начального условия
-  //получаем шаг
+  i:= 0;        //С€Р°Рі = 0
+  x:= x0;       //РїРµСЂРµРјРµРЅРЅР°СЏ x РёР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ
+  y:= y0;       //РїРµСЂРµРјРµРЅРЅР°СЏ y РёР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ
+  //РїРѕР»СѓС‡Р°РµРј С€Р°Рі
   if radiobutton3.Checked then
     h:= 0.001
   else
     h:= strtofloat(edit1.text);
-  going:= true;          //продолжаем процесс
+  going:= true;          //РїСЂРѕРґРѕР»Р¶Р°РµРј РїСЂРѕС†РµСЃСЃ
 
-  if (RadioButton1.Checked) then        //если 3 порядок
+  if (RadioButton1.Checked) then        //РµСЃР»Рё 3 РїРѕСЂСЏРґРѕРє
   begin
-    if (RadioButton4.Checked) then          //если постоянный шаг
+    if (RadioButton4.Checked) then          //РµСЃР»Рё РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ С€Р°Рі
     begin
       ClearGrid(StringGrid1);
       StringGrid1.RowCount:= 3;
-      //используем метод Рунге-Кутта для получения первых 3 приближений
+      //РёСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ Р СѓРЅРіРµ-РљСѓС‚С‚Р° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРµСЂРІС‹С… 3 РїСЂРёР±Р»РёР¶РµРЅРёР№
       StringGrid1.Cells[0,1]:= FloatToStr(0);
       StringGrid1.Cells[1,1]:= FloatToStr(x);
       StringGrid1.Cells[2,1]:= FloatToStr(y);
@@ -99,7 +99,7 @@ begin
       StringGrid1.Cells[2,3]:= FloatToStr(y);
       StringGrid1.Cells[3,3]:= FloatToStr(GetF(x,y));
       i:= 3;
-      while (going) do     //начинаем процесс
+      while (going) do     //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
         begin
           going:= Adams3ConstStep(x, y);
           StringGrid1.Cells[0,i+1]:= IntToStr(i);
@@ -110,18 +110,18 @@ begin
           StringGrid1.RowCount:= i + 1
         end;
       StringGrid1.RowCount := StringGrid1.RowCount + 2;
-      StringGrid1.Cells[1,i+1]:= 'Проверка:';
+      StringGrid1.Cells[1,i+1]:= 'РџСЂРѕРІРµСЂРєР°:';
       StringGrid1.Cells[2,i+1]:= 'Yn = ';
       StringGrid1.Cells[3,i+1]:= FloatToStr(res);
       StringGrid1.Cells[2,i+2]:= 'Yn - Y = ';
       StringGrid1.Cells[3,i+2]:= FloatToStr(RoundTo(abs(res-y),-18))
     end
     else
-    if (RadioButton3.Checked) then          //если автоматический шаг
+    if (RadioButton3.Checked) then          //РµСЃР»Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ С€Р°Рі
       begin
         ClearGrid(StringGrid1);
         StringGrid1.RowCount:= 3;
-        //используем метод Рунге-Кутта для получения первых 3 приближений
+        //РёСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ Р СѓРЅРіРµ-РљСѓС‚С‚Р° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРµСЂРІС‹С… 3 РїСЂРёР±Р»РёР¶РµРЅРёР№
         StringGrid1.Cells[0,1]:= FloatToStr(0);
         StringGrid1.Cells[1,1]:= FloatToStr(x);
         StringGrid1.Cells[2,1]:= FloatToStr(y);
@@ -137,7 +137,7 @@ begin
         StringGrid1.Cells[2,3]:= FloatToStr(y);
         StringGrid1.Cells[3,3]:= FloatToStr(GetF(x,y));
         i:= 3;
-        while (going) do     //начинаем процесс
+        while (going) do     //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
           begin
             going:= Adams3AutoStep(x, y);
             StringGrid1.Cells[0,i+1]:= IntToStr(i);
@@ -148,7 +148,7 @@ begin
             StringGrid1.RowCount:= i + 1
           end;
         StringGrid1.RowCount := StringGrid1.RowCount + 2;
-        StringGrid1.Cells[1,i+1]:= 'Проверка:';
+        StringGrid1.Cells[1,i+1]:= 'РџСЂРѕРІРµСЂРєР°:';
         StringGrid1.Cells[2,i+1]:= 'Yn = ';
         StringGrid1.Cells[3,i+1]:= FloatToStr(res);
         StringGrid1.Cells[2,i+2]:= 'Yn - Y = ';
@@ -156,13 +156,13 @@ begin
       end
   end
   else
-  if (RadioButton2.Checked) then        //если 4 порядок
+  if (RadioButton2.Checked) then        //РµСЃР»Рё 4 РїРѕСЂСЏРґРѕРє
   begin
-    if (RadioButton4.Checked) then          //если постоянный шаг
+    if (RadioButton4.Checked) then          //РµСЃР»Рё РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ С€Р°Рі
     begin
       ClearGrid(StringGrid1);
       StringGrid1.RowCount:= 3;
-      //используем метод Рунге-Кутта для получения первых 3 приближений
+      //РёСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ Р СѓРЅРіРµ-РљСѓС‚С‚Р° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРµСЂРІС‹С… 3 РїСЂРёР±Р»РёР¶РµРЅРёР№
       StringGrid1.Cells[0,1]:= FloatToStr(0);
       StringGrid1.Cells[1,1]:= FloatToStr(x);
       StringGrid1.Cells[2,1]:= FloatToStr(y);
@@ -178,7 +178,7 @@ begin
       StringGrid1.Cells[2,3]:= FloatToStr(y);
       StringGrid1.Cells[3,3]:= FloatToStr(GetF(x,y));
       i:= 3;
-      while (going) do        //начинаем процесс
+      while (going) do        //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
         begin
           going:= Adams4ConstStep(x, y);
           StringGrid1.Cells[0,i+1]:= IntToStr(i);
@@ -189,18 +189,18 @@ begin
           StringGrid1.RowCount:= i + 1
         end;
       StringGrid1.RowCount := StringGrid1.RowCount + 2;
-      StringGrid1.Cells[1,i+1]:= 'Проверка:';
+      StringGrid1.Cells[1,i+1]:= 'РџСЂРѕРІРµСЂРєР°:';
       StringGrid1.Cells[2,i+1]:= 'Yn = ';
       StringGrid1.Cells[3,i+1]:= FloatToStr(res);
       StringGrid1.Cells[2,i+2]:= 'Yn - Y = ';
       StringGrid1.Cells[3,i+2]:= FloatToStr(RoundTo(abs(res-y),-18))
     end
     else
-    if (RadioButton3.Checked) then          //если автоматический шаг
+    if (RadioButton3.Checked) then          //РµСЃР»Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ С€Р°Рі
       begin
         ClearGrid(StringGrid1); 
         StringGrid1.RowCount:= 3;
-        //используем метод Рунге-Кутта для получения первых 3 приближений
+        //РёСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ Р СѓРЅРіРµ-РљСѓС‚С‚Р° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРµСЂРІС‹С… 3 РїСЂРёР±Р»РёР¶РµРЅРёР№
         StringGrid1.Cells[0,1]:= FloatToStr(0);
         StringGrid1.Cells[1,1]:= FloatToStr(x);
         StringGrid1.Cells[2,1]:= FloatToStr(y);
@@ -216,7 +216,7 @@ begin
         StringGrid1.Cells[2,3]:= FloatToStr(y);
         StringGrid1.Cells[3,3]:= FloatToStr(GetF(x,y));
         i:= 3;
-        while (going) do      //начинаем процесс
+        while (going) do      //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
           begin
             going:= Adams4AutoStep(x, y);
             StringGrid1.Cells[0,i+1]:= IntToStr(i);
@@ -227,7 +227,7 @@ begin
             StringGrid1.RowCount:= i + 1
           end;
         StringGrid1.RowCount := StringGrid1.RowCount + 2;
-        StringGrid1.Cells[1,i+1]:= 'Проверка:';
+        StringGrid1.Cells[1,i+1]:= 'РџСЂРѕРІРµСЂРєР°:';
         StringGrid1.Cells[2,i+1]:= 'Yn = ';
         StringGrid1.Cells[3,i+1]:= FloatToStr(res);
         StringGrid1.Cells[2,i+2]:= 'Yn - Y = ';

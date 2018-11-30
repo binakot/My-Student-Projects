@@ -128,14 +128,14 @@ begin
  except
   on EConvertError do
    begin
-    showmessage('Ââåäåíû íåâåðíûå äàííûå!');
+    showmessage('Ð’Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ!');
     exit;
    end;
  end;
  if (x0>299) or (x0<0) or (x1>299) or (x1<0) or
     (y0>299) or (y0<0) or (y1>299) or (y1<0) then
   begin
-   showmessage('Âûõîä çà ïðåäåëû äîïóñòèìûõ çíà÷åíèé!');
+   showmessage('Ð’Ñ‹Ñ…Ð¾Ð´ Ð·Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ‹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹!');
    exit;
   end;
  if radiobutton1.Checked=true then DDA

@@ -53,51 +53,51 @@ begin
       Cells[6,0]:= 'k4'
     end
 end;
-//Постоянный шаг
+//РџРѕСЃС‚РѕСЏРЅРЅС‹Р№ С€Р°Рі
 procedure TForm2.RadioButton4Click(Sender: TObject);
 begin
-  edit1.Text:= '0,001';         //Шаг по умолчанию
+  edit1.Text:= '0,001';         //РЁР°Рі РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
   edit1.visible:= true;
   label1.Visible:= true;
   button1.Visible:= true
 end;
-//АвтоШаг
+//РђРІС‚РѕРЁР°Рі
 procedure TForm2.RadioButton3Click(Sender: TObject);
 begin
   edit1.visible:= false;
   label1.Visible:= false;
   button1.Visible:= false
 end;
-//рекомендуемый шаг h = eps^(1/4)
+//СЂРµРєРѕРјРµРЅРґСѓРµРјС‹Р№ С€Р°Рі h = eps^(1/4)
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   edit1.Text:= floattostr(sqrt(sqrt(StrToFloat(Form1.edit3.text))))
 end;
-//Решаем
+//Р РµС€Р°РµРј
 procedure TForm2.BitBtn1Click(Sender: TObject);
-var k1, k2, k3, k4,     //Коэффициенты
-    x, y: extended;         //Переменные
-    going: boolean;     //Продолжение процесса
-    i: integer;         //Счетчик
+var k1, k2, k3, k4,     //РљРѕСЌС„С„РёС†РёРµРЅС‚С‹
+    x, y: extended;         //РџРµСЂРµРјРµРЅРЅС‹Рµ
+    going: boolean;     //РџСЂРѕРґРѕР»Р¶РµРЅРёРµ РїСЂРѕС†РµСЃСЃР°
+    i: integer;         //РЎС‡РµС‚С‡РёРє
 begin 
-  i:= 0;                //шаг = 0
-  x:= x0;               //переменная x из начального условия
-  y:= y0;               //переменная y из начального условия
-  //получаем шаг
+  i:= 0;                //С€Р°Рі = 0
+  x:= x0;               //РїРµСЂРµРјРµРЅРЅР°СЏ x РёР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ
+  y:= y0;               //РїРµСЂРµРјРµРЅРЅР°СЏ y РёР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ
+  //РїРѕР»СѓС‡Р°РµРј С€Р°Рі
   if radiobutton3.Checked then
     h:= 0.001
   else
     h:= strtofloat(edit1.text);
-  going:= true;                //продолжаем процесс
-  if (RadioButton1.Checked) then        //если 3 порядок
+  going:= true;                //РїСЂРѕРґРѕР»Р¶Р°РµРј РїСЂРѕС†РµСЃСЃ
+  if (RadioButton1.Checked) then        //РµСЃР»Рё 3 РїРѕСЂСЏРґРѕРє
   begin
-    if (RadioButton4.Checked) then          //если постоянный шаг
+    if (RadioButton4.Checked) then          //РµСЃР»Рё РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ С€Р°Рі
     begin
       ClearGrid(StringGrid1);
       StringGrid1.Cells[0,1]:= FloatToStr(i);
       StringGrid1.Cells[1,1]:= FloatToStr(x);
       StringGrid1.Cells[2,1]:= FloatToStr(y);
-      while (going) do      //начинаем процесс
+      while (going) do      //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
         begin
           going:= RungeKutta3ConstStep(k1, k2, k3, x, y);
           StringGrid1.Cells[3,i+1]:= FloatToStr(k1);
@@ -110,20 +110,20 @@ begin
           StringGrid1.Cells[2,i+1]:= FloatToStr(y)
         end;
       StringGrid1.RowCount := StringGrid1.RowCount + 1;
-      StringGrid1.Cells[1,i+2]:= 'Проверка:';
+      StringGrid1.Cells[1,i+2]:= 'РџСЂРѕРІРµСЂРєР°:';
       StringGrid1.Cells[2,i+2]:= 'Yn = ';
       StringGrid1.Cells[3,i+2]:= FloatToStr(res);
       StringGrid1.Cells[4,i+2]:= 'Yn - Y = ';
       StringGrid1.Cells[5,i+2]:= FloatToStr(RoundTo(abs(res-y),-18))
     end
     else
-    if (RadioButton3.Checked) then          //если автоматический шаг
+    if (RadioButton3.Checked) then          //РµСЃР»Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ С€Р°Рі
       begin
         ClearGrid(StringGrid1);
         StringGrid1.Cells[0,1]:= FloatToStr(i);
         StringGrid1.Cells[1,1]:= FloatToStr(x);
         StringGrid1.Cells[2,1]:= FloatToStr(y);
-        while (going) do    //начинаем процесс
+        while (going) do    //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
           begin
             going:= RungeKutta3AutoStep(k1, k2, k3, x, y);
             StringGrid1.Cells[3,i+1]:= FloatToStr(k1);
@@ -136,7 +136,7 @@ begin
             StringGrid1.Cells[2,i+1]:= FloatToStr(y)
           end;
         StringGrid1.RowCount := StringGrid1.RowCount + 1;
-        StringGrid1.Cells[1,i+2]:= 'Проверка:';
+        StringGrid1.Cells[1,i+2]:= 'РџСЂРѕРІРµСЂРєР°:';
         StringGrid1.Cells[2,i+2]:= 'Yn = ';
         StringGrid1.Cells[3,i+2]:= FloatToStr(res);
         StringGrid1.Cells[4,i+2]:= 'Yn - Y = ';
@@ -144,15 +144,15 @@ begin
       end
   end
   else
-  if (RadioButton2.Checked) then        //если 4 порядок
+  if (RadioButton2.Checked) then        //РµСЃР»Рё 4 РїРѕСЂСЏРґРѕРє
   begin
-    if (RadioButton4.Checked) then          //если постоянный шаг
+    if (RadioButton4.Checked) then          //РµСЃР»Рё РїРѕСЃС‚РѕСЏРЅРЅС‹Р№ С€Р°Рі
     begin
       ClearGrid(StringGrid1);
       StringGrid1.Cells[0,1]:= FloatToStr(i);
       StringGrid1.Cells[1,1]:= FloatToStr(x);
       StringGrid1.Cells[2,1]:= FloatToStr(y);
-      while (going) do     //начинаем процесс
+      while (going) do     //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
         begin
           going := RungeKutta4ConstStep(k1, k2, k3, k4, x, y);
           StringGrid1.Cells[3,i+1]:= FloatToStr(k1);
@@ -166,20 +166,20 @@ begin
           StringGrid1.Cells[2,i+1]:= FloatToStr(y)
         end;
       StringGrid1.RowCount := StringGrid1.RowCount + 1;
-      StringGrid1.Cells[1,i+2]:= 'Проверка:';
+      StringGrid1.Cells[1,i+2]:= 'РџСЂРѕРІРµСЂРєР°:';
       StringGrid1.Cells[2,i+2]:= 'Yn = ';
       StringGrid1.Cells[3,i+2]:= FloatToStr(res);
       StringGrid1.Cells[4,i+2]:= 'Yn - Y = ';
       StringGrid1.Cells[5,i+2]:= FloatToStr(RoundTo(abs(res-y),-18))
     end
     else
-    if (RadioButton3.Checked) then          //если автоматический шаг
+    if (RadioButton3.Checked) then          //РµСЃР»Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ С€Р°Рі
     begin
       ClearGrid(StringGrid1);
       StringGrid1.Cells[0,1]:= FloatToStr(i);
       StringGrid1.Cells[1,1]:= FloatToStr(x);
       StringGrid1.Cells[2,1]:= FloatToStr(y);
-      while (going) do     //начинаем процесс
+      while (going) do     //РЅР°С‡РёРЅР°РµРј РїСЂРѕС†РµСЃСЃ
         begin
           going := RungeKutta4AutoStep(k1, k2, k3, k4, x, y);
           StringGrid1.Cells[3,i+1]:= FloatToStr(k1);
@@ -193,7 +193,7 @@ begin
           StringGrid1.Cells[2,i+1]:= FloatToStr(y)
         end;
       StringGrid1.RowCount := StringGrid1.RowCount + 1;
-      StringGrid1.Cells[1,i+2]:= 'Проверка:';
+      StringGrid1.Cells[1,i+2]:= 'РџСЂРѕРІРµСЂРєР°:';
       StringGrid1.Cells[2,i+2]:= 'Yn = ';
       StringGrid1.Cells[3,i+2]:= FloatToStr(res);
       StringGrid1.Cells[4,i+2]:= 'Yn - Y = ';
