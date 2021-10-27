@@ -30,9 +30,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     StringGrid1->Cells[0][i+1] = IntToStr(i+1);
     i++;
   };
-  StringGrid1->Cells[1][0] = "1 âåêòîð";
-  StringGrid1->Cells[2][0] = "2 âåêòîð";
-  StringGrid1->Cells[3][0] = "3 âåêòîð";
+  StringGrid1->Cells[1][0] = "1 Ð²ÐµÐºÑ‚Ð¾Ñ€";
+  StringGrid1->Cells[2][0] = "2 Ð²ÐµÐºÑ‚Ð¾Ñ€";
+  StringGrid1->Cells[3][0] = "3 Ð²ÐµÐºÑ‚Ð¾Ñ€";
 
   StringGrid2->Cells[0][0] = "i";
   i = 0;
@@ -40,9 +40,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     StringGrid2->Cells[0][i+1] = IntToStr(i+1);
     i++;
   };
-  StringGrid2->Cells[1][0] = "1 âåêòîð";
-  StringGrid2->Cells[2][0] = "2 âåêòîð";
-  StringGrid2->Cells[3][0] = "3 âåêòîð";
+  StringGrid2->Cells[1][0] = "1 Ð²ÐµÐºÑ‚Ð¾Ñ€";
+  StringGrid2->Cells[2][0] = "2 Ð²ÐµÐºÑ‚Ð¾Ñ€";
+  StringGrid2->Cells[3][0] = "3 Ð²ÐµÐºÑ‚Ð¾Ñ€";
 }
 //---------------------------------------------------------------------------
 

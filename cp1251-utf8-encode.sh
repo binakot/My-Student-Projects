@@ -1,6 +1,3 @@
 #!/bin/sh
 
-find . -type f -name *.pas -print | while read file; do
-    iconv -f cp1251 -t utf8 "$file" > "$file.new" &&
-    mv -f "$file.new" "$file"
-done
+find . -type f \( -name "*.pas" -o -name "*.cpp" -o -name "*.cs" \) | while read file; do enca -L russian -x UTF-8 "$file"; done;

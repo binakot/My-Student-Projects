@@ -2,28 +2,28 @@ template <class T>
 class Node
 {
   private:
-    Node<T> *next;   // next указывает на адрес следующего узла
-    T data;   // открытые данные
+    Node<T> *next;   // next СѓРєР°Р·С‹РІР°РµС‚ РЅР° Р°РґСЂРµСЃ СЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р°
+    T data;   // РѕС‚РєСЂС‹С‚С‹Рµ РґР°РЅРЅС‹Рµ
   public:
-    Node(const T& item, Node<T>* ptrnext);   // конструктор
-    Node<T> *NextNode(void) const;   // получение адреса следующего узла
+    Node(const T& item, Node<T>* ptrnext);   // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    Node<T> *NextNode(void) const;   // РїРѕР»СѓС‡РµРЅРёРµ Р°РґСЂРµСЃР° СЃР»РµРґСѓСЋС‰РµРіРѕ СѓР·Р»Р°
     T& Data (void); 
 };
 
-// конструктор, инициализация данных и указателя
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґР°РЅРЅС‹С… Рё СѓРєР°Р·Р°С‚РµР»СЏ
 template <class T>
 Node<T>::Node(const T& item, Node<T>* ptrnext = NULL) :
   data(item), next(ptrnext)
   {}
 
-// возвратить закрытый член next
+// РІРѕР·РІСЂР°С‚РёС‚СЊ Р·Р°РєСЂС‹С‚С‹Р№ С‡Р»РµРЅ next
 template <class T>
 Node<T> *Node<T>::NextNode(void) const
 {
   return next;
 }
 
-// возвратить ссылку на данные текущего узла
+// РІРѕР·РІСЂР°С‚РёС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° РґР°РЅРЅС‹Рµ С‚РµРєСѓС‰РµРіРѕ СѓР·Р»Р°
 template <class T>
 T& Node<T>::Data (void)
 { 

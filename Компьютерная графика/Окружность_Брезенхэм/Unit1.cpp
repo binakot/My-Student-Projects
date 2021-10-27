@@ -44,9 +44,9 @@ while(x<y)
     if (z+2*x<=0) goto Pd; else goto Pv;
   }
   if (z+2*y>0) goto Pd;
-Pg: ++x; Dd=Dd+2*x+1; continue;             //Горизонталь
-Pd: ++x; --y; Dd=Dd+2*(x-y+1); continue;    //Диагональ
-Pv: --y; Dd=Dd-2*y+1;                       //Вертикаль
+Pg: ++x; Dd=Dd+2*x+1; continue;             //Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊ
+Pd: ++x; --y; Dd=Dd+2*(x-y+1); continue;    //Р”РёР°РіРѕРЅР°Р»СЊ
+Pv: --y; Dd=Dd-2*y+1;                       //Р’РµСЂС‚РёРєР°Р»СЊ
 }
 if (x==y) circle8(xc,yc,x,y);
 }

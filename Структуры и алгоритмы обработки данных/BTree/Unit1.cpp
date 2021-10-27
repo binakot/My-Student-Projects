@@ -22,7 +22,7 @@ void WriteTable()
   Source.open("btree.txt", ios::in);
   if (Source.fail())
   {
-    ShowMessage("Ошибка: Невозможно открыть btree.txt");  
+    ShowMessage("РћС€РёР±РєР°: РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ btree.txt");  
   }
 
   Load(Source, BTTable);
@@ -36,7 +36,7 @@ void ReadTable()
   BTTableClass BTTable('r', "btree.dat");
 
   if (BTTable.Empty())
-    Error("Таблица пуста");
+    Error("РўР°Р±Р»РёС†Р° РїСѓСЃС‚Р°");
 
   char ch;
 
@@ -59,15 +59,15 @@ void ReadTable()
   SearchKey[KeyFieldMax] = NULL;
 
   if (BTTable.Retrieve(SearchKey, Item))
-    ShowMessage("Слово найдено в таблице");
+    ShowMessage("РЎР»РѕРІРѕ РЅР°Р№РґРµРЅРѕ РІ С‚Р°Р±Р»РёС†Рµ");
   else
-    ShowMessage("Слово отсутствует в таблице");
+    ShowMessage("РЎР»РѕРІРѕ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ С‚Р°Р±Р»РёС†Рµ");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 {
   WriteTable();
-  ShowMessage("Таблица на основе Б-дерева заполнена");
+  ShowMessage("РўР°Р±Р»РёС†Р° РЅР° РѕСЃРЅРѕРІРµ Р‘-РґРµСЂРµРІР° Р·Р°РїРѕР»РЅРµРЅР°");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn2Click(TObject *Sender)

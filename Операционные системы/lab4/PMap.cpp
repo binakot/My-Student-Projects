@@ -16,105 +16,105 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TMapForm *MapForm;  // Форма
+TMapForm *MapForm;  // Р¤РѕСЂРјР°
 
 AnsiString DOSArea =
-"     Область совместимости с DOS\n\n"
-" Применяется для  совместимости про-\n"
-" граммам DOS и Win32. В эту область \n"
-" проэцируется 1Mb адресного простра-\n"
-" нства реального режима.\n"
-" (только в Windows 9X.)";
+"     РћР±Р»Р°СЃС‚СЊ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЃ DOS\n\n"
+" РџСЂРёРјРµРЅСЏРµС‚СЃСЏ РґР»СЏ  СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё РїСЂРѕ-\n"
+" РіСЂР°РјРјР°Рј DOS Рё Win32. Р’ СЌС‚Сѓ РѕР±Р»Р°СЃС‚СЊ \n"
+" РїСЂРѕСЌС†РёСЂСѓРµС‚СЃСЏ 1Mb Р°РґСЂРµСЃРЅРѕРіРѕ РїСЂРѕСЃС‚СЂР°-\n"
+" РЅСЃС‚РІР° СЂРµР°Р»СЊРЅРѕРіРѕ СЂРµР¶РёРјР°.\n"
+" (С‚РѕР»СЊРєРѕ РІ Windows 9X.)";
 
 
 AnsiString MMFArea =
-"       Область MMF (Memory Mapped File)\n\n"
-" Вэту область помещается код системных .DLL\n"
-" (только в Windows 9X.)";
+"       РћР±Р»Р°СЃС‚СЊ MMF (Memory Mapped File)\n\n"
+" Р’СЌС‚Сѓ РѕР±Р»Р°СЃС‚СЊ РїРѕРјРµС‰Р°РµС‚СЃСЏ РєРѕРґ СЃРёСЃС‚РµРјРЅС‹С… .DLL\n"
+" (С‚РѕР»СЊРєРѕ РІ Windows 9X.)";
 
 
 AnsiString ReserveArea =
-"         Зарезервированная область памяти\n\n"
-"   Предназначена для некоторых случаев\n"
-"  системной блокировки.\n"
-"  (только в Windows2000).";
+"         Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅР°СЏ РѕР±Р»Р°СЃС‚СЊ РїР°РјСЏС‚Рё\n\n"
+"   РџСЂРµРґРЅР°Р·РЅР°С‡РµРЅР° РґР»СЏ РЅРµРєРѕС‚РѕСЂС‹С… СЃР»СѓС‡Р°РµРІ\n"
+"  СЃРёСЃС‚РµРјРЅРѕР№ Р±Р»РѕРєРёСЂРѕРІРєРё.\n"
+"  (С‚РѕР»СЊРєРѕ РІ Windows2000).";
 
 
 AnsiString CodeAndDataArea =
-"                                             Код и данные OS\n\n"
-" В этот раздел помещается код операционной системы, в том числе\n"
-" драйверы  устройств и код  низкоуровневого управления потоками,\n"
-" памятью, файловой системой,  сетьевой поддержкой. Всё, что на-\n"
-" ходится здесь,  доступно  любому процессу. В  Windows 2000 эти\n"
-" копоненты полностью защищены. Поток, который пытается обратит-\n"
-" ся по одному из адресов памяти в этом разделе, вызовет наруше-\n"
-" ние доступа, а это приведёт к  тому,  что  система  в конечном\n"
-" счёте просто закроет его приложение.";
+"                                             РљРѕРґ Рё РґР°РЅРЅС‹Рµ OS\n\n"
+" Р’ СЌС‚РѕС‚ СЂР°Р·РґРµР» РїРѕРјРµС‰Р°РµС‚СЃСЏ РєРѕРґ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹, РІ С‚РѕРј С‡РёСЃР»Рµ\n"
+" РґСЂР°Р№РІРµСЂС‹  СѓСЃС‚СЂРѕР№СЃС‚РІ Рё РєРѕРґ  РЅРёР·РєРѕСѓСЂРѕРІРЅРµРІРѕРіРѕ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕС‚РѕРєР°РјРё,\n"
+" РїР°РјСЏС‚СЊСЋ, С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјРѕР№,  СЃРµС‚СЊРµРІРѕР№ РїРѕРґРґРµСЂР¶РєРѕР№. Р’СЃС‘, С‡С‚Рѕ РЅР°-\n"
+" С…РѕРґРёС‚СЃСЏ Р·РґРµСЃСЊ,  РґРѕСЃС‚СѓРїРЅРѕ  Р»СЋР±РѕРјСѓ РїСЂРѕС†РµСЃСЃСѓ. Р’  Windows 2000 СЌС‚Рё\n"
+" РєРѕРїРѕРЅРµРЅС‚С‹ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°С‰РёС‰РµРЅС‹. РџРѕС‚РѕРє, РєРѕС‚РѕСЂС‹Р№ РїС‹С‚Р°РµС‚СЃСЏ РѕР±СЂР°С‚РёС‚-\n"
+" СЃСЏ РїРѕ РѕРґРЅРѕРјСѓ РёР· Р°РґСЂРµСЃРѕРІ РїР°РјСЏС‚Рё РІ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ, РІС‹Р·РѕРІРµС‚ РЅР°СЂСѓС€Рµ-\n"
+" РЅРёРµ РґРѕСЃС‚СѓРїР°, Р° СЌС‚Рѕ РїСЂРёРІРµРґС‘С‚ Рє  С‚РѕРјСѓ,  С‡С‚Рѕ  СЃРёСЃС‚РµРјР°  РІ РєРѕРЅРµС‡РЅРѕРј\n"
+" СЃС‡С‘С‚Рµ РїСЂРѕСЃС‚Рѕ Р·Р°РєСЂРѕРµС‚ РµРіРѕ РїСЂРёР»РѕР¶РµРЅРёРµ.";
 
 AnsiString NULLPointersArea =
-"     Область для хранения нулевых указателей\n\n"
-" Используется для хранения нулевых указателей.\n"
-" Попытка доступа в эту  область вызывает нару-\n"
-" шение доступа. Компиляторы языков  программи-\n"
-" рования связывают значения нулевых указателей\n"
-" с данной областью.";
+"     РћР±Р»Р°СЃС‚СЊ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РЅСѓР»РµРІС‹С… СѓРєР°Р·Р°С‚РµР»РµР№\n\n"
+" РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РЅСѓР»РµРІС‹С… СѓРєР°Р·Р°С‚РµР»РµР№.\n"
+" РџРѕРїС‹С‚РєР° РґРѕСЃС‚СѓРїР° РІ СЌС‚Сѓ  РѕР±Р»Р°СЃС‚СЊ РІС‹Р·С‹РІР°РµС‚ РЅР°СЂСѓ-\n"
+" С€РµРЅРёРµ РґРѕСЃС‚СѓРїР°. РљРѕРјРїРёР»СЏС‚РѕСЂС‹ СЏР·С‹РєРѕРІ  РїСЂРѕРіСЂР°РјРјРё-\n"
+" СЂРѕРІР°РЅРёСЏ СЃРІСЏР·С‹РІР°СЋС‚ Р·РЅР°С‡РµРЅРёСЏ РЅСѓР»РµРІС‹С… СѓРєР°Р·Р°С‚РµР»РµР№\n"
+" СЃ РґР°РЅРЅРѕР№ РѕР±Р»Р°СЃС‚СЊСЋ.";
 
 
-/*------------------- Макросы для диаграммы ----------------------------------*/
+/*------------------- РњР°РєСЂРѕСЃС‹ РґР»СЏ РґРёР°РіСЂР°РјРјС‹ ----------------------------------*/
 
-#define            LEFT_X    10  // Отступ от левого края Imag'a до начала диагаммы
-#define           RIGHT_X   110  // Отступ от левого края Imag'a до конца диагаммы
-#define             TOP_Y    10  // Отступ от сверхнего края Imag'a до начала диагаммы
-#define          BOTTOM_Y    10  // Отступ от нижнего края Imag'a до начала диагаммы
-#define               MMF    20  // Размер на диаграмме области MMF
-#define           OS_DATA    20  // Размер на диаграмме области данных OS
-#define     NULL_POINTERS    20  // Размер на диаграмме области NULL POINTERS
-#define               DOS    20  // Размер на диаграмме области DOS
-#define           RESERVE    20  // Размер на диаграмме области зарезервировано
-#define        BLOCK_SIZE    11  // Размер блока на диаграмме
+#define            LEFT_X    10  // РћС‚СЃС‚СѓРї РѕС‚ Р»РµРІРѕРіРѕ РєСЂР°СЏ Imag'a РґРѕ РЅР°С‡Р°Р»Р° РґРёР°РіР°РјРјС‹
+#define           RIGHT_X   110  // РћС‚СЃС‚СѓРї РѕС‚ Р»РµРІРѕРіРѕ РєСЂР°СЏ Imag'a РґРѕ РєРѕРЅС†Р° РґРёР°РіР°РјРјС‹
+#define             TOP_Y    10  // РћС‚СЃС‚СѓРї РѕС‚ СЃРІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ Imag'a РґРѕ РЅР°С‡Р°Р»Р° РґРёР°РіР°РјРјС‹
+#define          BOTTOM_Y    10  // РћС‚СЃС‚СѓРї РѕС‚ РЅРёР¶РЅРµРіРѕ РєСЂР°СЏ Imag'a РґРѕ РЅР°С‡Р°Р»Р° РґРёР°РіР°РјРјС‹
+#define               MMF    20  // Р Р°Р·РјРµСЂ РЅР° РґРёР°РіСЂР°РјРјРµ РѕР±Р»Р°СЃС‚Рё MMF
+#define           OS_DATA    20  // Р Р°Р·РјРµСЂ РЅР° РґРёР°РіСЂР°РјРјРµ РѕР±Р»Р°СЃС‚Рё РґР°РЅРЅС‹С… OS
+#define     NULL_POINTERS    20  // Р Р°Р·РјРµСЂ РЅР° РґРёР°РіСЂР°РјРјРµ РѕР±Р»Р°СЃС‚Рё NULL POINTERS
+#define               DOS    20  // Р Р°Р·РјРµСЂ РЅР° РґРёР°РіСЂР°РјРјРµ РѕР±Р»Р°СЃС‚Рё DOS
+#define           RESERVE    20  // Р Р°Р·РјРµСЂ РЅР° РґРёР°РіСЂР°РјРјРµ РѕР±Р»Р°СЃС‚Рё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРѕ
+#define        BLOCK_SIZE    11  // Р Р°Р·РјРµСЂ Р±Р»РѕРєР° РЅР° РґРёР°РіСЂР°РјРјРµ
 
 /*----------------------------------------------------------------------------*/
 
 
-/*--------------------- Описание переменных ----------------------------------*/
+/*--------------------- РћРїРёСЃР°РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С… ----------------------------------*/
 
 CToolhelp g_toolhelp;
 
-// Тип указателя на функцию GetMappedFileName
+// РўРёРї СѓРєР°Р·Р°С‚РµР»СЏ РЅР° С„СѓРЅРєС†РёСЋ GetMappedFileName
 typedef DWORD (WINAPI* PFNGETMAPPEDFILENAME)(HANDLE, PVOID, PTSTR, DWORD);
 
-// Указатель на функцию GetMappedFileName
+// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ GetMappedFileName
 PFNGETMAPPEDFILENAME g_pfnGetMappedFileName = NULL;
 
-// Флаг, определяющий отображение расширенной информации о регионе
+// Р¤Р»Р°Рі, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЂР°СЃС€РёСЂРµРЅРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЂРµРіРёРѕРЅРµ
 bool fExpandRegions;
 
-// Указатель на список, список нужен для построения диаграммы
+// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРїРёСЃРѕРє, СЃРїРёСЃРѕРє РЅСѓР¶РµРЅ РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РґРёР°РіСЂР°РјРјС‹
 TList *list = new TList;
 
-// Размер блока на диаграмме
+// Р Р°Р·РјРµСЂ Р±Р»РѕРєР° РЅР° РґРёР°РіСЂР°РјРјРµ
 int BSize;
 
-// ID процесса
+// ID РїСЂРѕС†РµСЃСЃР°
 DWORD dwProcessId;
 
-// Элемент описанного выше списка
+// Р­Р»РµРјРµРЅС‚ РѕРїРёСЃР°РЅРЅРѕРіРѕ РІС‹С€Рµ СЃРїРёСЃРєР°
 struct ListItem
 {
-  unsigned int Adress;     // Адрес начала региона
-  AnsiString RgnStorage;   // Тип региона
+  unsigned int Adress;     // РђРґСЂРµСЃ РЅР°С‡Р°Р»Р° СЂРµРіРёРѕРЅР°
+  AnsiString RgnStorage;   // РўРёРї СЂРµРіРёРѕРЅР°
   ListItem(unsigned int A, AnsiString RS): Adress(A), RgnStorage(RS) {}
 };
 
-// Указатель на фнкцию, которая строит "карту памяти"
+// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С„РЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ СЃС‚СЂРѕРёС‚ "РєР°СЂС‚Сѓ РїР°РјСЏС‚Рё"
 void (*BuildMap)(bool);
 
 /*----------------------------------------------------------------------------*/
 
-// Прототоп функции построения "карты памяти" для Windows9X
+// РџСЂРѕС‚РѕС‚РѕРї С„СѓРЅРєС†РёРё РїРѕСЃС‚СЂРѕРµРЅРёСЏ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё" РґР»СЏ Windows9X
 void BuildMap_For_W9X(bool IsAdress);
 
-// Прототоп функции построения "карты памяти" для Windows2000
+// РџСЂРѕС‚РѕС‚РѕРї С„СѓРЅРєС†РёРё РїРѕСЃС‚СЂРѕРµРЅРёСЏ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё" РґР»СЏ Windows2000
 void BuildMap_For_W2000(bool IsAdress);
 
 
@@ -127,7 +127,7 @@ __fastcall TMapForm::TMapForm(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TMapForm::FormCreate(TObject *Sender)
 {
-  // Установка размеров столбцов в StringGrid1
+  // РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂРѕРІ СЃС‚РѕР»Р±С†РѕРІ РІ StringGrid1
   StringGrid1->ColWidths[0] = StringGrid1->Width / 7;
   StringGrid1->ColWidths[1] = StringGrid1->Width / 10;
   StringGrid1->ColWidths[2] = StringGrid1->Width / 8;
@@ -135,7 +135,7 @@ void __fastcall TMapForm::FormCreate(TObject *Sender)
   StringGrid1->ColWidths[4] = StringGrid1->Width / 10;
   StringGrid1->ColWidths[5] = StringGrid1->Width;
 
-  // Установка размеров секций в HeaderControl1
+  // РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂРѕРІ СЃРµРєС†РёР№ РІ HeaderControl1
   for (int i = 0; i < HeaderControl1->Sections->Count; i++)
   {
     HeaderControl1->Sections->Items[i]->Width = StringGrid1->ColWidths[i];
@@ -145,7 +145,7 @@ void __fastcall TMapForm::FormCreate(TObject *Sender)
   OSVERSIONINFO verinfo = {sizeof(OSVERSIONINFO)};
   GetVersionEx(&verinfo);
 
-  // Проверка версии OS
+  // РџСЂРѕРІРµСЂРєР° РІРµСЂСЃРёРё OS
   if (verinfo.dwPlatformId == VER_PLATFORM_WIN32_WINDOWS)
   // Windows9X
   {
@@ -167,14 +167,14 @@ void __fastcall TMapForm::FormCreate(TObject *Sender)
   for (i = strlen(tmp.szExeFile); i > 0  && tmp.szExeFile[i] != '\\'; i--);
   if (*(tmp.szExeFile + i) == '\\') i++;
 
-  Caption = "Карта памяти прцесса (" + (AnsiString)(tmp.szExeFile + i) + ")";
+  Caption = "РљР°СЂС‚Р° РїР°РјСЏС‚Рё РїСЂС†РµСЃСЃР° (" + (AnsiString)(tmp.szExeFile + i) + ")";
 
   ShowVirtualMemoryMap();
 }
 //---------------------------------------------------------------------------
 
 
-// Формирование строки с тип региона памяти
+// Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃС‚СЂРѕРєРё СЃ С‚РёРї СЂРµРіРёРѕРЅР° РїР°РјСЏС‚Рё
 AnsiString GetMemStorageText(DWORD dwStorage)
 {
    AnsiString p = "Unknown";
@@ -190,7 +190,7 @@ AnsiString GetMemStorageText(DWORD dwStorage)
 }
 
 
-// Формитование строки с атрибутами защиты
+// Р¤РѕСЂРјРёС‚РѕРІР°РЅРёРµ СЃС‚СЂРѕРєРё СЃ Р°С‚СЂРёР±СѓС‚Р°РјРё Р·Р°С‰РёС‚С‹
 AnsiString GetProtectText(DWORD dwProtect, BOOL fShowFlags)
 {
    AnsiString s = "Unknown";
@@ -216,7 +216,7 @@ AnsiString GetProtectText(DWORD dwProtect, BOOL fShowFlags)
 }
 
 
-// Вывод информации о регионе памяти в StringGrid1
+// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЂРµРіРёРѕРЅРµ РїР°РјСЏС‚Рё РІ StringGrid1
 void OutputRgnInfo(HANDLE hProcess, PVMQUERY pVMQ, int RowCount)
 {
    AnsiString tmp;
@@ -250,11 +250,11 @@ void OutputRgnInfo(HANDLE hProcess, PVMQUERY pVMQ, int RowCount)
       }
    }
 
-   if (pVMQ->fRgnIsAStack) MapForm->StringGrid1->Cells[5][RowCount] = "Стек потока";
+   if (pVMQ->fRgnIsAStack) MapForm->StringGrid1->Cells[5][RowCount] = "РЎС‚РµРє РїРѕС‚РѕРєР°";
 }
 
 
-// Вывод информации о блоке памяти
+// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ Р±Р»РѕРєРµ РїР°РјСЏС‚Рё
 void OutputBlkInfo(PVMQUERY pVMQ, int RowCount)
 {
    AnsiString tmp;
@@ -266,7 +266,7 @@ void OutputBlkInfo(PVMQUERY pVMQ, int RowCount)
      MapForm->StringGrid1->Cells[4][RowCount] = GetProtectText(pVMQ->dwBlkProtection, TRUE);
 }
 
-// Выбор цвета
+// Р’С‹Р±РѕСЂ С†РІРµС‚Р°
 TColor SwitchColor(AnsiString s)
 {
    if (!s.AnsiCompare("Reserve")) return clGreen;
@@ -278,42 +278,42 @@ TColor SwitchColor(AnsiString s)
    return clRed;
 }
 
-/*------------------------- Главная функция ----------------------------------*/
+/*------------------------- Р“Р»Р°РІРЅР°СЏ С„СѓРЅРєС†РёСЏ ----------------------------------*/
 
-// Эта функция содержит цикл обхода регионов адресного пространства процесса
+// Р­С‚Р° С„СѓРЅРєС†РёСЏ СЃРѕРґРµСЂР¶РёС‚ С†РёРєР» РѕР±С…РѕРґР° СЂРµРіРёРѕРЅРѕРІ Р°РґСЂРµСЃРЅРѕРіРѕ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° РїСЂРѕС†РµСЃСЃР°
 void TMapForm::ShowVirtualMemoryMap()
 {
-   // Отчистка StringGrid'а
+   // РћС‚С‡РёСЃС‚РєР° StringGrid'Р°
    for (int i = 0; i < StringGrid1->RowCount; i++) StringGrid1->Rows[i]->Clear();
    StringGrid1->RowCount = 0;
 
    ScrollBox1->VertScrollBar->Position = 0;
 
-   // Попытка загрузки библиотеки PSAPI.DLL
+   // РџРѕРїС‹С‚РєР° Р·Р°РіСЂСѓР·РєРё Р±РёР±Р»РёРѕС‚РµРєРё PSAPI.DLL
    HMODULE hmodPSAPI = LoadLibrary(TEXT("PSAPI"));
    if (hmodPSAPI != NULL) g_pfnGetMappedFileName = (PFNGETMAPPEDFILENAME)
                           GetProcAddress(hmodPSAPI, "GetMappedFileNameA");
 
-   // Снимок модулей используемых процессом c идентификатором dwProcessId
+   // РЎРЅРёРјРѕРє РјРѕРґСѓР»РµР№ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РїСЂРѕС†РµСЃСЃРѕРј c РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј dwProcessId
    g_toolhelp.CreateSnapshot(/*TH32CS_SNAPALL*/TH32CS_SNAPMODULE, dwProcessId);
 
-   BOOL fOk = TRUE;         // Рузультат завершения функции VMQuery
-   PVOID pvAddress = NULL;  // Текущий адрес
-   int Row = 0;             // Позиция строки в StringGrid'e
+   BOOL fOk = TRUE;         // Р СѓР·СѓР»СЊС‚Р°С‚ Р·Р°РІРµСЂС€РµРЅРёСЏ С„СѓРЅРєС†РёРё VMQuery
+   PVOID pvAddress = NULL;  // РўРµРєСѓС‰РёР№ Р°РґСЂРµСЃ
+   int Row = 0;             // РџРѕР·РёС†РёСЏ СЃС‚СЂРѕРєРё РІ StringGrid'e
    list->Clear();
 
-   // Получение дескриптора процеса
+   // РџРѕР»СѓС‡РµРЅРёРµ РґРµСЃРєСЂРёРїС‚РѕСЂР° РїСЂРѕС†РµСЃР°
    HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, dwProcessId);
 
-   // Цикл обхода регионов адресного пространства процесса
+   // Р¦РёРєР» РѕР±С…РѕРґР° СЂРµРіРёРѕРЅРѕРІ Р°РґСЂРµСЃРЅРѕРіРѕ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° РїСЂРѕС†РµСЃСЃР°
    while (fOk)
    {
       VMQUERY vmq;
       if (fOk = VMQuery(hProcess, pvAddress, &vmq))
       {
-         // Вывод сведений о регионе памяти в StringGrid1
+         // Р’С‹РІРѕРґ СЃРІРµРґРµРЅРёР№ Рѕ СЂРµРіРёРѕРЅРµ РїР°РјСЏС‚Рё РІ StringGrid1
          OutputRgnInfo(hProcess, &vmq, Row++);
-         // Заполнение списка для построения "Карты памяти"
+         // Р—Р°РїРѕР»РЅРµРЅРёРµ СЃРїРёСЃРєР° РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ "РљР°СЂС‚С‹ РїР°РјСЏС‚Рё"
          if (Row > 1 && (unsigned int)pvAddress < 0x80000000)
            if (list->Count == 0 || StringGrid1->Cells[1][Row - 1].AnsiCompare(((ListItem*)list->Items[list->Count - 1])->RgnStorage))
            {
@@ -323,8 +323,8 @@ void TMapForm::ShowVirtualMemoryMap()
 
          StringGrid1->RowCount++;
 
-         // Если установлен флаг fExpandRegions, то отображается расширенная
-         // информация о регионе адресного пространства
+         // Р•СЃР»Рё СѓСЃС‚Р°РЅРѕРІР»РµРЅ С„Р»Р°Рі fExpandRegions, С‚Рѕ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ СЂР°СЃС€РёСЂРµРЅРЅР°СЏ
+         // РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЂРµРіРёРѕРЅРµ Р°РґСЂРµСЃРЅРѕРіРѕ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР°
          if (fExpandRegions)
          {
             for (DWORD dwBlock = 0; fOk && (dwBlock < vmq.dwRgnBlocks); dwBlock++)
@@ -335,25 +335,25 @@ void TMapForm::ShowVirtualMemoryMap()
                if (dwBlock < vmq.dwRgnBlocks - 1) fOk = VMQuery(hProcess, pvAddress, &vmq);
             }
          }
-         // переход к следующему региону
+         // РїРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СЂРµРіРёРѕРЅСѓ
          pvAddress = ((PBYTE) vmq.pvRgnBaseAddress + vmq.RgnSize);
       }
    }
    StringGrid1->RowCount--;
    CloseHandle(hProcess);
 
-   // Вызрузка библиотеки PSAPI.DLL
+   // Р’С‹Р·СЂСѓР·РєР° Р±РёР±Р»РёРѕС‚РµРєРё PSAPI.DLL
    if (g_pfnGetMappedFileName != NULL) FreeLibrary(g_pfnGetMappedFileName);
 
-   // Установка размера блока на карте
+   // РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂР° Р±Р»РѕРєР° РЅР° РєР°СЂС‚Рµ
    BSize = BLOCK_SIZE;
-   // Построение "карты памяти"
+   // РџРѕСЃС‚СЂРѕРµРЅРёРµ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё"
    BuildMap(true);
 }
 
 /*----------------------------------------------------------------------------*/
 
-// Раскраска строк в StringGrid1
+// Р Р°СЃРєСЂР°СЃРєР° СЃС‚СЂРѕРє РІ StringGrid1
 void __fastcall TMapForm::StringGrid1DrawCell(TObject *Sender, int ACol,
       int ARow, TRect &Rect, TGridDrawState State)
 {
@@ -364,7 +364,7 @@ void __fastcall TMapForm::StringGrid1DrawCell(TObject *Sender, int ACol,
 //---------------------------------------------------------------------------
 
 
-// Отображение расширенной информации о регионе
+// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЂР°СЃС€РёСЂРµРЅРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЂРµРіРёРѕРЅРµ
 void __fastcall TMapForm::SpeedButton10Click(TObject *Sender)
 {
    fExpandRegions = SpeedButton10->Down;
@@ -375,7 +375,7 @@ void __fastcall TMapForm::SpeedButton10Click(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-// Увеличение диаграммы
+// РЈРІРµР»РёС‡РµРЅРёРµ РґРёР°РіСЂР°РјРјС‹
 void __fastcall TMapForm::SpeedButton4Click(TObject *Sender)
 {
    if (BSize >= 30) return; else ++BSize;
@@ -383,7 +383,7 @@ void __fastcall TMapForm::SpeedButton4Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-// Уменьшение диаграммы
+// РЈРјРµРЅСЊС€РµРЅРёРµ РґРёР°РіСЂР°РјРјС‹
 void __fastcall TMapForm::SpeedButton5Click(TObject *Sender)
 {
    if (BSize < 4 || Image1->Height < ScrollBox1->Height) return; else --BSize;
@@ -391,7 +391,7 @@ void __fastcall TMapForm::SpeedButton5Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-// Максимальный размер карты памяти
+// РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РєР°СЂС‚С‹ РїР°РјСЏС‚Рё
 void __fastcall TMapForm::SpeedButton1Click(TObject *Sender)
 {
    BSize = 30;
@@ -399,7 +399,7 @@ void __fastcall TMapForm::SpeedButton1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-// Минимальный размер карты памяти
+// РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РєР°СЂС‚С‹ РїР°РјСЏС‚Рё
 void __fastcall TMapForm::SpeedButton3Click(TObject *Sender)
 {
    if (Image1->Height == ScrollBox1->Height - 4) return;
@@ -408,7 +408,7 @@ void __fastcall TMapForm::SpeedButton3Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-// Размер карты по умолчанию
+// Р Р°Р·РјРµСЂ РєР°СЂС‚С‹ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 void __fastcall TMapForm::SpeedButton6Click(TObject *Sender)
 {
    BSize = BLOCK_SIZE;
@@ -417,27 +417,27 @@ void __fastcall TMapForm::SpeedButton6Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-/*--------------- Обработчики OnMouseDown'а на Image -------------------------*/
+/*--------------- РћР±СЂР°Р±РѕС‚С‡РёРєРё OnMouseDown'Р° РЅР° Image -------------------------*/
 
-// Если программа запущена на платформе Windows2000
+// Р•СЃР»Рё РїСЂРѕРіСЂР°РјРјР° Р·Р°РїСѓС‰РµРЅР° РЅР° РїР»Р°С‚С„РѕСЂРјРµ Windows2000
 void __fastcall TMapForm::Image1MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
    if (X <= LEFT_X || X >= RIGHT_X || Y <= TOP_Y) return;
 
    int tmp = TOP_Y + NULL_POINTERS + list->Count * BSize;
-   if (Y > tmp && Y <= tmp + RESERVE)              // Зарезервированная область
+   if (Y > tmp && Y <= tmp + RESERVE)              // Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅР°СЏ РѕР±Р»Р°СЃС‚СЊ
    {
       ShowMessage(ReserveArea);
       return;
    }
-   if (Y > tmp + RESERVE && Y <= tmp + RESERVE + OS_DATA) // Область данных OS
+   if (Y > tmp + RESERVE && Y <= tmp + RESERVE + OS_DATA) // РћР±Р»Р°СЃС‚СЊ РґР°РЅРЅС‹С… OS
    {
       ShowMessage(CodeAndDataArea);
       return;
    }
 
-   if (Y > TOP_Y && Y < TOP_Y + NULL_POINTERS)         // Область NULL POINTERS
+   if (Y > TOP_Y && Y < TOP_Y + NULL_POINTERS)         // РћР±Р»Р°СЃС‚СЊ NULL POINTERS
    {
       StringGrid1->Row = 0;
       ShowMessage(NULLPointersArea);
@@ -445,27 +445,27 @@ void __fastcall TMapForm::Image1MouseDown(TObject *Sender,
    }
 
    int index = 0;
-   // Поиск индекса в списке list
+   // РџРѕРёСЃРє РёРЅРґРµРєСЃР° РІ СЃРїРёСЃРєРµ list
    for (int i = TOP_Y + NULL_POINTERS; i < Image1->Height; i += BSize, index++)
      if (Y < i) break;
 
    if (index <= list->Count)
    {
-     // Получение адреса из списка list
+     // РџРѕР»СѓС‡РµРЅРёРµ Р°РґСЂРµСЃР° РёР· СЃРїРёСЃРєР° list
      AnsiString Adress = IntToHex((int)((ListItem*)list->Items[index - 1])->Adress, 8);
 
-     // Поиск нужного адреса в StringGrid1
+     // РџРѕРёСЃРє РЅСѓР¶РЅРѕРіРѕ Р°РґСЂРµСЃР° РІ StringGrid1
      for (int i = 0; i < StringGrid1->RowCount; i++)
        if (!StringGrid1->Cells[0][i].AnsiCompare(Adress))
        {
-         // Установка позиции в StringGrid'е
+         // РЈСЃС‚Р°РЅРѕРІРєР° РїРѕР·РёС†РёРё РІ StringGrid'Рµ
          StringGrid1->Row = i;
          break;
        }
    }
 }
 
-// Если программа запущена на платформе Windows9X
+// Р•СЃР»Рё РїСЂРѕРіСЂР°РјРјР° Р·Р°РїСѓС‰РµРЅР° РЅР° РїР»Р°С‚С„РѕСЂРјРµ Windows9X
 void __fastcall TMapForm::Image2MouseDown(TObject *Sender,
       TMouseButton Button, TShiftState Shift, int X, int Y)
 {
@@ -473,26 +473,26 @@ void __fastcall TMapForm::Image2MouseDown(TObject *Sender,
 
    int tmp = TOP_Y + NULL_POINTERS + DOS + list->Count * BSize;
 
-   if (Y > tmp && Y <= tmp + MMF)   // Область MMF
+   if (Y > tmp && Y <= tmp + MMF)   // РћР±Р»Р°СЃС‚СЊ MMF
    {
       ShowMessage(MMFArea);
       return;
    }
 
-   if (Y > tmp + MMF && Y <= tmp + MMF + OS_DATA)  // Область данных OS
+   if (Y > tmp + MMF && Y <= tmp + MMF + OS_DATA)  // РћР±Р»Р°СЃС‚СЊ РґР°РЅРЅС‹С… OS
    {
       ShowMessage(CodeAndDataArea);
       return;
    }
 
-   if (Y > TOP_Y && Y < TOP_Y + NULL_POINTERS)   // Область NULL POINTERS
+   if (Y > TOP_Y && Y < TOP_Y + NULL_POINTERS)   // РћР±Р»Р°СЃС‚СЊ NULL POINTERS
    {
       StringGrid1->Row = 0;
       ShowMessage(NULLPointersArea);
       return;
    }
 
-   if (Y > TOP_Y && Y < TOP_Y + NULL_POINTERS + DOS)   // Область DOS
+   if (Y > TOP_Y && Y < TOP_Y + NULL_POINTERS + DOS)   // РћР±Р»Р°СЃС‚СЊ DOS
    {
       StringGrid1->Row = 1;
       ShowMessage(DOSArea);
@@ -500,20 +500,20 @@ void __fastcall TMapForm::Image2MouseDown(TObject *Sender,
    }
 
    int index = 0;
-   // Поиск индекса в списке list
+   // РџРѕРёСЃРє РёРЅРґРµРєСЃР° РІ СЃРїРёСЃРєРµ list
    for (int i = TOP_Y + NULL_POINTERS + DOS; i < Image1->Height; i += BSize, index++)
      if (Y < i) break;
 
    if (index <= list->Count)
    {
-     // Получение адреса из списка list
+     // РџРѕР»СѓС‡РµРЅРёРµ Р°РґСЂРµСЃР° РёР· СЃРїРёСЃРєР° list
      AnsiString Adress = IntToHex((int)((ListItem*)list->Items[index - 1])->Adress, 8);
 
-     // Поиск нужного адреса в StringGrid1'e
+     // РџРѕРёСЃРє РЅСѓР¶РЅРѕРіРѕ Р°РґСЂРµСЃР° РІ StringGrid1'e
      for (int i = 0; i < StringGrid1->RowCount; i++)
        if (!StringGrid1->Cells[0][i].AnsiCompare(Adress))
        {
-          // Установка позиции в StringGrid'е
+          // РЈСЃС‚Р°РЅРѕРІРєР° РїРѕР·РёС†РёРё РІ StringGrid'Рµ
           StringGrid1->Row = i;
           break;
        }
@@ -522,7 +522,7 @@ void __fastcall TMapForm::Image2MouseDown(TObject *Sender,
 
 /*----------------------------------------------------------------------------*/
 
-// Вывод текущей строки StringGrid1'да в StatusBar1
+// Р’С‹РІРѕРґ С‚РµРєСѓС‰РµР№ СЃС‚СЂРѕРєРё StringGrid1'РґР° РІ StatusBar1
 void __fastcall TMapForm::StringGrid1SelectCell(TObject *Sender, int ACol,
       int ARow, bool &CanSelect)
 {
@@ -537,7 +537,7 @@ void __fastcall TMapForm::StringGrid1SelectCell(TObject *Sender, int ACol,
 
 void __fastcall TMapForm::FormResize(TObject *Sender)
 {
-   // Установка размеров столбцов в StringGrid1
+   // РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂРѕРІ СЃС‚РѕР»Р±С†РѕРІ РІ StringGrid1
    StringGrid1->ColWidths[0] = StringGrid1->Width / 7;
    StringGrid1->ColWidths[1] = StringGrid1->Width / 10;
    StringGrid1->ColWidths[2] = StringGrid1->Width / 8;
@@ -545,22 +545,22 @@ void __fastcall TMapForm::FormResize(TObject *Sender)
    StringGrid1->ColWidths[4] = StringGrid1->Width / 10;
    StringGrid1->ColWidths[5] = StringGrid1->Width;
 
-   // Установка размеров секций в HeaderControl1
+   // РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂРѕРІ СЃРµРєС†РёР№ РІ HeaderControl1
    for (int i = 0; i < 6; i++)
    {
      HeaderControl1->Sections->Items[i]->Width = StringGrid1->ColWidths[i];
      if (!(i % 2)) HeaderControl1->Sections->Items[i]->Width +=2;
    }
 
-   // Обновление "карты памяти"
+   // РћР±РЅРѕРІР»РµРЅРёРµ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё"
    if (list->Count > 0) if (BSize < 10) BuildMap(false); else BuildMap(true);
 }
 //---------------------------------------------------------------------------
 
 
-/*-------------------- Построение "карты памяти" -----------------------------*/
+/*-------------------- РџРѕСЃС‚СЂРѕРµРЅРёРµ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё" -----------------------------*/
 
-// Построение "карты памяти" для Windows2000
+// РџРѕСЃС‚СЂРѕРµРЅРёРµ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё" РґР»СЏ Windows2000
 void BuildMap_For_W2000(bool IsAdress)
 {
    int tmp = TOP_Y + RESERVE + OS_DATA + BOTTOM_Y + NULL_POINTERS;
@@ -605,7 +605,7 @@ void BuildMap_For_W2000(bool IsAdress)
 
    MapForm->Image1->Canvas->Brush->Color = clRed;
    MapForm->Image1->Canvas->Rectangle(LEFT_X, i - 1, RIGHT_X, i + RESERVE);
-   MapForm->Image1->Canvas->TextOut(LEFT_X + 1, i + 5, "Зарезервировано");
+   MapForm->Image1->Canvas->TextOut(LEFT_X + 1, i + 5, "Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРѕ");
    MapForm->Image1->Canvas->Rectangle(LEFT_X, i + RESERVE - 1, RIGHT_X, i + RESERVE + OS_DATA);
    MapForm->Image1->Canvas->TextOut(LEFT_X + 1, i + RESERVE + 1, "      OS Data");
    MapForm->Image1->Canvas->Brush->Color = clWhite;
@@ -615,7 +615,7 @@ void BuildMap_For_W2000(bool IsAdress)
 }
 
 
-// Построение "карты памяти" для Windows9X
+// РџРѕСЃС‚СЂРѕРµРЅРёРµ "РєР°СЂС‚С‹ РїР°РјСЏС‚Рё" РґР»СЏ Windows9X
 void BuildMap_For_W9X(bool IsAdress)
 {
    int tmp = TOP_Y + NULL_POINTERS + DOS + BOTTOM_Y + MMF + OS_DATA;
@@ -676,7 +676,7 @@ void BuildMap_For_W9X(bool IsAdress)
 
 /*----------------------------------------------------------------------------*/
 
-// Обработчик на изменение размеров секций в HeaderControl1
+// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР° РёР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЃРµРєС†РёР№ РІ HeaderControl1
 void __fastcall TMapForm::HeaderControl1SectionResize(
       THeaderControl *HeaderControl, THeaderSection *Section)
 {
@@ -689,7 +689,7 @@ void __fastcall TMapForm::HeaderControl1SectionResize(
 //---------------------------------------------------------------------------
 
 
-// Вывод Hint'ов при наведении курсоро мыши на секции HeaderControl1
+// Р’С‹РІРѕРґ Hint'РѕРІ РїСЂРё РЅР°РІРµРґРµРЅРёРё РєСѓСЂСЃРѕСЂРѕ РјС‹С€Рё РЅР° СЃРµРєС†РёРё HeaderControl1
 void __fastcall TMapForm::HeaderControl1MouseMove(TObject *Sender,
       TShiftState Shift, int X, int Y)
 {
@@ -701,7 +701,7 @@ void __fastcall TMapForm::HeaderControl1MouseMove(TObject *Sender,
 }
 //---------------------------------------------------------------------------
 
-// Сортировка по типу
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С‚РёРїСѓ
 int TMapForm::SortByType(AnsiString Type, int index)
 {
   int end_index = StringGrid1->RowCount - 1;
@@ -725,7 +725,7 @@ int TMapForm::SortByType(AnsiString Type, int index)
 }
 
 
-// Сортировка по размеру
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЂР°Р·РјРµСЂСѓ
 void TMapForm::SortBySizes()
 {
   for (int i = 0; i < StringGrid1->RowCount; i++)
@@ -747,7 +747,7 @@ void TMapForm::SortBySizes()
   }
 }
 
-// Сортировка по адресам
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р°РґСЂРµСЃР°Рј
 void TMapForm::SortByAdress(int index)
 {
   for (int i = index; i < StringGrid1->RowCount; i++)
@@ -770,7 +770,7 @@ void TMapForm::SortByAdress(int index)
 }
 
 
-// Сортировка при нажатии на секции HeaderControl1
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° СЃРµРєС†РёРё HeaderControl1
 void __fastcall TMapForm::HeaderControl1SectionClick(
       THeaderControl *HeaderControl, THeaderSection *Section)
 {
@@ -792,7 +792,7 @@ void __fastcall TMapForm::HeaderControl1SectionClick(
 }
 
 
-// Обаботчик нажатия на кнопку "Выбор процесса"
+// РћР±Р°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "Р’С‹Р±РѕСЂ РїСЂРѕС†РµСЃСЃР°"
 void __fastcall TMapForm::SpeedButton8Click(TObject *Sender)
 {
    ProcessForm->AvailableProcesses();
@@ -801,7 +801,7 @@ void __fastcall TMapForm::SpeedButton8Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-// Обаботчик нажатия на кнопку "Обновить"
+// РћР±Р°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "РћР±РЅРѕРІРёС‚СЊ"
 void __fastcall TMapForm::SpeedButton2Click(TObject *Sender)
 {
    ShowVirtualMemoryMap();
@@ -809,21 +809,21 @@ void __fastcall TMapForm::SpeedButton2Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-// Обаботчик нажатия на кнопку "Выход"
+// РћР±Р°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "Р’С‹С…РѕРґ"
 void __fastcall TMapForm::N4Click(TObject *Sender)
 {
   Close();
 }
 //---------------------------------------------------------------------------
 
-// Обаботчик нажатия на кнопку "Справка"
+// РћР±Р°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "РЎРїСЂР°РІРєР°"
 void __fastcall TMapForm::SpeedButton7Click(TObject *Sender)
 {
   HelpForm->ShowModal();
 }
 //---------------------------------------------------------------------------
 
-// Обаботчик нажатия на кнопку "О программе"
+// РћР±Р°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "Рћ РїСЂРѕРіСЂР°РјРјРµ"
 void __fastcall TMapForm::SpeedButton9Click(TObject *Sender)
 {
   AboutForm->ShowModal();

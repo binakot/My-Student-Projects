@@ -9,7 +9,7 @@ const int LineMax = KeyFieldMax + DFMaxPlus1;
 
 typedef char StringType[LineMax];
 
-//Извлечение строки из файла
+//РР·РІР»РµС‡РµРЅРёРµ СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°
 int MyGetLine(istream & InStream, char * String, int StringMax)
 {
   char Ch;
@@ -29,7 +29,7 @@ int MyGetLine(istream & InStream, char * String, int StringMax)
   String[Count] = NULL;
   return Count;
 }
-//Считыванеи строки
+//РЎС‡РёС‚С‹РІР°РЅРµРё СЃС‚СЂРѕРєРё
 void ReadLine(fstream & InputFile, KeyFieldType Word, DataFieldType Definition)
 {
   char Line[LineMax];
@@ -50,7 +50,7 @@ void ReadLine(fstream & InputFile, KeyFieldType Word, DataFieldType Definition)
   }
   Definition[k] = NULL;
 }
-//Заполнить таблицу из файла
+//Р—Р°РїРѕР»РЅРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ РёР· С„Р°Р№Р»Р°
 void Load(fstream & InputFile, BTTableClass & Table)
 {
   ItemType Item;

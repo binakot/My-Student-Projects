@@ -25,8 +25,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------  
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  StringGrid1->Cells[0][0] = ("Ñòåïåíü");
-  StringGrid1->Cells[1][0] = ("Êîýôô");
+  StringGrid1->Cells[0][0] = ("Ð¡Ñ‚ÐµÐ¿ÐµÐ½ÑŒ");
+  StringGrid1->Cells[1][0] = ("ÐšÐ¾ÑÑ„Ñ„");
   StringGrid1->Cells[0][1] = 0;
 }
 //---------------------------------------------------------------------------

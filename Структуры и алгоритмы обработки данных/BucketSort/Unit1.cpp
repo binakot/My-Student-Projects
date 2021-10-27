@@ -22,7 +22,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-// Функция заполнения массива mas размера size случайными числами
+// Р¤СѓРЅРєС†РёСЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° mas СЂР°Р·РјРµСЂР° size СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
 void ToRandom(int Mas[],const int Size)
 {
   randomize();
@@ -30,14 +30,14 @@ void ToRandom(int Mas[],const int Size)
     Mas[i] = (rand() % Col) + 1;
 };
 //---------------------------------------------------------------------------
-// Функция обнуления массива mas размера size
+// Р¤СѓРЅРєС†РёСЏ РѕР±РЅСѓР»РµРЅРёСЏ РјР°СЃСЃРёРІР° mas СЂР°Р·РјРµСЂР° size
 void ToZero(int Mas[],const int Size)
 {
   for(int i = 0; i < Size; ++i)       // O(Size)
     Mas[i] = 0;                       // O(1)
 };
 //---------------------------------------------------------------------------
-//Поиск одиннаковых элементов в массиве
+//РџРѕРёСЃРє РѕРґРёРЅРЅР°РєРѕРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ
 int Find(const int Mas[],const int Size,const int Cur)
 {
   int value;
@@ -50,7 +50,7 @@ int Find(const int Mas[],const int Size,const int Cur)
   return value;
 };
 //-------------------------------------------------------------------------
-//Вывод элементов массива
+//Р’С‹РІРѕРґ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
 void GetMass(const int Mas[],const int First,const int Last, TMemo *Memo)
 {
   int i;
@@ -62,7 +62,7 @@ void GetMass(const int Mas[],const int First,const int Last, TMemo *Memo)
   }
 };
 //---------------------------------------------------------------------------
-//Блочная сортировка
+//Р‘Р»РѕС‡РЅР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 void BucketSort(int Mas[],int Count[],const int Size)
 {
   int i,j;
@@ -76,7 +76,7 @@ void BucketSort(int Mas[],int Count[],const int Size)
     while (Count[i]>0) {                    //O(1)
       Mas[j] = i + 1;                       //O(1)
       Count[i]--;                           //O(1)
-      j++;                                  //O(1)  -> доминанта O(1)
+      j++;                                  //O(1)  -> РґРѕРјРёРЅР°РЅС‚Р° O(1)
     }
   }
   /*O(Size*1)+

@@ -4,14 +4,14 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 //---------------------------------------------------------------------------
-//Вывод ошибки
+//Р’С‹РІРѕРґ РѕС€РёР±РєРё
 void Error(char * msg)
 {
   ShowMessage(msg);
   exit(1);
 }
 //---------------------------------------------------------------------------
-//Конструктор
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 BTTableClass::BTTableClass(char Mode, char * FileName)
 {
   OpenMode = Mode;
@@ -21,7 +21,7 @@ BTTableClass::BTTableClass(char Mode, char * FileName)
   {
     DataFile.open(FileName, ios::in | ios::binary);
     if (DataFile.fail())
-      Error("Файл не доступен для чтения");
+      Error("Р¤Р°Р№Р» РЅРµ РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ С‡С‚РµРЅРёСЏ");
 
     DataFile.read(reinterpret_cast <char *> (&CurrentNode), NodeSize);
     if (DataFile.fail())
@@ -41,7 +41,7 @@ BTTableClass::BTTableClass(char Mode, char * FileName)
   {
     DataFile.open(FileName, ios::in | ios::out | ios:: trunc | ios::binary);
     if (DataFile.fail())
-      Error("Файл не доступен для записи");
+      Error("Р¤Р°Р№Р» РЅРµ РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ Р·Р°РїРёСЃРё");
 
     Root = NilPtr;
     NumItems = 0;
@@ -53,10 +53,10 @@ BTTableClass::BTTableClass(char Mode, char * FileName)
     DataFile.write(reinterpret_cast <char *> (&CurrentNode), NodeSize);
   }
   else
-    Error("Необходимо ввести либо 'r' (чтение), либо 'w' (запись)");
+    Error("РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё Р»РёР±Рѕ 'r' (С‡С‚РµРЅРёРµ), Р»РёР±Рѕ 'w' (Р·Р°РїРёСЃСЊ)");
 }
 //---------------------------------------------------------------------------
-//Деструктор
+//Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 BTTableClass::~BTTableClass(void)
 {  
   if (OpenMode == 'w')
@@ -110,7 +110,7 @@ void BTTableClass::AddItem(const ItemType & NewItem, long NewRight, NodeType & N
   Node.Count++;
 }
 //---------------------------------------------------------------------------
-//Слияние узла и его сына если кол-во ключей в узле меньше максимального
+//РЎР»РёСЏРЅРёРµ СѓР·Р»Р° Рё РµРіРѕ СЃС‹РЅР° РµСЃР»Рё РєРѕР»-РІРѕ РєР»СЋС‡РµР№ РІ СѓР·Р»Рµ РјРµРЅСЊС€Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ
 void BTTableClass::Split(const ItemType & CurrentItem, long CurrentRight, long CurrentRoot, int Location, ItemType & NewItem, long & NewRight)
 {
   int j, Median;
@@ -151,14 +151,14 @@ void BTTableClass::Split(const ItemType & CurrentItem, long CurrentRight, long C
   DataFile.write(reinterpret_cast <char *> (&RightNode), NodeSize);
 }
 //---------------------------------------------------------------------------
-// Поиск подходящего места для вставки начиная с текущего узла
+// РџРѕРёСЃРє РїРѕРґС…РѕРґСЏС‰РµРіРѕ РјРµСЃС‚Р° РґР»СЏ РІСЃС‚Р°РІРєРё РЅР°С‡РёРЅР°СЏ СЃ С‚РµРєСѓС‰РµРіРѕ СѓР·Р»Р°
 void BTTableClass::PushDown(const ItemType & CurrentItem, long CurrentRoot, bool & MoveUp, ItemType & NewItem, long & NewRight)
 {
   int Location;
 
   if (CurrentRoot == NilPtr)
   {   
-    MoveUp = true;     //true если ключ нужно поместить в родительский узел из-за расщепления
+    MoveUp = true;     //true РµСЃР»Рё РєР»СЋС‡ РЅСѓР¶РЅРѕ РїРѕРјРµСЃС‚РёС‚СЊ РІ СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ СѓР·РµР» РёР·-Р·Р° СЂР°СЃС‰РµРїР»РµРЅРёСЏ
     NewItem = CurrentItem;
     NewRight = NilPtr;
   }
@@ -168,7 +168,7 @@ void BTTableClass::PushDown(const ItemType & CurrentItem, long CurrentRoot, bool
     DataFile.read(reinterpret_cast <char *> (&CurrentNode), NodeSize);
 
     if (SearchNode(CurrentItem.KeyField, Location))
-      Error("Ошибка: попытка создать копию ключа в Б-дереве");
+      Error("РћС€РёР±РєР°: РїРѕРїС‹С‚РєР° СЃРѕР·РґР°С‚СЊ РєРѕРїРёСЋ РєР»СЋС‡Р° РІ Р‘-РґРµСЂРµРІРµ");
 
     PushDown(CurrentItem, CurrentNode.Branch[Location + 1], MoveUp, NewItem, NewRight);
 

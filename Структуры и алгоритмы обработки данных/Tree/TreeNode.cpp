@@ -1,31 +1,31 @@
-// BinSTree зависит от TreeNode
+// BinSTree Р·Р°РІРёСЃРёС‚ РѕС‚ TreeNode
 template <class T>
 class BinSTree;
 
-// объявление объекта для узла бинарного дерева
+// РѕР±СЉСЏРІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° РґР»СЏ СѓР·Р»Р° Р±РёРЅР°СЂРЅРѕРіРѕ РґРµСЂРµРІР°
 template <class T>
 class TreeNode
 {
   private:
-    // указатели левого и правого дочерних узлов
+    // СѓРєР°Р·Р°С‚РµР»Рё Р»РµРІРѕРіРѕ Рё РїСЂР°РІРѕРіРѕ РґРѕС‡РµСЂРЅРёС… СѓР·Р»РѕРІ
     TreeNode<T> *left;
     TreeNode<T> *right;
     T data;
   public:
-    // конструктор
+    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     TreeNode (const T& item, TreeNode<T> *lptr = NULL, TreeNode<T> *rptr = NULL);
-    // методы доступа к полям указателей
+    // РјРµС‚РѕРґС‹ РґРѕСЃС‚СѓРїР° Рє РїРѕР»СЏРј СѓРєР°Р·Р°С‚РµР»РµР№
     TreeNode<T>* Left(void);
     TreeNode<T>* Right(void);
     T GetData(void) const;
     void SetData(const T& item);
-    // сделать класс BinSTree дружественным, поскольку необходим
-    // доступ к полям left и right
+    // СЃРґРµР»Р°С‚СЊ РєР»Р°СЃСЃ BinSTree РґСЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Рј, РїРѕСЃРєРѕР»СЊРєСѓ РЅРµРѕР±С…РѕРґРёРј
+    // РґРѕСЃС‚СѓРї Рє РїРѕР»СЏРј left Рё right
     friend class BinSTree<T>;
 };
 
-// конструктор инициализирует поля данных и указателей
-// значение NULL соответствует пустому поддереву
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРѕР»СЏ РґР°РЅРЅС‹С… Рё СѓРєР°Р·Р°С‚РµР»РµР№
+// Р·РЅР°С‡РµРЅРёРµ NULL СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РїСѓСЃС‚РѕРјСѓ РїРѕРґРґРµСЂРµРІСѓ
 template <class T>
 TreeNode<T>::TreeNode(const T& item, TreeNode<T> *lptr, TreeNode<T> *rptr) :
   data(item), left(lptr), right(rptr)

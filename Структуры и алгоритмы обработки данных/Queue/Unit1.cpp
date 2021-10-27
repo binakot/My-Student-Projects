@@ -22,11 +22,11 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   if (!MyQueue.isFull())
     {
       MyQueue.push(StrToInt(Edit1->Text));
-      Memo1->Lines->Add("ƒÓ·‡‚ÎˇÂÏ ‚ ÍÓÌÂˆ " + Edit1->Text);
+      Memo1->Lines->Add("–î–æ–±–∞–≤–ª—è–µ–º –≤ –∫–æ–Ω–µ—Ü " + Edit1->Text);
     }
   else
     {
-      Memo1->Lines->Add("Œ˜ÂÂ‰¸ ÔÓÎÌ‡ˇ!");
+      Memo1->Lines->Add("–û—á–µ—Ä–µ–¥—å –ø–æ–ª–Ω–∞—è!");
     };
 }
 //---------------------------------------------------------------------------
@@ -34,11 +34,11 @@ void __fastcall TForm1::BitBtn3Click(TObject *Sender)
 {
   if (!MyQueue.isEmpty())
     {
-      Memo1->Lines->Add("œÂ‚˚È ˝ÎÂÏÂÌÚ = " + IntToStr(MyQueue.getFirst()));
+      Memo1->Lines->Add("–ü–µ—Ä–≤—ã–π —ç–ª–µ–º–µ–Ω—Ç = " + IntToStr(MyQueue.getFirst()));
     }
   else
     {
-      Memo1->Lines->Add("Œ˜ÂÂ‰¸ ÔÛÒÚ‡!");
+      Memo1->Lines->Add("–û—á–µ—Ä–µ–¥—å –ø—É—Å—Ç–∞!");
     };
 }
 //---------------------------------------------------------------------------
@@ -46,12 +46,12 @@ void __fastcall TForm1::BitBtn2Click(TObject *Sender)
 {
   if (!MyQueue.isEmpty())
     {
-      Memo1->Lines->Add("”‰‡ÎˇÂÏ ËÁ Ì‡˜‡Î‡ " + IntToStr(MyQueue.getFirst()));
+      Memo1->Lines->Add("–£–¥–∞–ª—è–µ–º –∏–∑ –Ω–∞—á–∞–ª–∞ " + IntToStr(MyQueue.getFirst()));
       MyQueue.pop();
     }
   else
     {
-      Memo1->Lines->Add("Œ˜ÂÂ‰¸ ÔÛÒÚ‡!");
+      Memo1->Lines->Add("–û—á–µ—Ä–µ–¥—å –ø—É—Å—Ç–∞!");
     };
 }
 //---------------------------------------------------------------------------

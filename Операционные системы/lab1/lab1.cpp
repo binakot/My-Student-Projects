@@ -41,11 +41,11 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
   switch(msg)
    {
         case WM_LBUTTONUP:
-           MessageBox(NULL,"Привет!)","Дружелюбное окно",MB_OK | MB_ICONEXCLAMATION);
+           MessageBox(NULL,"РџСЂРёРІРµС‚!)","Р”СЂСѓР¶РµР»СЋР±РЅРѕРµ РѕРєРЅРѕ",MB_OK | MB_ICONEXCLAMATION);
 
 	case WM_CREATE:
 	   button = CreateWindow(
-           "button", "МегаКнопка",
+           "button", "РњРµРіР°РљРЅРѕРїРєР°",
 	   BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE,
 	   150, 100, 200, 50, hwnd, NULL, hInst, NULL);
 

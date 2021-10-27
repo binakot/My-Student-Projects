@@ -118,10 +118,10 @@ void __stdcall EnablePreor(int Num)
 //---------------------------------------------------------------------------
 unsigned int __stdcall ThreadNotPreor(void* pParams)
 {
-  WaitForSingleObject( hEvent1, INFINITE );      //Ждем приоритетные потоки
-  WaitForSingleObject( hSem1, INFINITE );        //ждем освобождение ресурса для любого потока
-  WaitForSingleObject( hSem2, INFINITE );        //ждем освобождения ресурса для неприоритетного потока
-  ResetEvent(hEvent3);                           //Есть неприоритетные потоки
+  WaitForSingleObject( hEvent1, INFINITE );      //Р–РґРµРј РїСЂРёРѕСЂРёС‚РµС‚РЅС‹Рµ РїРѕС‚РѕРєРё
+  WaitForSingleObject( hSem1, INFINITE );        //Р¶РґРµРј РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ СЂРµСЃСѓСЂСЃР° РґР»СЏ Р»СЋР±РѕРіРѕ РїРѕС‚РѕРєР°
+  WaitForSingleObject( hSem2, INFINITE );        //Р¶РґРµРј РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ СЂРµСЃСѓСЂСЃР° РґР»СЏ РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅРѕРіРѕ РїРѕС‚РѕРєР°
+  ResetEvent(hEvent3);                           //Р•СЃС‚СЊ РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅС‹Рµ РїРѕС‚РѕРєРё
 
   if (res1 == false) {
     res1 = true;
@@ -159,18 +159,18 @@ unsigned int __stdcall ThreadNotPreor(void* pParams)
     res4 = false;
   };                                      
 
-  ReleaseSemaphore( hSem2, 1, &PrevCount );   //Освобождаем один ресурс от неприоритетного потока
-  if (PrevCount == 3) SetEvent(hEvent3);      //Если неприоритетных больше нет, то выполняем приоритетными
-  ReleaseSemaphore( hSem1, 1, NULL );         //Освобождаем один ресурс от любого потока
+  ReleaseSemaphore( hSem2, 1, &PrevCount );   //РћСЃРІРѕР±РѕР¶РґР°РµРј РѕРґРёРЅ СЂРµСЃСѓСЂСЃ РѕС‚ РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅРѕРіРѕ РїРѕС‚РѕРєР°
+  if (PrevCount == 3) SetEvent(hEvent3);      //Р•СЃР»Рё РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅС‹С… Р±РѕР»СЊС€Рµ РЅРµС‚, С‚Рѕ РІС‹РїРѕР»РЅСЏРµРј РїСЂРёРѕСЂРёС‚РµС‚РЅС‹РјРё
+  ReleaseSemaphore( hSem1, 1, NULL );         //РћСЃРІРѕР±РѕР¶РґР°РµРј РѕРґРёРЅ СЂРµСЃСѓСЂСЃ РѕС‚ Р»СЋР±РѕРіРѕ РїРѕС‚РѕРєР°
 
   return 0;
 };
 //---------------------------------------------------------------------------
 unsigned int __stdcall ThreadPreor(void* pParams)
 {
-  ResetEvent(hEvent1);                          //Останавливаем неприоритетные потоки
-  WaitForSingleObject( hEvent3, INFINITE );     //Ждем пока не будет неприоритетных
-  WaitForSingleObject( hSem1, INFINITE );       //ждем освобождение ресурса для любого потока
+  ResetEvent(hEvent1);                          //РћСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅС‹Рµ РїРѕС‚РѕРєРё
+  WaitForSingleObject( hEvent3, INFINITE );     //Р–РґРµРј РїРѕРєР° РЅРµ Р±СѓРґРµС‚ РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅС‹С…
+  WaitForSingleObject( hSem1, INFINITE );       //Р¶РґРµРј РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ СЂРµСЃСѓСЂСЃР° РґР»СЏ Р»СЋР±РѕРіРѕ РїРѕС‚РѕРєР°
 
   if (res1 == false) {
     res1 = true;
@@ -208,8 +208,8 @@ unsigned int __stdcall ThreadPreor(void* pParams)
     res4 = false;
   };
 
-  ReleaseSemaphore( hSem1, 1, NULL );             //Освобождаем один ресурс от любого потока
-  SetEvent(hEvent1);                              //Пропускаем неприоритетные потоки
+  ReleaseSemaphore( hSem1, 1, NULL );             //РћСЃРІРѕР±РѕР¶РґР°РµРј РѕРґРёРЅ СЂРµСЃСѓСЂСЃ РѕС‚ Р»СЋР±РѕРіРѕ РїРѕС‚РѕРєР°
+  SetEvent(hEvent1);                              //РџСЂРѕРїСѓСЃРєР°РµРј РЅРµРїСЂРёРѕСЂРёС‚РµС‚РЅС‹Рµ РїРѕС‚РѕРєРё
   
   return 0;
 };
