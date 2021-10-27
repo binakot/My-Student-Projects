@@ -5,7 +5,7 @@ using System.Net.Sockets;
 
 namespace MinimalisticTelnet
 {
-    // Êîëëåêöèÿ êîìàíä
+    // ÐšÐ¾Ð»Ð»ÐµÐºÑ†Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´
     enum Verbs {
         WILL = 251,
         WONT = 252,
@@ -13,7 +13,7 @@ namespace MinimalisticTelnet
         DONT = 254,
         IAC = 255
     }
-    // Êîëëåêöèÿ ñâîéñòâ
+    // ÐšÐ¾Ð»Ð»ÐµÐºÑ†Ð¸Ñ ÑÐ²Ð¾Ð¹ÑÑ‚Ð²
     enum Options
     {
         SGA = 3
@@ -21,43 +21,43 @@ namespace MinimalisticTelnet
 
     class TelnetConnection
     {
-        // Êëèåíòñêîå ïîäêëþ÷åíèå
+        // ÐšÐ»Ð¸ÐµÐ½Ñ‚ÑÐºÐ¾Ðµ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ
         TcpClient tcpSocket;
-        // Âðåìÿ îæèäàíèÿ
+        // Ð’Ñ€ÐµÐ¼Ñ Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ñ
         int TimeOutMs = 100;
-        // Êîíñòðóêòîð
+        // ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
         public TelnetConnection(string Hostname, int Port)
         {
             tcpSocket = new TcpClient(Hostname, Port);           
         }
-        // Ïîäêëþ÷åíèå êëèåíòà
+        // ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°
         public string Login(string Username,string Password,int LoginTimeOutMs)
         {
             int oldTimeOutMs = TimeOutMs;
             TimeOutMs = LoginTimeOutMs;
             string s = Read();
-            // Ëîãèí            
+            // Ð›Ð¾Ð³Ð¸Ð½            
             s += Read();
-            // Ïàðîëü            
+            // ÐŸÐ°Ñ€Ð¾Ð»ÑŒ            
             s += Read();
-            // Âðåìÿ îæèäàíèÿ
+            // Ð’Ñ€ÐµÐ¼Ñ Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ñ
             TimeOutMs = oldTimeOutMs;
             
             return s;
         }
-        // Âûâîä ñòðîêè
+        // Ð’Ñ‹Ð²Ð¾Ð´ ÑÑ‚Ñ€Ð¾ÐºÐ¸
         public void WriteLine(string cmd)
         {
             Write(cmd + "\n");
         }
-        // Âûâîä 
+        // Ð’Ñ‹Ð²Ð¾Ð´ 
         public void Write(string cmd)
         {
             if (!tcpSocket.Connected) return;
             byte[] buf = System.Text.Encoding.UTF8.GetBytes(cmd.Replace("\0xFF", "\0xFF\0xFF"));
             tcpSocket.GetStream().Write(buf, 0, buf.Length);
         }
-        // Ââîä êîìàíäû
+        // Ð’Ð²Ð¾Ð´ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹
         public string Read()
         {
             if (!tcpSocket.Connected)
@@ -71,12 +71,12 @@ namespace MinimalisticTelnet
 
             return sb.ToString();            
         }
-        // Ïðîâåðêà íà ïîäêëþ÷åíèå
+        // ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð° Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ
         public bool IsConnected
         {
             get { return tcpSocket.Connected; }
         }
-        // Ïåðåâîä ñòðîêè â êîìàíäó TelNet
+        // ÐŸÐµÑ€ÐµÐ²Ð¾Ð´ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð² ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ TelNet
         void ParseTelnet(StringBuilder sb)
         {
             while (tcpSocket.Available > 0)

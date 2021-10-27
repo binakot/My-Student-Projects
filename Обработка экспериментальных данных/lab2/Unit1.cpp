@@ -37,56 +37,56 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   StringGrid1->Cells[4][0] = "20";
   StringGrid1->Cells[5][0] = "25";
   StringGrid1->Cells[6][0] = "mx";
-  // 1 строка
+  // 1 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][1] = "2";
   StringGrid1->Cells[2][1] = "3";
   StringGrid1->Cells[3][1] = "-";
   StringGrid1->Cells[4][1] = "-";
   StringGrid1->Cells[5][1] = "-";
   StringGrid1->Cells[6][1] = "5";
-  // 2 строка
+  // 2 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][2] = "1";
   StringGrid1->Cells[2][2] = "4";
   StringGrid1->Cells[3][2] = "-";
   StringGrid1->Cells[4][2] = "-";
   StringGrid1->Cells[5][2] = "-";
   StringGrid1->Cells[6][2] = "5";
-  // 3 строка
+  // 3 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][3] = "-";
   StringGrid1->Cells[2][3] = "3";
   StringGrid1->Cells[3][3] = "5";
   StringGrid1->Cells[4][3] = "-";
   StringGrid1->Cells[5][3] = "-";
   StringGrid1->Cells[6][3] = "8";
-  // 4 строка
+  // 4 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][4] = "-";
   StringGrid1->Cells[2][4] = "-";
   StringGrid1->Cells[3][4] = "10";
   StringGrid1->Cells[4][4] = "1";
   StringGrid1->Cells[5][4] = "-";
   StringGrid1->Cells[6][4] = "11";
-  // 5 строка
+  // 5 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][5] = "-";
   StringGrid1->Cells[2][5] = "-";
   StringGrid1->Cells[3][5] = "8";
   StringGrid1->Cells[4][5] = "-";
   StringGrid1->Cells[5][5] = "-";
   StringGrid1->Cells[6][5] = "8";
-  // 6 строка
+  // 6 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][6] = "-";
   StringGrid1->Cells[2][6] = "-";
   StringGrid1->Cells[3][6] = "-";
   StringGrid1->Cells[4][6] = "6";
   StringGrid1->Cells[5][6] = "-";
   StringGrid1->Cells[6][6] = "6";
-  // 7 строка
+  // 7 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][7] = "-";
   StringGrid1->Cells[2][7] = "-";
   StringGrid1->Cells[3][7] = "-";
   StringGrid1->Cells[4][7] = "1";
   StringGrid1->Cells[5][7] = "4";
   StringGrid1->Cells[6][7] = "5";
-  // 8 строка
+  // 8 СЃС‚СЂРѕРєР°
   StringGrid1->Cells[1][8] = "-";
   StringGrid1->Cells[2][8] = "-";
   StringGrid1->Cells[3][8] = "-";
@@ -103,15 +103,15 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-// Вычислить 
+// Р’С‹С‡РёСЃР»РёС‚СЊ 
 void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 {
-  // Шаги
+  // РЁР°РіРё
   h1 = StrToInt(StringGrid1->Cells[0][2]) - StrToInt(StringGrid1->Cells[0][1]);
   Edit3->Text = IntToStr(h1);
   h2 = StrToInt(StringGrid1->Cells[2][0]) - StrToInt(StringGrid1->Cells[1][0]);
   Edit4->Text = IntToStr(h2);
-  // Ложные нули
+  // Р›РѕР¶РЅС‹Рµ РЅСѓР»Рё
   int tmph1, tmph2;
 
   tmph1 = RoundTo(StrToFloat(StringGrid1->Cells[0][8]) / 2, 0);
@@ -125,10 +125,10 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   C2 = StrToInt(StringGrid1->Cells[3][0]);
   Edit2->Text = IntToStr(C2);
 
-  xNull = 5; // Индекс ложного нуля по X
-  yNull = 3; // Индекс ложного нуля по Y
+  xNull = 5; // РРЅРґРµРєСЃ Р»РѕР¶РЅРѕРіРѕ РЅСѓР»СЏ РїРѕ X
+  yNull = 3; // РРЅРґРµРєСЃ Р»РѕР¶РЅРѕРіРѕ РЅСѓР»СЏ РїРѕ Y
 
-  //Заполняем расчетную таблицу
+  //Р—Р°РїРѕР»РЅСЏРµРј СЂР°СЃС‡РµС‚РЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ
   for (int i = 1; i < 9; i++)
     StringGrid2->Cells[0][i] = IntToStr(i - xNull);
   for (int i = 1; i < 6; i++)
@@ -146,7 +146,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 
   StringGrid2->Cells[6][9] = "N = 50";
 
-  // Считываем значения в матрицу
+  // РЎС‡РёС‚С‹РІР°РµРј Р·РЅР°С‡РµРЅРёСЏ РІ РјР°С‚СЂРёС†Сѓ
   for (int i = 1; i < 9; i++)
   for (int j = 1; j < 6; j++)
   {
@@ -155,7 +155,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
     else
       Mat[i][j] = 100500;
   }
-  // Вычисляем матрицу нижних индексов
+  // Р’С‹С‡РёСЃР»СЏРµРј РјР°С‚СЂРёС†Сѓ РЅРёР¶РЅРёС… РёРЅРґРµРєСЃРѕРІ
   for (int i = 1; i < 9; i++)
   for (int j = 1; j < 6; j++)
   {
@@ -164,7 +164,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
     else
       Mat[i][j] = 100500;
   }
-  // Вычисляем матрицу верхних индексов
+  // Р’С‹С‡РёСЃР»СЏРµРј РјР°С‚СЂРёС†Сѓ РІРµСЂС…РЅРёС… РёРЅРґРµРєСЃРѕРІ
   for (int i = 1; i < 9; i++)
   for (int j = 1; j < 6; j++)
   {
@@ -173,7 +173,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
     else
       Mat[i][j] = 100500;
   }
-  // Выводим матрицы в расчетную таблицу
+  // Р’С‹РІРѕРґРёРј РјР°С‚СЂРёС†С‹ РІ СЂР°СЃС‡РµС‚РЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ
   for (int i = 1; i < 9; i++)
   for (int j = 1; j < 6; j++)
   {
@@ -264,14 +264,14 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   }
   StringGrid2->Cells[6][12] = IntToStr(Sum2);
 
-  // Контроль
+  // РљРѕРЅС‚СЂРѕР»СЊ
   StringGrid2->Cells[7][12] = "<";
   StringGrid2->Cells[8][12] = "__";
-  StringGrid2->Cells[9][12] = "Контроль";
+  StringGrid2->Cells[9][12] = "РљРѕРЅС‚СЂРѕР»СЊ";
   StringGrid2->Cells[9][10] = "^";
   StringGrid2->Cells[9][11] = "|";
 
-  // Вычисление по формулам
+  // Р’С‹С‡РёСЃР»РµРЅРёРµ РїРѕ С„РѕСЂРјСѓР»Р°Рј
   float U, V, U2, V2, du, dv, r;
 
   U = StrToFloat(StringGrid2->Cells[7][9]) / N;
@@ -292,7 +292,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
   r = (StrToFloat(StringGrid2->Cells[6][12]) - N*U*V) / (N*du*dv);
   Edit11->Text = FloatToStr(r);
 
-  // Уравнения регрессий
+  // РЈСЂР°РІРЅРµРЅРёСЏ СЂРµРіСЂРµСЃСЃРёР№
   float X, Y;
 
   X = U*h1 + C1;

@@ -32,7 +32,7 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
     Memo1->Lines->Add(IntToStr(tmp));
   }
    
-  // сканирование узлов и печать их значений
+  // СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ СѓР·Р»РѕРІ Рё РїРµС‡Р°С‚СЊ РёС… Р·РЅР°С‡РµРЅРёР№
   for (InorderIterator<int> Iter(Tree.GetRoot()); !Iter.EndOfList(); Iter.Next())
     Memo2->Lines->Add(IntToStr(Iter.Data()) + ' ' + Iter.GetColor());
 

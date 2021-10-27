@@ -47,11 +47,11 @@ void __fastcall TForm1::BitBtn3Click(TObject *Sender)
   Memo1->Lines->Clear();
   if (RadioButton1->Checked == true) {
     MyProg.TypeProg('a');
-    Memo1->Lines->Add("Àðèôìåòè÷åñêàÿ");
+    Memo1->Lines->Add("ÐÑ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ°Ñ");
   }
   else {
     MyProg.TypeProg('g');
-    Memo1->Lines->Add("Ãåîìåòðè÷åñêàÿ");
+    Memo1->Lines->Add("Ð“ÐµÐ¾Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡ÐµÑÐºÐ°Ñ");
   };
   BitBtn4->Enabled = True;
   BitBtn5->Enabled = True;
@@ -93,10 +93,10 @@ void __fastcall TForm1::BitBtn8Click(TObject *Sender)
 
   Memo1->Clear();
   if (RadioButton1->Checked == true) {
-    Memo1->Lines->Add("Àðèôìåòè÷åñêàÿ");
+    Memo1->Lines->Add("ÐÑ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ°Ñ");
   }
   else {
-    Memo1->Lines->Add("Ãåîìåòðè÷åñêàÿ");
+    Memo1->Lines->Add("Ð“ÐµÐ¾Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡ÐµÑÐºÐ°Ñ");
   };
 
   first = StrToInt(Edit11->Text);

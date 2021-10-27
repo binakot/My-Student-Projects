@@ -2,7 +2,7 @@
 
 #include <vcl.h>
 #include <FileCtrl.hpp>
-#include <tlhelp32.h>  // Для использования функций ToolHelpAPI
+#include <tlhelp32.h>  // Р”Р»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ С„СѓРЅРєС†РёР№ ToolHelpAPI
 #include <process.h>   //
 #pragma hdrstop
 
@@ -23,7 +23,7 @@ __fastcall TProcessForm::TProcessForm(TComponent* Owner)
 
 /*----------------------------------------------------------------------------*/
 
-// Вывод списка процессов в StringGrid1
+// Р’С‹РІРѕРґ СЃРїРёСЃРєР° РїСЂРѕС†РµСЃСЃРѕРІ РІ StringGrid1
 void TProcessForm::AvailableProcesses()
 {
    for (int i = 1; i < StringGrid1->RowCount; i++)
@@ -60,14 +60,14 @@ void TProcessForm::AvailableProcesses()
 
 void __fastcall TProcessForm::FormCreate(TObject *Sender)
 {
-   StringGrid1->Cells[0][0] = "  Процессы";
+   StringGrid1->Cells[0][0] = "  РџСЂРѕС†РµСЃСЃС‹";
 }
 //---------------------------------------------------------------------------
 
 
 
 
-// Обработчик на кнопку OK
+// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР° РєРЅРѕРїРєСѓ OK
 void __fastcall TProcessForm::SpeedButton2Click(TObject *Sender)
 {
    PROCESSENTRY32* tmp = (PROCESSENTRY32*)StringGrid1->Objects[0][StringGrid1->Row];
@@ -75,7 +75,7 @@ void __fastcall TProcessForm::SpeedButton2Click(TObject *Sender)
    for (i = strlen(tmp->szExeFile); i > 0  && tmp->szExeFile[i] != '\\'; i--);
    if (*(tmp->szExeFile + i) == '\\') i++;
 
-   MapForm->Caption = "Карта памяти прцесса (" + AnsiString(tmp->szExeFile + i) + ")";
+   MapForm->Caption = "РљР°СЂС‚Р° РїР°РјСЏС‚Рё РїСЂС†РµСЃСЃР° (" + AnsiString(tmp->szExeFile + i) + ")";
    fExpandRegions = false;
    MapForm->SpeedButton10->Down = false;
    DWORD PrId = ((PROCESSENTRY32*)StringGrid1->Objects[0][StringGrid1->Row])->th32ProcessID;
@@ -99,19 +99,19 @@ void __fastcall TProcessForm::SpeedButton2Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-// Отмена
+// РћС‚РјРµРЅР°
 void __fastcall TProcessForm::SpeedButton3Click(TObject *Sender)
 {
   Close();
 }
 //---------------------------------------------------------------------------
 
-// Обновить
+// РћР±РЅРѕРІРёС‚СЊ
 void __fastcall TProcessForm::SpeedButton5Click(TObject *Sender)
 {
    StringGrid1->RowCount = 2;
    AvailableProcesses();
-   StringGrid1->Cells[0][0] = "  Процессы";
+   StringGrid1->Cells[0][0] = "  РџСЂРѕС†РµСЃСЃС‹";
 }
 //---------------------------------------------------------------------------
 

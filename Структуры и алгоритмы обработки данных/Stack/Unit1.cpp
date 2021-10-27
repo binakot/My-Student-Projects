@@ -84,7 +84,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
      };
    }
    else {
-     Application->MessageBox("ÕÂÚ ÒËÏ‚ÓÎ‡ '&', ËÎË Ëı ·ÓÎ¸¯Â, ˜ÂÏ 1", MB_OK);
+     Application->MessageBox("–ù–µ—Ç —Å–∏–º–≤–æ–ª–∞ '&', –∏–ª–∏ –∏—Ö –±–æ–ª—å—à–µ, —á–µ–º 1", MB_OK);
    }
 }
 //---------------------------------------------------------------------------

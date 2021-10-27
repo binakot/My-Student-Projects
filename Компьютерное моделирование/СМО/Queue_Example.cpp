@@ -23,9 +23,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   queue_int = new queue_list<int>;
 
-  Elements_Table->Cells[0][0] = " ‡ÒÒ‡";
-  Elements_Table->Cells[1][0] = " ÎËÂÌÚ";
-  Elements_Table->Cells[2][0] = "¬ÂÏˇ";
+  Elements_Table->Cells[0][0] = "–ö–∞—Å—Å–∞";
+  Elements_Table->Cells[1][0] = "–ö–ª–∏–µ–Ω—Ç";
+  Elements_Table->Cells[2][0] = "–í—Ä–µ–º—è";
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Insert_ButtonClick(TObject *Sender)
@@ -34,9 +34,9 @@ void __fastcall TForm1::Insert_ButtonClick(TObject *Sender)
       type = 0;
 
   if (RadioButton1->Checked)
-    type = 0;  //Œ·˚˜Ì˚È ÍÎËÂÌÚ
+    type = 0;  //–û–±—ã—á–Ω—ã–π –∫–ª–∏–µ–Ω—Ç
   else
-    type = 1;  //œÂÌÒËÓÌÂ
+    type = 1;  //–ü–µ–Ω—Å–∏–æ–Ω–µ—Ä
 
   queue_int->Insert(time, type);
 
@@ -44,9 +44,9 @@ void __fastcall TForm1::Insert_ButtonClick(TObject *Sender)
   Elements_Table->RowCount += 1;
   Elements_Table->Cells[0][k] = IntToStr(k);
   if (type == 0)
-    Elements_Table->Cells[1][k] = "Œ·˚˜Ì˚È";
+    Elements_Table->Cells[1][k] = "–û–±—ã—á–Ω—ã–π";
   else
-    Elements_Table->Cells[1][k] = "œÂÌÒËÓÌÂ";
+    Elements_Table->Cells[1][k] = "–ü–µ–Ω—Å–∏–æ–Ω–µ—Ä";
   Elements_Table->Cells[2][k] = IntToStr(time);
 }
 //---------------------------------------------------------------------------
@@ -59,7 +59,7 @@ void __fastcall TForm1::Pop_ButtonClick(TObject *Sender)
     queue_int->Pop();
     for (int i = 1; i < Elements_Table->RowCount; i++)
     {
-      if (Elements_Table->Cells[1][i] == "œÂÌÒËÓÌÂ")
+      if (Elements_Table->Cells[1][i] == "–ü–µ–Ω—Å–∏–æ–Ω–µ—Ä")
       {
         Elements_Table->Rows[i]->Clear();
         for (int j = i; j < Elements_Table->RowCount - 1; j++)
@@ -79,7 +79,7 @@ void __fastcall TForm1::Pop_ButtonClick(TObject *Sender)
   }
   catch (char* msg)
   {
-    Application->MessageBoxA(msg, "Œ¯Ë·Í‡:", MB_OK);
+    Application->MessageBoxA(msg, "–û—à–∏–±–∫–∞:", MB_OK);
   }
 }
 //---------------------------------------------------------------------------
